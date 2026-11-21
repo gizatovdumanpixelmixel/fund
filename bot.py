@@ -1,0 +1,208 @@
+# -*- coding: utf-8 -*-
+"""
+УПРАВЛЕНИЕ ЧЕРЕЗ TELEGRAM + ЕЖЕЧАСНЫЙ ЦИКЛ В ОБЛАКЕ.
+
+Облако запускает `python bot.py cycle` раз в час. За один цикл:
+  1. читает новые команды боту и выполняет их;
+  2. если режим «работать» и прошло 2 часа с прошлой проверки — монитор позиций,
+     в Telegram только то, что требует внимания (закрытия, ПЕРЕСМОТРЕТЬ, ЗАКРЫТЬ).
+
+Команды (ответ придёт в течение часа — при следующем цикле):
+  /work            — работать по расписанию
+  /rest            — отдыхать (расписание пропускается; команды работают)
+  /status          — режим, открытые позиции, расход за месяц
+  /run [long|short] — анализ сейчас (по умолчанию любое направление)
+  /check           — монитор позиций сейчас
+  /open C-0001     — записать вход в идею из последнего отчёта (с проверкой по цене)
+  /close P-0004    — закрыть позицию вручную по текущей цене
+  /help            — список команд
+
+Отдельно:  python bot.py notify-latest   — отправить последний отчёт
+           python bot.py should-run      — печатает yes/no: работать ли расписанию
+"""
+
+import os, sys, json, glob, subprocess, datetime
+
+import notify as TG
+import positions as P
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+CONTROL_PATH = os.path.join(BASE, "control.json")
+MONITOR_EVERY_H = 2
+
+HELP = ("Команды:\n"
+        "/work — работать по расписанию\n/rest — отдыхать\n/status — состояние\n"
+        "/run — анализ сейчас (/run long, /run short)\n/check — проверить позиции\n"
+        "/open C-0001 — записать вход\n/close P-0001 — закрыть позицию\n\n"
+        "Ответ приходит в течение часа: облако читает команды раз в час.")
+
+
+# ── режим ────────────────────────────────────────────────────────────────────
+
+def load_control():
+    if os.path.exists(CONTROL_PATH):
+        with open(CONTROL_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    return {"mode": "work"}
+
+
+def save_control(c):
+    c["updated"] = datetime.datetime.now().isoformat(timespec="seconds")
+    with open(CONTROL_PATH, "w", encoding="utf-8") as f:
+        json.dump(c, f, ensure_ascii=False, indent=2)
+
+
+def working():
+    return load_control().get("mode", "work") == "work"
+
+
+# ── действия ─────────────────────────────────────────────────────────────────
+
+def latest_briefing_path():
+    files = sorted(glob.glob(os.path.join(BASE, "briefings", "briefing_*.json")))
+    return files[-1] if files else None
+
+
+def run_analysis(direction="any"):
+    before = latest_briefing_path()
+    proc = subprocess.run([sys.executable, os.path.join(BASE, "pipeline.py"), "--direction", direction],
+                          cwd=BASE, capture_output=True, text=True, timeout=60 * 60)
+    print(proc.stdout[-4000:])
+    after = latest_briefing_path()
+    if proc.returncode != 0 or after == before:
+        tail = (proc.stderr or proc.stdout or "")[-800:]
+        return f"❌ Анализ завершился с ошибкой:\n{tail}"
+    with open(after, encoding="utf-8") as f:
+        return TG.format_briefing(json.load(f))
+
+
+def run_monitor(only_alerts):
+    import monitor as MON
+    closed, rows = MON.run_once()
+    text = TG.format_monitor(closed, rows, only_alerts=only_alerts)
+    c = load_control()
+    c["last_monitor"] = datetime.datetime.now().isoformat(timespec="seconds")
+    save_control(c)
+    if not text and not only_alerts:
+        text = "Открытых позиций нет." if not rows else "Все позиции: ДЕРЖАТЬ."
+    return text
+
+
+def status_text():
+    c = load_control()
+    p = P.load_portfolio()
+    rows = P.load_results()
+    s = P.compute_stats(rows)
+    lines = [f"Режим: {'🟢 работаю' if c.get('mode', 'work') == 'work' else '😴 отдыхаю'}",
+             f"Открытых позиций: {len(p['open_positions'])}, занятый риск {p.get('current_heat_pct', 0)}%"]
+    for x in p["open_positions"]:
+        lines.append(f"  {x['id']} {x['instrument']} {'лонг' if x['direction'] == 'long' else 'шорт'} "
+                     f"вход {x['entry']} стоп {x['stop']} цель {x.get('target_far')}")
+    lines.append(f"Закрытых сделок: {s['n']}" + (f", матожидание {s['expectancy']} R" if s["n"] else ""))
+    last = latest_briefing_path()
+    if last:
+        stamp = os.path.basename(last)[len("briefing_"):-len(".json")]
+        try:
+            stamp = datetime.datetime.strptime(stamp, "%Y%m%d_%H%M%S").strftime("%d.%m.%Y %H:%M")
+        except ValueError:
+            pass
+        lines.append(f"Последний анализ: {stamp}")
+    try:
+        import llm
+        lines.append(f"Расход модели за месяц (по платному тарифу): ${llm.month_spend()}")
+    except Exception:                                # noqa: BLE001
+        pass
+    return "\n".join(lines)
+
+
+def open_candidate(cid):
+    path = latest_briefing_path()
+    if not path:
+        return "Отчётов пока нет."
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    cands = {c["id"].upper(): c for c in (data.get("package") or {}).get("candidates", [])}
+    cand = cands.get(cid.upper())
+    if not cand:
+        return f"В последнем отчёте нет идеи {cid}. Доступны: {', '.join(cands) or 'нет'}."
+    price = P.price_now(cand["instrument"])
+    chk = P.preflight(cand, P.load_portfolio(), price)
+    if not chk["ok"]:
+        return "✗ Не записано. Проверка по текущей цене " + str(price) + ":\n" + "\n".join(f"– {r}" for r in chk["reasons"])
+    pid = P.record_position(cand, data["package"].get("sprint_id", ""), chk)
+    note = ("\n" + "\n".join(chk["notes"])) if chk["notes"] else ""
+    return (f"✓ Записана позиция {pid}: {cand['instrument']} по {chk['fill']}, "
+            f"чистая R {chk['R_net']}, риск ${chk['risk_amount']}.{note}")
+
+
+def handle(text):
+    parts = text.split()
+    if not parts:
+        return None
+    cmd, args = parts[0].lower().split("@")[0], parts[1:]
+    if cmd in ("/start", "/help"):
+        return "Бот фонда подключён.\n\n" + HELP
+    if cmd == "/work":
+        c = load_control(); c["mode"] = "work"; save_control(c)
+        return "🟢 Работаю: анализ 2 раза в день, проверка позиций каждые 2 часа."
+    if cmd == "/rest":
+        c = load_control(); c["mode"] = "rest"; save_control(c)
+        return "😴 Отдыхаю: расписание пропускается. Команды /run и /check работают."
+    if cmd == "/status":
+        return status_text()
+    if cmd == "/run":
+        direction = args[0].lower() if args and args[0].lower() in ("long", "short", "any") else "any"
+        return run_analysis(direction)
+    if cmd == "/check":
+        return run_monitor(only_alerts=False)
+    if cmd == "/open":
+        return open_candidate(args[0]) if args else "Укажите идею: /open C-0001"
+    if cmd == "/close":
+        return P.close_manual(args[0]) if args else "Укажите позицию: /close P-0001"
+    return "Не знаю такую команду.\n\n" + HELP
+
+
+def cycle():
+    """Один ежечасный цикл в облаке."""
+    if TG.enabled():
+        try:
+            msgs = TG.get_updates()
+        except Exception as e:                       # noqa: BLE001
+            print(f"telegram: {e}")
+            msgs = []
+        for m in msgs:
+            try:
+                reply = handle(m["text"])
+            except Exception as e:                   # noqa: BLE001
+                reply = f"❌ Ошибка: {e}"
+            if reply:
+                TG.send(reply)
+    if not working():
+        print("режим «отдыхать» — монитор пропущен")
+        return
+    last = load_control().get("last_monitor")
+    due = True
+    if last:
+        try:
+            due = (datetime.datetime.now() - datetime.datetime.fromisoformat(last)).total_seconds() >= MONITOR_EVERY_H * 3600 - 300
+        except ValueError:
+            pass
+    if due and P.load_portfolio()["open_positions"]:
+        text = run_monitor(only_alerts=True)
+        if text:
+            TG.send(text)
+
+
+if __name__ == "__main__":
+    cmd = sys.argv[1] if len(sys.argv) > 1 else ""
+    if cmd == "cycle":
+        cycle()
+    elif cmd == "notify-latest":
+        path = latest_briefing_path()
+        if path:
+            with open(path, encoding="utf-8") as f:
+                TG.send(TG.format_briefing(json.load(f)))
+    elif cmd == "should-run":
+        print("yes" if working() else "no")
+    else:
+        print(__doc__)

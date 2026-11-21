@@ -1,0 +1,189 @@
+{
+  "briefing": {
+    "sprint_id": "20261118_205717",
+    "summary": "BNB/USDT市场存在下行压力，技术面和基本面支持该方向，但需注意市场情绪和技术面的短期波动风险。",
+    "candidates_plain": [
+      {
+        "id": "C-0001",
+        "what": "卖出 BNB/USDT (短多 - 期望价格下跌)",
+        "why": "BNB/USDT具有明确的技术和基本面支持，且当前市场情绪极度恐惧，但需注意多头平仓可能带来的短期波动风险。",
+        "what_could_go_wrong": "市场情绪和技术面的短期波动可能导致价格反弹，或者多头平仓可能引发短期上涨。",
+        "numbers_explained": [
+          {
+            "label": "R_net 2.03",
+            "means": "每承担 $1 的风险，预计获得约 $2.03 的收益，扣除费用后的净收益目标约为 $56.64。"
+          },
+          {
+            "label": "风险 ~$28.08",
+            "means": "如果交易失败且价格触及止损，将损失约 $28.08。"
+          }
+        ],
+        "expert_said": "BNB/USDT在当前市场环境下具有较高的吸引力，尽管存在市场情绪和技术面的短期波动风险，但整体风险可控，符合资本和风险要求。",
+        "consultant_said": "短多方提供了更有力的证据，表明BNB/USDT存在技术面和基本面的下行压力，因此短多方获胜。",
+        "agreement": "同意"
+      }
+    ],
+    "terms_used": [
+      {
+        "term": "stopp",
+        "plain": "价格，当达到该价格时，交易将自动关闭以限制损失"
+      },
+      {
+        "term": "R (R_net)",
+        "plain": "潜在盈利是风险的多少倍，扣除费用后的净收益"
+      }
+    ]
+  },
+  "package": {
+    "sprint_id": "20261118_205717",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 63256.01,
+      "sma20_1d": 72813.53,
+      "sma50_1d": 78672.78,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261118_205717:BNB/USDT",
+        "instrument": "BNB/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "BNB/USDT имеет технические сигналы на продажу, и катализатор подтверждает негативную д动态趋势表明BNB/USDT存在下行压力，且有明确的技术面和基本面支持。因此，该交易具有较高的吸引力。",
+        "counter_thesis": "然而，市场情绪和短期波动可能导致价格在短期内反弹，尤其是在当前市场整体处于下行趋势中。此外，如果BNB/USDT的多头持有者选择在短期内平仓，也可能导致价格暂时上涨。",
+        "catalyst": "Bitwise seeks Texas Stock Exchange listing for Zcash ETF",
+        "has_catalyst": true,
+        "news_sources": [
+          {
+            "n": 2,
+            "title": "Bitwise seeks Texas Stock Exchange listing for Zcash ETF",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/bitwise-zcash-etf-texas-stock-exchange-listing?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-18 10:33 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 588.4,
+        "stop": 599.42,
+        "targets": [
+          570.0,
+          565.0
+        ],
+        "target_far": 565.0,
+        "size": {
+          "value": 2.549265,
+          "unit_type": "BNB"
+        },
+        "risk_amount": 28.08,
+        "risk_pct": 0.281,
+        "R_gross": 2.12,
+        "expected_R_net": 2.03,
+        "costs_total": 2.7,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 9.078529 (100.0$ риска), но потолок ограничил его; итог — риск 0.28% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 1
+      }
+    ],
+    "no_trade": false,
+    "no_trade_reason": null,
+    "total_heat_pct": 0.281
+  },
+  "report_1": {
+    "sprint_id": "20261118_205717",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": true,
+        "risks": [
+          "存在下行趋势，技术面和基本面支持该方向",
+          "市场情绪极度恐惧，可能导致短期内价格反弹",
+          "多头平仓可能引发短期上涨"
+        ],
+        "notes": "BNB/USDT具有明确的技术和基本面支持，且当前市场情绪极度恐惧，但需注意多头平仓可能带来的短期波动风险。"
+      }
+    ],
+    "expert_opinion": "BNB/USDT在当前市场环境下具有较高的吸引力，尽管存在市场情绪和技术面的短期波动风险，但整体风险可控，符合资本和风险要求。",
+    "package_ok": true
+  },
+  "report_2": {
+    "sprint_id": "20261118_205717",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "BNB/USDT",
+        "verdict": "pass",
+        "winner": "short",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "short",
+          "confidence": "high"
+        },
+        "reason": "Сторона короткой позиции предоставила более убедительные данные, подтверждающие техническую и фундаментальную негативность BNB/USDT.",
+        "counter_thesis": "Тренд на BNB/USDT вниз и расположение свечи подтверждают рост цены.",
+        "weak_points": [
+          "Доводы стороны длинной позиции не были подкреплены конкретными данными из facts."
+        ],
+        "fact_check": "Сверил доводы с facts: funding_rate, swing_high_20.",
+        "long_case": {
+          "strongest": "Тренд и расположение свечи подтверждают рост цены.",
+          "arguments": [
+            {
+              "text": "Тренд на BNB/USDT вниз (581.36 < 590.01 и 594.93), свеча находится ниже средних moving averages.",
+              "evidence": "market.trend, market.sma_fast_10, market.sma_slow_30",
+              "rhetoric": false
+            },
+            {
+              "text": "Низкий funding rate (0.0) указывает на отсутствие давления на продажи.",
+              "evidence": "market.funding_rate",
+              "rhetoric": false
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "Фондирование 0.0% указывает на перегрев лонгов и возможное их отступление.",
+          "arguments": [
+            {
+              "text": "Фондирование 0.0% указывает на перегрев лонгов и возможное их отступление.",
+              "evidence": "positioning.funding_rate",
+              "rhetoric": false
+            },
+            {
+              "text": "Текущая цена находится близко к уровню свинг-высокого 599.42, что может вызвать коррекционное падение.",
+              "evidence": "market.swing_high_20",
+              "rhetoric": false
+            }
+          ],
+          "without_evidence": 0
+        }
+      }
+    ],
+    "filtered_out": []
+  }
+}

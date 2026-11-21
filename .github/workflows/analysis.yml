@@ -1,0 +1,60 @@
+name: Анализ рынка
+
+on:
+  schedule:
+    - cron: "7 3,15 * * *"        # 08:07 и 20:07 по Алматы
+  workflow_dispatch:
+    inputs:
+      direction:
+        description: "Направление: any — любое, long — покупки, short — продажи"
+        type: choice
+        options: [any, long, short]
+        default: any
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fund-state               # одна запись данных за раз
+  cancel-in-progress: false
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TZ: Asia/Almaty
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      LLM_PAID: ${{ vars.LLM_PAID }}
+      LLM_MONTHLY_BUDGET_USD: ${{ vars.LLM_MONTHLY_BUDGET_USD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Установка
+        run: pip install -r requirements.txt
+      - name: Режим «работать / отдыхать»
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=$(python bot.py should-run)" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Анализ
+        if: steps.mode.outputs.run == 'yes'
+        run: python pipeline.py --direction "${{ inputs.direction || 'any' }}"
+      - name: Отчёт в Telegram
+        if: steps.mode.outputs.run == 'yes'
+        run: python bot.py notify-latest
+      - name: Сообщить об ошибке
+        if: failure()
+        run: python -c "import notify; notify.send('❌ Анализ в облаке завершился с ошибкой. Подробности — GitHub → Actions → «Анализ рынка».')"
+      - name: Сохранить данные
+        if: always()
+        run: bash .github/scripts/save_state.sh "Анализ №${{ github.run_number }}"
