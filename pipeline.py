@@ -65,6 +65,7 @@ GOAL_BY_DIRECTION = {
             "Нет подходящих сетапов — допустимый итог (no_trade)."),
 }
 SPRINT_GOAL = GOAL_BY_DIRECTION["any"]   # значение по умолчанию; при запуске уточним
+CHOSEN_DIRECTION = "any"
 
 
 def ask_direction():
@@ -564,6 +565,14 @@ def _prepare_context():
         print(f"    индекс страха/жадности: {fng['value']} ({fng['label']})")
     portfolio = C.portfolio_block(PORTFOLIO_STATE, P.load_results())
     MARKET_CTX.update({"regime": regime, "fear_greed": fng})
+    # Выбранное направление против режима рынка: сделок почти не будет — предупреждаем сразу.
+    conflict = {("long", "down"): "падает", ("short", "up"): "растёт"}.get((CHOSEN_DIRECTION, regime.get("regime")))
+    if conflict:
+        note = (f"выбрано направление «{CHOSEN_DIRECTION}», а рынок (BTC) {conflict}: код пропустит сделки "
+                f"только по режиму рынка, а эксперт снимет их как противоречащие выбору. "
+                f"Для такого рынка лучше запускать с направлением any")
+        MARKET_CTX["direction_note"] = note
+        print(f"    ⚠ {note}")
     return {"regime": regime, "news_all": news_all, "fear_greed": fng, "portfolio": portfolio}
 
 
@@ -819,6 +828,9 @@ def _save_briefing(briefing, package, r1, r2):
     package["llm_usage"] = llm.run_summary(RUN_ID)
     package.setdefault("market_news", MARKET_VIEW)
     if MARKET_CTX:
+        package.setdefault("direction", CHOSEN_DIRECTION)
+        if MARKET_CTX.get("direction_note"):
+            package.setdefault("direction_note", MARKET_CTX["direction_note"])
         package.setdefault("market_regime", MARKET_CTX.get("regime"))
         package.setdefault("fear_greed", MARKET_CTX.get("fear_greed"))
     with open(path, "w", encoding="utf-8") as f:
@@ -913,6 +925,7 @@ if __name__ == "__main__":
     else:
         _dir = ask_direction()
     SPRINT_GOAL = GOAL_BY_DIRECTION[_dir]
+    CHOSEN_DIRECTION = _dir
     print(f"\nНаправление: {_dir.upper()} — начинаю анализ...")
     try:
         run_sprint()

@@ -26,7 +26,7 @@ FEEDS = {
 }
 FNG_URL = "https://api.alternative.me/fng/?limit=1"
 HOURS = 48
-MAX_COIN_ITEMS = 6
+MAX_COIN_ITEMS = 8
 MAX_MARKET_ITEMS = 3
 
 KEYWORDS = {
@@ -124,8 +124,9 @@ def items_for(symbol, items, now=None, hours=HOURS):
         if key in seen:
             continue
         text = f"{x['title']} {x['summary']}".lower()
-        if _matches(words, text) and len(coin) < MAX_COIN_ITEMS:
-            coin.append(x); seen.add(key)
+        if _matches(words, text):
+            if len(coin) < MAX_COIN_ITEMS:       # новость про монету не уходит в «рынок»,
+                coin.append(x); seen.add(key)    # даже если лимит новостей по монете набран
         elif _matches(MARKET_WORDS, text) and len(market) < MAX_MARKET_ITEMS:
             market.append(x); seen.add(key)
     picked = coin + market

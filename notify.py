@@ -116,6 +116,10 @@ def format_briefing(data):
         lines.append(reg.capitalize())
     if fng:
         lines.append(f"Индекс страха/жадности: {fng.get('value')} ({fng.get('label', '')})")
+    if p.get("direction") and p["direction"] != "any":
+        lines.append(f"Направление запуска: {p['direction']}")
+    if p.get("direction_note"):
+        lines.append(f"⚠ {p['direction_note'].capitalize()}")
     lines.append("")
 
     debates = {o.get("id"): o for o in ((data.get("report_2") or {}).get("clean_options") or [])}
