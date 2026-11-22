@@ -171,7 +171,7 @@ def format_briefing(data):
             if not bits:
                 sent = {"positive": "позитивное", "negative": "негативное", "neutral": "нейтральное",
                         "mixed": "смешанное"}.get(v.get("sentiment"), "не определено")
-                bits.append(f"настроение {sent}, явного катализатора нет (новостей: {v.get("news_found", 0)})")
+                bits.append(f"настроение {sent}, явного катализатора нет (новостей: {v.get('news_found', 0)})")
             lines.append(head + " — " + "; ".join(bits))
 
     u = p.get("llm_usage") or {}
