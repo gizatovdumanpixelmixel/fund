@@ -1,0 +1,39 @@
+{
+  "briefing": {
+    "sprint_id": "20261122_085327",
+    "summary": "Сделок нет. нет подходящих сетапов A-класса",
+    "candidates_plain": [],
+    "terms_used": []
+  },
+  "package": {
+    "sprint_id": "20261122_085327",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "candidates": [],
+    "no_trade": true,
+    "no_trade_reason": "нет подходящих сетапов A-класса",
+    "total_heat_pct": 0,
+    "llm_usage": {
+      "calls": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd_if_paid": 0,
+      "models": []
+    },
+    "market_news": {},
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 59298.33,
+      "sma20_1d": 69320.72,
+      "sma50_1d": 76722.57,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    }
+  },
+  "report_1": null,
+  "report_2": null
+}

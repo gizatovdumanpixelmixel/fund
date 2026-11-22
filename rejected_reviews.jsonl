@@ -1,0 +1,1 @@
+{"decision_id": "20261118_232452:BTC/USDT", "instrument": "BTC/USDT", "direction": "short", "reasons": ["чистая R=1.23 ниже порога 1.5"], "outcome": "would_target", "verdict": "гейт отсёк прибыльную сделку", "reviewed": "2026-11-22T08:53:29"}
