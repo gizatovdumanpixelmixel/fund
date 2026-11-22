@@ -190,7 +190,7 @@ def complete(role, messages, max_tokens=MAX_TOKENS):
                     _exhausted.add((provider, model))  # дневной лимит — до конца запуска не трогаем
                     errors.append(f"{provider}:{model}: лимит (429)")
                     break
-                if status in (400, 404, 401, 403):     # модель не найдена, нет доступа — сразу следующая
+                if status in (400, 404, 401, 403, 413):  # не найдена / нет доступа / запрос велик — следующая
                     errors.append(f"{provider}:{model}: {status} {str(e)[:120]}")
                     break
                 if attempt < 2:

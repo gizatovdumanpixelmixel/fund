@@ -789,13 +789,53 @@ def run_sprint():
     package["total_heat_pct"] = round(PORTFOLIO_STATE["current_heat_pct"] +
                                       sum(c["risk_pct"] for c in candidates), 3)
 
-    # переводчик -> понятный текст (числа берёт из package)
+    # переводчик -> понятный текст (числа берёт из package). Ему — сжатая выжимка,
+    # а не все данные: у бесплатной модели лимит на размер запроса. Если переводчик
+    # всё равно не ответил, отчёт собирает код — идеи не должны теряться.
     print("  • переводчик готовит понятный отчёт ...\n")
-    briefing = _sanitize(call_agent("translator",
-                                    {"package": package, "report_1": report_1,
-                                     "report_2": report_2, "glossary": GLOSSARY}, "translator"))
+    try:
+        briefing = _sanitize(call_agent("translator", _translator_payload(package, report_1, report_2),
+                                        "translator"))
+    except Exception as e:                # noqa: BLE001
+        print(f"    ! переводчик не ответил ({str(e)[:120]}) — отчёт собран кодом")
+        briefing = _fallback_briefing(package, report_1, report_2)
     _save_briefing(briefing, package, report_1, report_2)
     _print_briefing(briefing, package)
+
+
+def _translator_payload(package, report_1, report_2):
+    """Компактная выжимка для переводчика: только то, что он пересказывает."""
+    keep = ("id", "instrument", "direction", "thesis", "counter_thesis", "catalyst", "entry", "stop",
+            "targets", "target_far", "risk_amount", "risk_pct", "expected_R_net", "hold_estimate", "size_note")
+    cands = [{k: c.get(k) for k in keep} for c in package.get("candidates", [])]
+    expert = [v for v in (report_1 or {}).get("verdict_per_candidate", []) if isinstance(v, dict)]
+    judge = [{"id": o.get("id"), "winner": o.get("winner"), "verdict": o.get("verdict"), "reason": o.get("reason"),
+              "long_strongest": (o.get("long_case") or {}).get("strongest"),
+              "short_strongest": (o.get("short_case") or {}).get("strongest")}
+             for o in (report_2 or {}).get("clean_options", [])]
+    return {"package": {"sprint_id": package.get("sprint_id"), "candidates": cands,
+                        "market_regime": (package.get("market_regime") or {}).get("note")},
+            "report_1": {"verdict_per_candidate": expert,
+                         "expert_opinion": (report_1 or {}).get("expert_opinion", "")},
+            "report_2": {"clean_options": judge}, "glossary": GLOSSARY}
+
+
+def _fallback_briefing(package, report_1, report_2):
+    """Отчёт без переводчика: те же поля, текст из данных команды и экспертов."""
+    expert = {v.get("id"): v for v in (report_1 or {}).get("verdict_per_candidate", []) if isinstance(v, dict)}
+    judge = {o.get("id"): o for o in (report_2 or {}).get("clean_options", [])}
+    plain = []
+    for c in package.get("candidates", []):
+        side = "Купить (лонг — ставка на рост)" if c["direction"] == "long" else "Продать в шорт (ставка на падение)"
+        e, j = expert.get(c["id"], {}), judge.get(c["id"], {})
+        plain.append({"id": c["id"], "what": f"{side} {c['instrument']}", "why": c.get("thesis", ""),
+                      "what_could_go_wrong": c.get("counter_thesis", ""),
+                      "expert_said": e.get("notes") or "; ".join(e.get("risks") or []),
+                      "consultant_said": j.get("reason", ""),
+                      "agreement": "оба за" if e.get("allowed") is not False and j.get("verdict") == "pass" else "есть расхождение"})
+    n = len(plain)
+    return {"sprint_id": package.get("sprint_id"), "summary": f"Идей для входа: {n}." if n else "Сделок нет.",
+            "candidates_plain": plain, "terms_used": [], "assembled_by_code": True}
 
 
 # ──────────────────────────────────────────────────────────────────────────
