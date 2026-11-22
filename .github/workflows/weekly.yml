@@ -1,0 +1,35 @@
+name: Сводка за неделю
+
+on:
+  schedule:
+    - cron: "17 4 * * 1"          # понедельник, 09:17 по Алматы
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fund-state
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: Asia/Almaty
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Установка
+        run: pip install -r requirements.txt
+      - name: Сводка в Telegram
+        run: python bot.py weekly
+      - name: Сохранить данные
+        if: always()
+        run: bash .github/scripts/save_state.sh "Сводка за неделю №${{ github.run_number }}"

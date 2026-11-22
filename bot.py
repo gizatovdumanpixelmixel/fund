@@ -15,6 +15,7 @@
   /check           — монитор позиций сейчас
   /open C-0001     — записать вход в идею из последнего отчёта (с проверкой по цене)
   /close P-0004    — закрыть позицию вручную по текущей цене
+  /week            — сводка за неделю (приходит и сама по понедельникам)
   /help            — список команд
 
 Отдельно:  python bot.py notify-latest   — отправить последний отчёт
@@ -33,7 +34,7 @@ MONITOR_EVERY_H = 2
 HELP = ("Команды:\n"
         "/work — работать по расписанию\n/rest — отдыхать\n/status — состояние\n"
         "/run — анализ сейчас (/run long, /run short)\n/check — проверить позиции\n"
-        "/open C-0001 — записать вход\n/close P-0001 — закрыть позицию\n\n"
+        "/open C-0001 — записать вход\n/close P-0001 — закрыть позицию\n/week — сводка за неделю\n\n"
         "Ответ приходит в течение часа: облако читает команды раз в час.")
 
 
@@ -115,6 +116,97 @@ def status_text():
     return "\n".join(lines)
 
 
+def _since(rows, field, days):
+    edge = datetime.datetime.now() - datetime.timedelta(days=days)
+    out = []
+    for r in rows:
+        try:
+            if datetime.datetime.fromisoformat(str(r.get(field))[:19]) >= edge:
+                out.append(r)
+        except ValueError:
+            continue
+    return out
+
+
+def weekly_text(days=7):
+    """Сводка за неделю: анализы, идеи, сделки, уроки, табель агентов, расход модели."""
+    import memory as MEM
+    try:                                              # сначала разобрать свежие итоги по свечам
+        MEM.review_closed(); MEM.review_rejected()
+    except Exception as e:                            # noqa: BLE001
+        print(f"разбор итогов: {e}")
+    now = datetime.datetime.now()
+    lines = [f"🗓 Сводка за неделю ({(now - datetime.timedelta(days=days)):%d.%m}–{now:%d.%m})"]
+
+    briefs = []
+    for path in glob.glob(os.path.join(BASE, "briefings", "briefing_*.json")):
+        stamp = os.path.basename(path)[len("briefing_"):-len(".json")]
+        try:
+            if datetime.datetime.strptime(stamp, "%Y%m%d_%H%M%S") >= now - datetime.timedelta(days=days):
+                with open(path, encoding="utf-8") as f:
+                    briefs.append(json.load(f))
+        except ValueError:
+            continue
+    ideas = sum(len((b.get("package") or {}).get("candidates") or []) for b in briefs)
+    removed = sum(len((b.get("package") or {}).get("rejected_candidates") or []) for b in briefs)
+    lines.append(f"\nАнализов: {len(briefs)} · идей для входа: {ideas} · снято экспертами: {removed}")
+
+    decisions = _since(MEM.load(MEM.DECISIONS_PATH), "ts", days)
+    setups = [d for d in decisions if d.get("setup_found")]
+    lines.append(f"Решений по монетам: {len(decisions)}, из них с сетапом: {len(setups)}, "
+                 f"прошли все проверки: {sum(1 for d in setups if d.get('passed'))}")
+
+    p = P.load_portfolio()
+    lines.append(f"\n💼 Открыто позиций: {len(p['open_positions'])}, занятый риск {p.get('current_heat_pct', 0)}%")
+    for x in p["open_positions"]:
+        lines.append(f"  {x['id']} {x['instrument']} {'лонг' if x['direction'] == 'long' else 'шорт'} "
+                     f"вход {x['entry']} стоп {x['stop']} цель {x.get('target_far')}")
+    week = _since(P.load_results(), "closed_at", days)
+    allr = P.load_results()
+    if week:
+        sw = P.compute_stats(week)
+        lines.append(f"Закрыто за неделю: {sw['n']} · в плюс {sw['wins']}, в минус {sw['losses']} · "
+                     f"итог {round(sum(r['actual_R'] for r in week), 2)} R (${sw['total_pnl']})")
+    else:
+        lines.append("Закрытых сделок за неделю нет.")
+    sa = P.compute_stats(allr)
+    if sa["n"]:
+        warn = f" — пока мало данных (нужно от {P.MIN_TRADES_FOR_STATS})" if sa["n"] < P.MIN_TRADES_FOR_STATS else ""
+        lines.append(f"Всего сделок: {sa['n']}, винрейт {sa['win_rate']}%, матожидание {sa['expectancy']} R{warn}")
+
+    lessons = _since(MEM.load(MEM.LESSONS_PATH), "created", days)
+    if lessons:
+        lines.append("\n📚 Новые уроки")
+        for l in lessons[-5:]:
+            lines.append(f"• {l['what_happened']}\n  → {l['rule']}")
+    rej = _since(MEM.load(MEM.REJECTED_PATH), "reviewed", days)
+    if rej:
+        saved = sum(1 for r in rej if r["outcome"] == "would_stop")
+        missed = sum(1 for r in rej if r["outcome"] == "would_target")
+        lines.append(f"\n🚧 Отклонённые сетапы: гейты были правы {saved} раз, отсекли прибыльную сделку {missed} раз")
+
+    rows = [r for r in MEM.scorecard() if r["n"]]
+    if rows:
+        lines.append("\n🎯 Табель (кто чаще прав)")
+        for r in rows:
+            lines.append(f"  {r['agent']}: {r['correct']}/{r['n']}" +
+                         (f" ({r['accuracy_pct']}%)" if r["accuracy_pct"] is not None else "") +
+                         (f" — {r['note']}" if r["note"] else ""))
+
+    try:
+        import llm
+        usage = _since(llm._load_usage(), "ts", days)
+        if usage:
+            toks = sum(r["tokens_in"] + r["tokens_out"] for r in usage)
+            cost = round(sum(r["cost_usd_if_paid"] for r in usage), 3)
+            lines.append(f"\n⚙ Модель за неделю: вызовов {len(usage)}, токенов {toks:,} "
+                         f"(на платном тарифе ≈ ${cost})".replace(",", " "))
+    except Exception:                                 # noqa: BLE001
+        pass
+    lines.append(f"\nРежим: {'🟢 работаю' if working() else '😴 отдыхаю'}")
+    return "\n".join(lines)
+
+
 def open_candidate(cid):
     path = latest_briefing_path()
     if not path:
@@ -155,6 +247,8 @@ def handle(text):
         return run_analysis(direction)
     if cmd == "/check":
         return run_monitor(only_alerts=False)
+    if cmd == "/week":
+        return weekly_text()
     if cmd == "/open":
         return open_candidate(args[0]) if args else "Укажите идею: /open C-0001"
     if cmd == "/close":
@@ -202,6 +296,8 @@ if __name__ == "__main__":
         if path:
             with open(path, encoding="utf-8") as f:
                 TG.send(TG.format_briefing(json.load(f)))
+    elif cmd == "weekly":
+        TG.send(weekly_text())
     elif cmd == "should-run":
         print("yes" if working() else "no")
     else:
