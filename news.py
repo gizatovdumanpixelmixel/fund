@@ -36,7 +36,19 @@ KEYWORDS = {
     "BNB": ["bnb", "binance coin", "bnb chain"],
     "XRP": ["xrp", "ripple"],
     "DOGE": ["dogecoin", "doge"],
+    "ADA": ["cardano", "ada"],
+    "AVAX": ["avalanche", "avax"],
+    "LINK": ["chainlink"],
+    "TON": ["toncoin", "the open network", "ton blockchain", "telegram's ton"],
+    "TRX": ["tron", "trx", "justin sun"],
+    "DOT": ["polkadot"],
+    "LTC": ["litecoin", "ltc"],
+    "BCH": ["bitcoin cash", "bch"],
+    "NEAR": ["near protocol"],
+    "SUI": ["sui network", "sui blockchain", "sui"],
 }
+# фразы, которые НЕ относятся к монете, хотя содержат её слово (Bitcoin Cash ≠ Bitcoin)
+EXCLUDE = {"BTC": ["bitcoin cash", "wrapped bitcoin"]}
 # общие события рынка, которые бьют по всем монетам сразу
 MARKET_WORDS = ["federal reserve", "fed", "fomc", "interest rate", "cpi", "inflation", "sec",
                 "etf", "stablecoin", "liquidation", "crypto market", "hack", "exploit", "tariff"]
@@ -117,14 +129,19 @@ def items_for(symbol, items, now=None, hours=HOURS):
     now = now or datetime.datetime.now(datetime.timezone.utc)
     fresh = [x for x in items if x["published"] and (now - x["published"]).total_seconds() <= hours * 3600]
     fresh.sort(key=lambda x: x["published"], reverse=True)
-    words = KEYWORDS.get(symbol.split("/")[0], [symbol.split("/")[0].lower()])
+    base = symbol.split("/")[0]
+    words = KEYWORDS.get(base, [base.lower()])
+    excludes = EXCLUDE.get(base, [])
     seen, coin, market = set(), [], []
     for x in fresh:
         key = x["title"].lower()
         if key in seen:
             continue
         text = f"{x['title']} {x['summary']}".lower()
-        if _matches(words, text):
+        coin_text = text
+        for phrase in excludes:
+            coin_text = coin_text.replace(phrase, " ")
+        if _matches(words, coin_text):
             if len(coin) < MAX_COIN_ITEMS:       # новость про монету не уходит в «рынок»,
                 coin.append(x); seen.add(key)    # даже если лимит новостей по монете набран
         elif _matches(MARKET_WORDS, text) and len(market) < MAX_MARKET_ITEMS:

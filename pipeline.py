@@ -79,7 +79,11 @@ def ask_direction():
 
 # Что сканируем. Символы в формате ccxt. Больше пар = выше шанс найти сетап,
 # но и дольше/дороже прогон. Убирайте/добавляйте свободно.
-WATCHLIST = ["BTC/USDT", "ETH/USDT", "SOL/USDT", "BNB/USDT", "XRP/USDT", "DOGE/USDT"]
+# 16 самых ликвидных монет. Код отсеивает большинство до вызова модели (тренд/режим),
+# поэтому расширение почти не увеличивает расход модели; новости — по всем.
+WATCHLIST = ["BTC/USDT", "ETH/USDT", "SOL/USDT", "BNB/USDT", "XRP/USDT", "DOGE/USDT",
+             "ADA/USDT", "AVAX/USDT", "LINK/USDT", "TON/USDT", "TRX/USDT", "DOT/USDT",
+             "LTC/USDT", "BCH/USDT", "NEAR/USDT", "SUI/USDT"]
 
 # Состояние портфеля читаем из portfolio.json (его ведёт positions.py).
 # Так новый спринт видит уже занятый heat от открытых сделок.
