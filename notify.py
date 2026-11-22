@@ -118,6 +118,8 @@ def format_briefing(data):
         lines.append(f"Индекс страха/жадности: {fng.get('value')} ({fng.get('label', '')})")
     if p.get("direction") and p["direction"] != "any":
         lines.append(f"Направление запуска: {p['direction']}")
+    if p.get("model_limit_note"):
+        lines.append(f"⚠ {p['model_limit_note'][:1].upper()}{p['model_limit_note'][1:]}")
     if p.get("direction_note"):
         lines.append(f"⚠ {p['direction_note'].capitalize()}")
     lines.append("")

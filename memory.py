@@ -231,7 +231,7 @@ def scorecard():
         if not d.get("passed"):
             rows["Гейты кода (отклонили не зря)"][0] += 1
             rows["Гейты кода (отклонили не зря)"][1] += not good
-        v = d.get("consultant_verdict")
+        v = d.get("consultant_verdict")   # «unchecked» (лимит модели) в табель не идёт
         if v in ("pass", "veto"):
             rows["Консультант №2 (pass/veto)"][0] += 1
             rows["Консультант №2 (pass/veto)"][1] += (v == "pass") == good

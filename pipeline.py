@@ -454,13 +454,24 @@ def analyze_instrument(symbol, ctx):
     if skip_reason:
         tech = {"instrument": symbol, "setup_found": False, "regime": md.get("trend"),
                 "notes": f"отсеяно кодом до анализа: {skip_reason}", "skipped_by_code": True}
-        news = call_agent("news", news_payload, f"news::{symbol}")
+        try:
+            news = call_agent("news", news_payload, f"news::{symbol}")
+        except Exception:                 # noqa: BLE001
+            news = {"has_catalyst": False, "claims": [], "confidence": "low", "model_failed": True}
     else:
         tech_payload["allowed_directions"] = allowed
         with ThreadPoolExecutor(max_workers=MODEL_PARALLEL) as ex:
             f_tech = ex.submit(call_agent, "tech", tech_payload, f"tech::{symbol}")
             f_news = ex.submit(call_agent, "news", news_payload, f"news::{symbol}")
-            tech = f_tech.result(); news = f_news.result()
+            try:
+                tech = f_tech.result()
+            except Exception as e:        # noqa: BLE001 — модель недоступна: монету не теряем
+                tech = {"instrument": symbol, "setup_found": False,
+                        "notes": f"теханалитик не ответил: модель недоступна ({str(e)[:80]})", "model_failed": True}
+            try:
+                news = f_news.result()
+            except Exception as e:        # noqa: BLE001
+                news = {"has_catalyst": False, "claims": [], "confidence": "low", "model_failed": True}
 
     news = N.validate(news, items)            # утверждения без источника — выброшены
     MARKET_VIEW[symbol] = {                   # новости в отчёт — даже если сделки не будет
@@ -739,6 +750,12 @@ def run_sprint():
     report_2 = {"sprint_id": RUN_ID, "clean_options": options,
                 "filtered_out": [o["id"] for o in options if o["verdict"] == "veto"]}
 
+    for o in options:                     # дебаты не проведены из-за лимита — помечаем идею, но не снимаем
+        if o["verdict"] == "unchecked":
+            for c in candidates:
+                if c["id"] == o["id"]:
+                    c.setdefault("notes", []).append("⚠ дебаты и проверка судьёй не проведены — лимит модели; "
+                                                     "решайте осторожнее")
     vetoed = {o["id"]: o["veto_reason"] for o in options if o["verdict"] == "veto"}
     if MANDATE["honor_vetoes"] and vetoed:
         for c in candidates:
@@ -866,6 +883,10 @@ def _unload_models():
 def _save_briefing(briefing, package, r1, r2):
     path = f"briefings/briefing_{RUN_ID}.json"
     package["llm_usage"] = llm.run_summary(RUN_ID)
+    if llm.FAILURES:
+        package["model_limit_note"] = (f"лимит бесплатной модели исчерпан: не ответили {len(llm.FAILURES)} "
+                                       f"вызов(ов) — {', '.join(sorted(set(llm.FAILURES)))}. Часть проверок "
+                                       f"не выполнена; лимит обновится в течение суток")
     package.setdefault("market_news", MARKET_VIEW)
     if MARKET_CTX:
         package.setdefault("direction", CHOSEN_DIRECTION)

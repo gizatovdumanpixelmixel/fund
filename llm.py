@@ -33,7 +33,11 @@ PROVIDERS = {
                      "key": "ollama", "paid_capable": False},
 }
 
-STRONG = [("groq", "openai/gpt-oss-120b"), ("ollama_cloud", "gpt-oss:120b"), ("ollama_local", "qwen2.5:7b")]
+# У Groq дневной лимит считается отдельно для каждой модели: если сильная модель
+# исчерпала лимит, берём другие модели Groq (если какой-то нет — код пропустит её сам).
+STRONG = [("groq", "openai/gpt-oss-120b"), ("ollama_cloud", "gpt-oss:120b"),
+          ("groq", "qwen/qwen3-32b"), ("groq", "llama-3.3-70b-versatile"), ("groq", "openai/gpt-oss-20b"),
+          ("ollama_local", "qwen2.5:7b")]
 LIGHT = [("groq", "openai/gpt-oss-20b"), ("groq", "openai/gpt-oss-120b"),
          ("ollama_cloud", "gpt-oss:20b"), ("ollama_local", "qwen2.5:7b")]
 
@@ -56,6 +60,7 @@ MAX_TOKENS = 4000        # с запасом на размышления мод�
 
 _clients = {}
 _exhausted = set()       # (провайдер, модель), упёршиеся в дневной лимит за этот запуск
+FAILURES = []            # роли, для которых не ответила ни одна модель (для пометки в отчёте)
 RUN_ID = os.environ.get("RUN_ID", "")
 
 
@@ -197,7 +202,8 @@ def complete(role, messages, max_tokens=MAX_TOKENS):
                     time.sleep(3 * (attempt + 1))
                     continue
                 errors.append(f"{provider}:{model}: {str(e)[:160]}")
-    raise AllModelsFailed("ни одна модель не ответила: " + " | ".join(errors or ["нет доступных провайдеров — проверьте ключи"]))
+    FAILURES.append(role)
+    raise AllModelsFailed("ни одна модель не ответила: " + " | ".join(errors or ["все модели исчерпали лимит или нет ключей"]))
 
 
 def uses_local():

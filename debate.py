@@ -107,6 +107,13 @@ def run(cand, facts, call_agent, parallel=1):
         except Exception as e:                       # noqa: BLE001
             short_out = {"arguments": [], "error": str(e)}
 
+    if long_out.get("error") and short_out.get("error"):
+        # модель недоступна — это НЕ вето: проверку просто не удалось провести
+        return {"id": cid, "instrument": sym, "verdict": "unchecked", "winner": "none",
+                "veto_reason": "", "reason": "дебаты не проведены: модель недоступна (лимит)",
+                "forecast": {"direction": None, "confidence": "low"}, "counter_thesis": "",
+                "weak_points": [], "fact_check": "", "long_case": {}, "short_case": {}}
+
     fr = (facts.get("positioning") or {}).get("funding_rate")
     long_args, long_rh = _flag_rhetoric(long_out, "long", fr)
     short_args, short_rh = _flag_rhetoric(short_out, "short", fr)
@@ -120,7 +127,10 @@ def run(cand, facts, call_agent, parallel=1):
     try:
         j = call_agent("consultant", judge_in, f"judge::{sym}")
     except Exception as e:                           # noqa: BLE001
-        j = {"winner": "none", "reason": f"судья не ответил: {e}", "confidence": "low"}
+        return {"id": cid, "instrument": sym, "verdict": "unchecked", "winner": "none", "veto_reason": "",
+                "reason": "судья не ответил: модель недоступна (лимит)",
+                "forecast": {"direction": None, "confidence": "low"}, "counter_thesis": "", "weak_points": [],
+                "fact_check": "", "long_case": {"arguments": long_args}, "short_case": {"arguments": short_args}}
 
     winner = j.get("winner") if j.get("winner") in ("long", "short") else "none"
     if winner != "none" and valid[winner] == 0:
