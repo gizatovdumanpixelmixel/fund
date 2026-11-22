@@ -1,0 +1,580 @@
+{
+  "briefing": {
+    "sprint_id": "20261122_195958",
+    "summary": "Сделок нет. все кандидаты сняты проверкой: ETH/USDT: эксперт №1 — Отсутствие согласования с приоритетом спринта (только лонги); Рынок BTC в нисходящем режиме повышает волатильность и риск ложных сигналов при шортах; Отсутствие подтверждающего объёма после катализатора, риск фиксации цены | BNB/USDT: эксперт №1 — Отсутствие катализатора и противоречие цели спринта (только лонги); Низкая ожидаемая доходность (R≈1.5) убыточна при текущем уровне риска; Возможный разворот рынка BTC вверх, что делает шорты менее оправданными",
+    "candidates_plain": [],
+    "terms_used": []
+  },
+  "package": {
+    "sprint_id": "20261122_195958",
+    "goal": "Рынок смотрим на РОСТ. Приоритет — искать сетапы на ПОКУПКУ (лонг): восходящий тренд или откат к поддержке с подтверждением объёмом. Шорт брать только при очень сильном и явном сигнале. Выносить только сетапы A-класса. Нет подходящих — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 60937.42,
+      "sma20_1d": 69402.67,
+      "sma50_1d": 76755.35,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [],
+    "no_trade": true,
+    "no_trade_reason": "все кандидаты сняты проверкой: ETH/USDT: эксперт №1 — Отсутствие согласования с приоритетом спринта (только лонги); Рынок BTC в нисходящем режиме повышает волатильность и риск ложных сигналов при шортах; Отсутствие подтверждающего объёма после катализатора, риск фиксации цены | BNB/USDT: эксперт №1 — Отсутствие катализатора и противоречие цели спринта (только лонги); Низкая ожидаемая доходность (R≈1.5) убыточна при текущем уровне риска; Возможный разворот рынка BTC вверх, что делает шорты менее оправданными",
+    "total_heat_pct": 1.887,
+    "rejected_candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261122_195958:ETH/USDT",
+        "instrument": "ETH/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "Шорт ETH/USDT оправдан наличием катализатора – отключение Deribit привело к резкому падению цены, а технически наблюдается нисходящий тренд и стоп размещён выше swing‑high 20.",
+        "counter_thesis": "Спринт‑цель ориентирована на лонги, а рынок BTC находится в нисходящем режиме, что повышает вероятность дальнейшего падения и усиления волатильности; предыдущие шорты в боковом режиме часто закрывались по стопу, что указывает на риск ложных сигналов.",
+        "catalyst": "Выключение Deribit привело к прерыванию торговли Ethereum",
+        "has_catalyst": true,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Deribit outage hit Bitcoin hedgers on Coinbase",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/deribit-outage-hit-bitcoin-hedgers-on-coinbase/",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Ether treasury firm BTCS warns SEC its $54 million Aave loan could be liquidated",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/ether-treasury-firm-btcs-warns-sec-its-usd54-million-aave-loan-could-be-liquidated",
+            "published": "2026-11-21 12:30 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 1713.0,
+        "stop": 1818.0,
+        "targets": [
+          1550.0,
+          1500.0
+        ],
+        "target_far": 1500.0,
+        "size": {
+          "value": 0.875657,
+          "unit_type": "ETH"
+        },
+        "risk_amount": 91.94,
+        "risk_pct": 0.919,
+        "R_gross": 2.03,
+        "expected_R_net": 2.0,
+        "costs_total": 2.7,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 0.952381 (100.0$ риска), но потолок ограничил его; итог — риск 0.92% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 1,
+        "rejected_by": "эксперт №1",
+        "reason": "Отсутствие согласования с приоритетом спринта (только лонги); Рынок BTC в нисходящем режиме повышает волатильность и риск ложных сигналов при шортах; Отсутствие подтверждающего объёма после катализатора, риск фиксации цены"
+      },
+      {
+        "id": "C-0002",
+        "decision_id": "20261122_195958:BNB/USDT",
+        "instrument": "BNB/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "Шорт BNB/USDT соответствует техническим правилам: нисходящий тренд, стоп выше swing‑high 20 и цель ниже swing‑low 20, R≈1.5.",
+        "counter_thesis": "Отсутствие катализатора и приоритет спринта на лонги снижают привлекательность; в текущем нисходящем режиме BTC возможна коррекция вверх, а прошлый опыт показывает, что подобные шорты в боковом рынке часто выбиваются шумом.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [],
+        "notes": [],
+        "entry": 558.0,
+        "stop": 594.0,
+        "targets": [
+          504.0,
+          500.0
+        ],
+        "target_far": 500.0,
+        "size": {
+          "value": 2.688172,
+          "unit_type": "BNB"
+        },
+        "risk_amount": 96.77,
+        "risk_pct": 0.968,
+        "R_gross": 1.61,
+        "expected_R_net": 1.58,
+        "costs_total": 2.7,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 2.777778 (100.0$ риска), но потолок ограничил его; итог — риск 0.97% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 2,
+        "rejected_by": "эксперт №1",
+        "reason": "Отсутствие катализатора и противоречие цели спринта (только лонги); Низкая ожидаемая доходность (R≈1.5) убыточна при текущем уровне риска; Возможный разворот рынка BTC вверх, что делает шорты менее оправданными"
+      }
+    ],
+    "llm_usage": {
+      "calls": 19,
+      "tokens_in": 34181,
+      "tokens_out": 10817,
+      "cost_usd_if_paid": 0.0106,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin поднялся выше $61 000, Binance perpetuals показали почти десятикратный чистый покупательский поток",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Два прерывания торговли на Deribit повлияли на глобальные Bitcoin и Ether perpetuals",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Квантовые компьютеры пока не угрожают безопасности сети Bitcoin, но обновление может занять больше времени",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "События с танкерами в Персидском заливе могут повлиять на цены Brent и, косвенно, на Bitcoin",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Падение Bitcoin ниже $60 000 усиливает давление на решение ФРС в декабре",
+            "refs": [
+              5
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу $12 млн и предложил вознаграждение 10 %",
+            "refs": [
+              8
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin reclaims $61,000 before giving back a third of the weekend rally",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-reclaims-61000-before-giving-back-a-third-of-that-rally/",
+            "published": "2026-11-22 14:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Deribit outage hit Bitcoin hedgers on Coinbase",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/deribit-outage-hit-bitcoin-hedgers-on-coinbase/",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin's quantum security challenge extends to bridges, custodians and millions of coins",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/22/bitcoin-s-quantum-security-challenge-extends-to-bridges-custodians-and-millions-of-coins",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Bitcoin’s next big threat could come from two oil tankers in the Middle East",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/two-hormuz-tanker-strikes-threaten-a-potential-source-of-relief-for-bitcoin/",
+            "published": "2026-11-22 13:00 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Bitcoin’s $60,000 breakdown puts December Fed decision under the spotlight",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-below-60000-fed-half-point-cpi/",
+            "published": "2026-11-22 12:00 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 9,
+        "notes": [
+          "катализатор «Bitcoin восстановился выше $60 000 после обвала ликвидаций» ссылается на общую новость рынка, а не на новость про эту монету — не засчитан"
+        ],
+        "trend_4h": "down",
+        "last_price": 60937.8
+      },
+      "ETH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Выключение Deribit привело к прерыванию торговли Ethereum",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Deribit отключился, что привело к прерыванию торговли Bitcoin и Ether perpetuals, но Coinbase не пострадал",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "BTCS сократил долг по Aave, но падение цены Ether держит залог под давлением",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Deribit outage hit Bitcoin hedgers on Coinbase",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/deribit-outage-hit-bitcoin-hedgers-on-coinbase/",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Ether treasury firm BTCS warns SEC its $54 million Aave loan could be liquidated",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/ether-treasury-firm-btcs-warns-sec-its-usd54-million-aave-loan-could-be-liquidated",
+            "published": "2026-11-21 12:30 UTC"
+          }
+        ],
+        "news_found": 8,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 1713.12
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Проблемы с мостом CYBER могут вызвать падение цены SOL",
+        "event_risk_flag": true,
+        "event_risk": "возможный взлом и потеря средств",
+        "claims": [
+          {
+            "text": "К биржам Южной Кореи пришлось приостановить транзакции CYBER из‑за подозрения на эксплойт моста",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу 12 млн USD и предложил вознаграждение за возврат средств",
+            "refs": [
+              4
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 70.35
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 558.16
+      },
+      "XRP/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "XRP упала на 10 % после разворота длинных позиций и падения активов ETF ниже $1 млн",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "XRP обрушилась на 10 % после разворота длинных позиций и падения активов ETF ниже $1 млн",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bitcoin упал ниже $60 000, что привлекло внимание к решению ФРС в декабре",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "XRP falls 10% as long bets unwind and ETF assets slip below $1 billion",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/xrp-falls-10-as-long-bets-unwind-and-etf-assets-slip-below-usd1-billion",
+            "published": "2026-11-21 05:59 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin’s $60,000 breakdown puts December Fed decision under the spotlight",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-below-60000-fed-half-point-cpi/",
+            "published": "2026-11-22 12:00 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.92
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.06
+      }
+    }
+  },
+  "report_1": {
+    "sprint_id": "20261122_195958",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": false,
+        "risks": [
+          "Отсутствие согласования с приоритетом спринта (только лонги)",
+          "Рынок BTC в нисходящем режиме повышает волатильность и риск ложных сигналов при шортах",
+          "Отсутствие подтверждающего объёма после катализатора, риск фиксации цены"
+        ],
+        "notes": "Шорт ETH/USDT противоречит заявленной цели спринта – искать только покупательные сетапы. Кроме того, недавний шорт в аналогичной ситуации завершился стоп‑ом, что усиливает риск повторения."
+      },
+      {
+        "id": "C-0002",
+        "allowed": false,
+        "risks": [
+          "Отсутствие катализатора и противоречие цели спринта (только лонги)",
+          "Низкая ожидаемая доходность (R≈1.5) убыточна при текущем уровне риска",
+          "Возможный разворот рынка BTC вверх, что делает шорты менее оправданными"
+        ],
+        "notes": "Без явного драйвера и при приоритете лонгов данный шорт BNB/USDT не соответствует стратегии спринта."
+      }
+    ],
+    "expert_opinion": "Оба предложенных кандидата нарушают ключевые ограничения спринта – направление (только лонги) и отсутствие достаточного катализатора. Несмотря на то, что технические параметры (стоп, R, размер) находятся в допустимых пределах, стратегическая несогласованность делает их неприемлемыми. Рекомендовано искать покупательные сетапы в рамках A‑класса или объявить no_trade.",
+    "package_ok": false
+  },
+  "report_2": {
+    "sprint_id": "20261122_195958",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "ETH/USDT",
+        "verdict": "pass",
+        "winner": "short",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "short",
+          "confidence": "med"
+        },
+        "reason": "Нисходящий тренд подтверждён SMA10 = 1666.29 < SMA30 = 1728.48 и ценой = 1713.12 < SMA30, а соотношение лонг/шорт = 2.27 указывает на переполнение лонгов, усиливающее давление вниз",
+        "counter_thesis": "Риск отскока цены от быстрой SMA10 и возможного bullish‑катализатора, связанного с отключением Deribit",
+        "weak_points": [
+          "Long argument 3: Deribit outage поддерживает рост ETH – нет подтверждения в фактах",
+          "Short argument 3: Deribit outage заставляет хеджеров продавать ETH – нет подтверждения в фактах",
+          "Short argument 4: BTCS liquidation creates short pressure on ETH – нет подтверждения в фактах"
+        ],
+        "fact_check": "Проверено: last_price 1713.12 > sma_fast_10 1666.29; sma_fast_10 1666.29 < sma_slow_30 1728.48; price 1713.12 < sma_slow_30; long_short_ratio 2.27; trend_meaning соответствует нисходящему тренду; заголовки новостей соответствуют упомянутым событиям, но не подтверждают заявленные эффекты",
+        "long_case": {
+          "strongest": "толпа в лонгах (long_short_ratio = 2.27) создаёт сильный покупательский импульс",
+          "arguments": [
+            {
+              "text": "Цена выше SMA10 (1713.12 > 1666.29) — потенциальный отскок от быстрой скользящей средней",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Соотношение лонг/шорт = 2.27 — толпа в лонгах, что создает дополнительный покупательский импульс",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Deribit outage [1] ослабил хеджирование в BTC, переводя часть капитала в альткоины, в том числе ETH, поддерживая рост цены",
+              "evidence": "[1]",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "переполнение лонгов (ratio 2.27) создаёт сильное давление вниз",
+          "arguments": [
+            {
+              "text": "long_short_ratio 2.27 — лонги переполнены, давление на цену растёт",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "trend down — SMA10 ниже SMA30, цена ниже SMA30, подтверждает нисходящий тренд",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Deribit outage усиливает волатильность и вынуждает хеджеров продавать ETH",
+              "evidence": "news[1].title",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "BTCS предупреждает о возможной ликвидации $54 млн Aave‑займа, что создаст дополнительный шорт‑прессинг на ETH",
+              "evidence": "news[3].title",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        }
+      },
+      {
+        "id": "C-0002",
+        "instrument": "BNB/USDT",
+        "verdict": "pass",
+        "winner": "short",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "short",
+          "confidence": "med"
+        },
+        "reason": "Шорт опирается на два подтверждённых аргумента: нисходящий тренд (SMA10 = 541.19 < SMA30 = 565.77, цена = 558.16 < SMA30) и отсутствие значимого перекоса (long_short_ratio = 1.46). Лонг имеет лишь один аргумент о цене выше SMA10.",
+        "counter_thesis": "Цена находится выше 20‑дневного swing‑low (503.75), что может ограничить дальнейшее падение и создать риск отскока вверх",
+        "weak_points": [
+          "short argument 2: утверждение о цене ниже swing_low_20 неверно (цена 558.16 > 503.75)"
+        ],
+        "fact_check": "Проверено: market.sma_fast_10=541.19, market.sma_slow_30=565.77, price=558.16, long_short_ratio=1.46, swing_low_20=503.75, trend_meaning соответствует нисходящему тренду, funding_rate≈0, данные совпадают с аргументами, кроме ошибочного short‑аргумента о цене ниже swing_low",
+        "long_case": {
+          "strongest": "Краткосрочная цена уже превысила SMA10, показывая восходящий импульс",
+          "arguments": [
+            {
+              "text": "Цена выше быстрой SMA10 (558.16 > 541.19) — короткосрочный бычий импульс",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Отсутствие значимого перекоса в открытом интересе (long_short_ratio = 1.46, long_short_meaning = «заметного перекоса нет») поддерживает равновесие, позволяя росту преодолеть нисходящий тренд",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": true,
+              "flags": [
+                "довод против своей стороны"
+              ]
+            },
+            {
+              "text": "Финансирование почти нулевое (0.0029 % за 8 ч, funding_meaning = «около нуля: перекоса нет») снимает давление на лонги, создавая условия для роста",
+              "evidence": "positioning.funding_rate",
+              "rhetoric": true,
+              "flags": [
+                "нулевой funding — не сигнал"
+              ]
+            }
+          ],
+          "without_evidence": 2
+        },
+        "short_case": {
+          "strongest": "Нисходящий тренд подтверждён пересечением быстрых и медленных SMA и ценой ниже SMA30",
+          "arguments": [
+            {
+              "text": "Тренд нисходящий: SMA10 (541.19) ниже SMA30 (565.77) и цена (558.16) ниже SMA30",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Ценовой уровень находится ниже 20‑дневного swing‑low (503.75) — цель находится в зоне поддержки, что подтверждает дальнейшее падение",
+              "evidence": "market.swing_low_20",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Отсутствие значимого перекоса в открытом интересе (long_short_ratio 1.46 — «заметного перекоса нет») не поддерживает рост цены",
+              "evidence": "positioning.long_short_meaning",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        }
+      }
+    ],
+    "filtered_out": []
+  }
+}
