@@ -1,0 +1,744 @@
+{
+  "briefing": {
+    "sprint_id": "20261122_222311",
+    "summary": "Сделок нет. все кандидаты сняты проверкой: ETH/USDT: консультант №2 — ни у одной стороны не осталось доводов, которые можно засчитать | SOL/USDT: консультант №2 — ни у одной стороны не осталось доводов, которые можно засчитать | BTC/USDT: консультант №2 — ни у одной стороны не осталось доводов, которые можно засчитать",
+    "candidates_plain": [],
+    "terms_used": []
+  },
+  "package": {
+    "sprint_id": "20261122_222311",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 60865.59,
+      "sma20_1d": 69399.08,
+      "sma50_1d": 76753.91,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [],
+    "no_trade": true,
+    "no_trade_reason": "все кандидаты сняты проверкой: ETH/USDT: консультант №2 — ни у одной стороны не осталось доводов, которые можно засчитать | SOL/USDT: консультант №2 — ни у одной стороны не осталось доводов, которые можно засчитать | BTC/USDT: консультант №2 — ни у одной стороны не осталось доводов, которые можно засчитать",
+    "total_heat_pct": 2.698,
+    "rejected_candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261122_222311:ETH/USDT",
+        "instrument": "ETH/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "тренд вниз, цена не у нижней границы диапазона, стоп над swing_high_20, R≈1.7 > min_R=1.5",
+        "counter_thesis": "риск: движение против позиции; катализатора нет",
+        "catalyst": "Chainflip vault hack and Deribit outage disrupting ETH perpetuals",
+        "has_catalyst": true,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Chainflip users face frozen withdrawals after $4.86 million vanishes from Ethereum vault",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-users-face-frozen-withdrawals-after-4-86-million-vanishes-from-ethereum-vault/",
+            "published": "2026-11-22 16:05 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Deribit outage hit Bitcoin hedgers on Coinbase",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/deribit-outage-hit-bitcoin-hedgers-on-coinbase/",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Ether treasury firm BTCS warns SEC its $54 million Aave loan could be liquidated",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/ether-treasury-firm-btcs-warns-sec-its-usd54-million-aave-loan-could-be-liquidated",
+            "published": "2026-11-21 12:30 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Fairmint plans tokenized stock venue on Canton, Ethereum under SEC experiment",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/20/fairmint-plans-tokenized-stock-venue-on-canton-ethereum-under-sec-experiment",
+            "published": "2026-11-20 22:05 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Cathie Wood Bets $91M on Anthropic IPO While Paring Crypto Exposure",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383737/cathie-wood-bets-91m-anthropic-ipo-paring-crypto-exposure",
+            "published": "2026-11-20 18:46 UTC"
+          },
+          {
+            "n": 7,
+            "title": "Bitcoin’s $60,000 breakdown puts December Fed decision under the spotlight",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-below-60000-fed-half-point-cpi/",
+            "published": "2026-11-22 12:00 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          },
+          {
+            "n": 9,
+            "title": "Bitcoin rebounds above $60,000 after $1.8 billion crypto liquidation wave",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/bitcoin-bounces-9-from-two-year-low-to-retake-usd60-000-as-traders-eye-monday-s-stock-open",
+            "published": "2026-11-21 17:50 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 1714.5,
+        "stop": 1818.0,
+        "targets": [
+          1538.0,
+          1480.0
+        ],
+        "target_far": 1480.0,
+        "size": {
+          "value": 0.874891,
+          "unit_type": "ETH"
+        },
+        "risk_amount": 90.55,
+        "risk_pct": 0.906,
+        "R_gross": 2.27,
+        "expected_R_net": 2.23,
+        "costs_total": 3.27,
+        "funding_cost": 0.57,
+        "funding_hold_frac": 0.0003811159946202,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 0.966184 (100.0$ риска), но потолок ограничил его; итог — риск 0.91% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 1,
+        "rejected_by": "консультант №2",
+        "reason": "ни у одной стороны не осталось доводов, которые можно засчитать"
+      },
+      {
+        "id": "C-0002",
+        "decision_id": "20261122_222311:SOL/USDT",
+        "instrument": "SOL/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "тренд вниз, цена не у нижней границы диапазона, стоп достаточно удалён от входа, цель TP2 обеспечивает R≥1.5",
+        "counter_thesis": "риск: движение против позиции; катализатора нет",
+        "catalyst": "CYBER bridge exploit на Solana",
+        "has_catalyst": true,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Cathie Wood Bets $91M on Anthropic IPO While Paring Crypto Exposure",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383737/cathie-wood-bets-91m-anthropic-ipo-paring-crypto-exposure",
+            "published": "2026-11-20 18:46 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin’s $60,000 breakdown puts December Fed decision under the spotlight",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-below-60000-fed-half-point-cpi/",
+            "published": "2026-11-22 12:00 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Bitcoin rebounds above $60,000 after $1.8 billion crypto liquidation wave",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/bitcoin-bounces-9-from-two-year-low-to-retake-usd60-000-as-traders-eye-monday-s-stock-open",
+            "published": "2026-11-21 17:50 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 70.4,
+        "stop": 75.7,
+        "targets": [
+          64.87,
+          60.0
+        ],
+        "target_far": 60.0,
+        "size": {
+          "value": 18.867925,
+          "unit_type": "SOL"
+        },
+        "risk_amount": 100.0,
+        "risk_pct": 1.0,
+        "R_gross": 1.96,
+        "expected_R_net": 1.94,
+        "costs_total": 2.39,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 13.28,
+        "leverage_used": 0.13,
+        "size_binding_cap": "none",
+        "size_note": "",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 2,
+        "rejected_by": "консультант №2",
+        "reason": "ни у одной стороны не осталось доводов, которые можно засчитать"
+      },
+      {
+        "id": "C-0003",
+        "decision_id": "20261122_222311:BTC/USDT",
+        "instrument": "BTC/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "тренд вниз, цена не у нижней границы диапазона, стоп над swing_high_20, R≈1.78 > 1.5",
+        "counter_thesis": "риск: движение против позиции; катализатора нет",
+        "catalyst": "Bitcoin вновь пересек $61 000, Binance perpetuals показывают почти десятикратный чистый покупательский поток",
+        "has_catalyst": true,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin reclaims $61,000 before giving back a third of the weekend rally",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-reclaims-61000-before-giving-back-a-third-of-that-rally/",
+            "published": "2026-11-22 14:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Deribit outage hit Bitcoin hedgers on Coinbase",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/deribit-outage-hit-bitcoin-hedgers-on-coinbase/",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin's quantum security challenge extends to bridges, custodians and millions of coins",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/22/bitcoin-s-quantum-security-challenge-extends-to-bridges-custodians-and-millions-of-coins",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Bitcoin’s next big threat could come from two oil tankers in the Middle East",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/two-hormuz-tanker-strikes-threaten-a-potential-source-of-relief-for-bitcoin/",
+            "published": "2026-11-22 13:00 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Bitcoin’s $60,000 breakdown puts December Fed decision under the spotlight",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-below-60000-fed-half-point-cpi/",
+            "published": "2026-11-22 12:00 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Bitcoin shorts collapsed 79% in five weeks, then the market turned lower",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-shorts-collapsed-79-in-five-weeks-then-the-market-turned-lower/",
+            "published": "2026-11-22 09:30 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 60865.59,
+        "stop": 64080.0,
+        "targets": [
+          55130.0
+        ],
+        "target_far": 55130.0,
+        "size": {
+          "value": 0.024644,
+          "unit_type": "BTC"
+        },
+        "risk_amount": 79.22,
+        "risk_pct": 0.792,
+        "R_gross": 1.78,
+        "expected_R_net": 1.75,
+        "costs_total": 2.7,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 0.03111 (100.0$ риска), но потолок ограничил его; итог — риск 0.79% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 3,
+        "rejected_by": "консультант №2",
+        "reason": "ни у одной стороны не осталось доводов, которые можно засчитать"
+      }
+    ],
+    "llm_usage": {
+      "calls": 9,
+      "tokens_in": 16644,
+      "tokens_out": 4713,
+      "cost_usd_if_paid": 0.0041,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Bitcoin вновь пересек $61 000, Binance perpetuals показывают почти десятикратный чистый покупательский поток",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin поднялся выше $61 000, Binance perpetuals получили почти десятикратный чистый покупательский поток",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Deribit столкнулся с временным отключением, но Coinbase остался без последствий",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Квантовые компьютеры пока не угрожают безопасности Bitcoin, но обновление сети может занять больше времени",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Два танкера в Персидском заливе могут повлиять на цены Brent, что косвенно отражается на Bitcoin",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Падение Bitcoin ниже $60 000 усиливает внимание к решению ФРС в декабре",
+            "refs": [
+              5
+            ]
+          },
+          {
+            "text": "Короткие позиции Bitcoin сократились на 79 %, но рынок затем пошёл вниз",
+            "refs": [
+              8
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin reclaims $61,000 before giving back a third of the weekend rally",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-reclaims-61000-before-giving-back-a-third-of-that-rally/",
+            "published": "2026-11-22 14:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Deribit outage hit Bitcoin hedgers on Coinbase",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/deribit-outage-hit-bitcoin-hedgers-on-coinbase/",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin's quantum security challenge extends to bridges, custodians and millions of coins",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/22/bitcoin-s-quantum-security-challenge-extends-to-bridges-custodians-and-millions-of-coins",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Bitcoin’s next big threat could come from two oil tankers in the Middle East",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/two-hormuz-tanker-strikes-threaten-a-potential-source-of-relief-for-bitcoin/",
+            "published": "2026-11-22 13:00 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Bitcoin’s $60,000 breakdown puts December Fed decision under the spotlight",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-below-60000-fed-half-point-cpi/",
+            "published": "2026-11-22 12:00 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Bitcoin shorts collapsed 79% in five weeks, then the market turned lower",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-shorts-collapsed-79-in-five-weeks-then-the-market-turned-lower/",
+            "published": "2026-11-22 09:30 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 60865.59
+      },
+      "ETH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Chainflip vault hack and Deribit outage disrupting ETH perpetuals",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Chainflip users столкнулись с заморозкой выводов после кражи 4,86 млн долларов из Ethereum‑хранилища",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Deribit отключился, прервав торговлю глобальными Ethereum и Bitcoin perpetuals, но Coinbase остался нетронутым",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Китайские биржи приостановили CYBER‑транзакции из‑за подозрения в эксплойте моста",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "BTCS сократил долг по Aave, но падение цены ETH держит залог под давлением",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Fairmint планирует токенизированный рынок акций на Canton/ETH в рамках эксперимента SEC",
+            "refs": [
+              5
+            ]
+          },
+          {
+            "text": "Cathie Wood снизила крипто‑экспозицию, инвестировав в IPO Anthropic",
+            "refs": [
+              6
+            ]
+          },
+          {
+            "text": "Bitcoin упал ниже 60 000, что усиливает давление на решение ФРС в декабре",
+            "refs": [
+              7
+            ]
+          },
+          {
+            "text": "Chainflip предложил 10 % вознаграждение хакеру за возврат 90 % украденных средств",
+            "refs": [
+              8
+            ]
+          },
+          {
+            "text": "Bitcoin восстановился выше 60 000 после ликвидации 1,8 млрд долларов в крипто‑позициях",
+            "refs": [
+              9
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Chainflip users face frozen withdrawals after $4.86 million vanishes from Ethereum vault",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-users-face-frozen-withdrawals-after-4-86-million-vanishes-from-ethereum-vault/",
+            "published": "2026-11-22 16:05 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Deribit outage hit Bitcoin hedgers on Coinbase",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/deribit-outage-hit-bitcoin-hedgers-on-coinbase/",
+            "published": "2026-11-22 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Ether treasury firm BTCS warns SEC its $54 million Aave loan could be liquidated",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/ether-treasury-firm-btcs-warns-sec-its-usd54-million-aave-loan-could-be-liquidated",
+            "published": "2026-11-21 12:30 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Fairmint plans tokenized stock venue on Canton, Ethereum under SEC experiment",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/20/fairmint-plans-tokenized-stock-venue-on-canton-ethereum-under-sec-experiment",
+            "published": "2026-11-20 22:05 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Cathie Wood Bets $91M on Anthropic IPO While Paring Crypto Exposure",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383737/cathie-wood-bets-91m-anthropic-ipo-paring-crypto-exposure",
+            "published": "2026-11-20 18:46 UTC"
+          },
+          {
+            "n": 7,
+            "title": "Bitcoin’s $60,000 breakdown puts December Fed decision under the spotlight",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-below-60000-fed-half-point-cpi/",
+            "published": "2026-11-22 12:00 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          },
+          {
+            "n": 9,
+            "title": "Bitcoin rebounds above $60,000 after $1.8 billion crypto liquidation wave",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/bitcoin-bounces-9-from-two-year-low-to-retake-usd60-000-as-traders-eye-monday-s-stock-open",
+            "published": "2026-11-21 17:50 UTC"
+          }
+        ],
+        "news_found": 9,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 1714.81
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "CYBER bridge exploit на Solana",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "На биржах Южной Кореи приостановили транзакции CYBER после обнаружения неожиданных эмиссий токенов и последующего перемещения средств из Ethereum bridge lockbox",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Cathie Wood сократила экспозицию в криптовалюте, продав $4,1 млн из стейкинговых ETF на Ethereum и Solana, но это не влияет напрямую на SOL",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Bitcoin упал ниже $60 000, что привлекло внимание к решению ФРС в декабре, но не связано с SOL",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Chainflip сообщил о взломе $12 млн и предложил 10 % вознаграждение за возврат средств, но это не относится к SOL",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Bitcoin восстановился после волны ликвидаций, но это не влияет на SOL",
+            "refs": [
+              5
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Cathie Wood Bets $91M on Anthropic IPO While Paring Crypto Exposure",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383737/cathie-wood-bets-91m-anthropic-ipo-paring-crypto-exposure",
+            "published": "2026-11-20 18:46 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin’s $60,000 breakdown puts December Fed decision under the spotlight",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-below-60000-fed-half-point-cpi/",
+            "published": "2026-11-22 12:00 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Bitcoin rebounds above $60,000 after $1.8 billion crypto liquidation wave",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/bitcoin-bounces-9-from-two-year-low-to-retake-usd60-000-as-traders-eye-monday-s-stock-open",
+            "published": "2026-11-21 17:50 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 70.41
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.06
+      }
+    },
+    "direction": "any"
+  },
+  "report_1": null,
+  "report_2": {
+    "sprint_id": "20261122_222311",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "ETH/USDT",
+        "verdict": "veto",
+        "winner": "none",
+        "veto_reason": "ни у одной стороны не осталось доводов, которые можно засчитать",
+        "forecast": {
+          "direction": null,
+          "confidence": "low"
+        },
+        "reason": "судья не ответил: Агент consultant не дал валидный JSON: ни одна модель не ответила: нет доступных провайдеров — проверьте ключи",
+        "counter_thesis": "",
+        "weak_points": [],
+        "fact_check": "",
+        "long_case": {
+          "strongest": "",
+          "arguments": [],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "",
+          "arguments": [],
+          "without_evidence": 0
+        }
+      },
+      {
+        "id": "C-0002",
+        "instrument": "SOL/USDT",
+        "verdict": "veto",
+        "winner": "none",
+        "veto_reason": "ни у одной стороны не осталось доводов, которые можно засчитать",
+        "forecast": {
+          "direction": null,
+          "confidence": "low"
+        },
+        "reason": "судья не ответил: Агент consultant не дал валидный JSON: ни одна модель не ответила: нет доступных провайдеров — проверьте ключи",
+        "counter_thesis": "",
+        "weak_points": [],
+        "fact_check": "",
+        "long_case": {
+          "strongest": "",
+          "arguments": [],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "",
+          "arguments": [],
+          "without_evidence": 0
+        }
+      },
+      {
+        "id": "C-0003",
+        "instrument": "BTC/USDT",
+        "verdict": "veto",
+        "winner": "none",
+        "veto_reason": "ни у одной стороны не осталось доводов, которые можно засчитать",
+        "forecast": {
+          "direction": null,
+          "confidence": "low"
+        },
+        "reason": "судья не ответил: Агент consultant не дал валидный JSON: ни одна модель не ответила: нет доступных провайдеров — проверьте ключи",
+        "counter_thesis": "",
+        "weak_points": [],
+        "fact_check": "",
+        "long_case": {
+          "strongest": "",
+          "arguments": [],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "",
+          "arguments": [],
+          "without_evidence": 0
+        }
+      }
+    ],
+    "filtered_out": [
+      "C-0001",
+      "C-0002",
+      "C-0003"
+    ]
+  }
+}
