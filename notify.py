@@ -113,7 +113,7 @@ def format_briefing(data):
     reg = (p.get("market_regime") or {}).get("note")
     fng = p.get("fear_greed") or {}
     if reg:
-        lines.append(reg.capitalize())
+        lines.append(reg[:1].upper() + reg[1:])
     if fng:
         lines.append(f"Индекс страха/жадности: {fng.get('value')} ({fng.get('label', '')})")
     if p.get("direction") and p["direction"] != "any":
@@ -143,12 +143,20 @@ def format_briefing(data):
                 lines.append(f"ⓘ {n}")
             lines.append(f"Записать вход: /open {c['id']}")
     else:
-        reason = p.get("no_trade_reason") or b.get("summary", "")
         lines.append("Сделок нет.")
-        for part in [x.strip() for x in str(reason).split(" | ") if x.strip()][:8]:
-            lines.append(f"• {part}")
+        rejected = p.get("rejected_candidates") or []
+        if not rejected:                 # причины по монетам — только если не было снятых кандидатов
+            reason = p.get("no_trade_reason") or b.get("summary", "")
+            for part in [x.strip() for x in str(reason).split(" | ") if x.strip()][:8]:
+                lines.append(f"• {part}")
     for x in p.get("rejected_candidates", []):
-        lines.append(f"✗ Снято: {x['instrument']} — {x['rejected_by']}: {x['reason']}")
+        side = "шорт" if x.get("direction") == "short" else "лонг"
+        lines.append(f"\n✗ {x['instrument']} {side} · вход ~{x.get('entry')} · стоп {x.get('stop')} · "
+                     f"цель {x.get('target_far')} · R {x.get('expected_R_net')}")
+        reasons = [r.strip() for r in str(x.get("reason", "")).split(";") if r.strip()]
+        lines.append(f"Снял {x['rejected_by']}:")
+        for r in reasons[:4]:
+            lines.append(f"  – {r}")
 
     news = p.get("market_news") or {}
     if news:
@@ -160,7 +168,11 @@ def format_briefing(data):
                 bits.append(f"катализатор: {v['catalyst']}")
             if v.get("event_risk"):
                 bits.append(f"⚠ {v['event_risk']}")
-            lines.append(head + (" — " + "; ".join(bits) if bits else f" — новостей: {v.get('news_found', 0)}"))
+            if not bits:
+                sent = {"positive": "позитивное", "negative": "негативное", "neutral": "нейтральное",
+                        "mixed": "смешанное"}.get(v.get("sentiment"), "не определено")
+                bits.append(f"настроение {sent}, явного катализатора нет (новостей: {v.get("news_found", 0)})")
+            lines.append(head + " — " + "; ".join(bits))
 
     u = p.get("llm_usage") or {}
     if u.get("calls"):
