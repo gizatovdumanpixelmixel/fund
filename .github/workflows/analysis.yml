@@ -50,10 +50,11 @@ jobs:
         if: steps.mode.outputs.run == 'yes'
         run: python pipeline.py --direction "${{ inputs.direction || 'any' }}"
       - name: Отчёт в Telegram
-        if: steps.mode.outputs.run == 'yes'
-        run: python bot.py notify-latest
+        id: report
+        if: always() && steps.mode.outputs.run == 'yes'
+        run: python bot.py notify-latest --since-start "${{ github.run_started_at }}"
       - name: Сообщить об ошибке
-        if: failure()
+        if: failure() && steps.report.outcome != 'success'
         run: python -c "import notify; notify.send('❌ Анализ в облаке завершился с ошибкой. Подробности — GitHub → Actions → «Анализ рынка».')"
       - name: Сохранить данные
         if: always()

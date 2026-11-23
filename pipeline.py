@@ -674,9 +674,15 @@ def run_sprint():
     # ранжируем по R_net и держим совокупный heat в пределах мандата (код)
     passing.sort(key=lambda a: a["risk"]["R_net"], reverse=True)
     heat = PORTFOLIO_STATE["current_heat_pct"]; kept = []
+    same = {d: sum(1 for x in PORTFOLIO_STATE["open_positions"] if x.get("direction") == d) for d in ("long", "short")}
     for a in passing:
-        if heat + a["risk"]["risk_pct"] <= MANDATE["max_heat_pct"] + 1e-9:
-            heat += a["risk"]["risk_pct"]; kept.append(a)
+        d = a["risk"]["direction"]
+        if same.get(d, 0) >= C.SAME_DIRECTION_CAP:    # лимит позиций в одну сторону — с учётом всего пакета
+            a["risk"]["passed"] = False
+            a["risk"]["reasons"].append(f"уже {C.SAME_DIRECTION_CAP} идеи в сторону «{C.DIR_RU[d]}» — "
+                                        f"лимит позиций в одну сторону")
+        elif heat + a["risk"]["risk_pct"] <= MANDATE["max_heat_pct"] + 1e-9:
+            heat += a["risk"]["risk_pct"]; kept.append(a); same[d] = same.get(d, 0) + 1
         else:
             a["risk"]["passed"] = False
             a["risk"]["reasons"].append("не поместился в лимит риска пакета (heat)")
@@ -815,13 +821,36 @@ def run_sprint():
     # всё равно не ответил, отчёт собирает код — идеи не должны теряться.
     print("  • переводчик готовит понятный отчёт ...\n")
     try:
-        briefing = _sanitize(call_agent("translator", _translator_payload(package, report_1, report_2),
-                                        "translator"))
+        briefing = _normalize_briefing(_sanitize(call_agent("translator", _translator_payload(package, report_1, report_2),
+                                                            "translator")), package)
     except Exception as e:                # noqa: BLE001
         print(f"    ! переводчик не ответил ({str(e)[:120]}) — отчёт собран кодом")
         briefing = _fallback_briefing(package, report_1, report_2)
     _save_briefing(briefing, package, report_1, report_2)
-    _print_briefing(briefing, package)
+    try:
+        _print_briefing(briefing, package)
+    except Exception as e:                # noqa: BLE001 — отчёт уже сохранён, вывод в консоль не критичен
+        print(f"    ! не удалось напечатать отчёт: {e}")
+
+
+def _normalize_briefing(b, package):
+    """Модель иногда возвращает в списках строки вместо объектов — приводим к нужному виду,
+    чтобы отчёт не падал на выводе."""
+    if not isinstance(b, dict):
+        b = {}
+    plain = [c for c in (b.get("candidates_plain") or []) if isinstance(c, dict)]
+    for c in plain:
+        c["numbers_explained"] = [n for n in (c.get("numbers_explained") or []) if isinstance(n, dict)]
+    have = {c.get("id") for c in plain}
+    for c in package.get("candidates", []):        # если переводчик пропустил идею — добавим из данных
+        if c["id"] not in have:
+            plain.append({"id": c["id"], "what": f"{'Купить (лонг)' if c['direction'] == 'long' else 'Продать в шорт'} "
+                                                f"{c['instrument']}", "why": c.get("thesis", ""),
+                          "what_could_go_wrong": c.get("counter_thesis", "")})
+    b["candidates_plain"] = plain
+    b["terms_used"] = [t for t in (b.get("terms_used") or []) if isinstance(t, dict)]
+    b.setdefault("summary", "")
+    return b
 
 
 def _translator_payload(package, report_1, report_2):

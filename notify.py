@@ -125,7 +125,7 @@ def format_briefing(data):
     lines.append("")
 
     debates = {o.get("id"): o for o in ((data.get("report_2") or {}).get("clean_options") or [])}
-    plain = {c.get("id"): c for c in b.get("candidates_plain", [])}
+    plain = {c.get("id"): c for c in b.get("candidates_plain", []) if isinstance(c, dict)}
     cands = p.get("candidates") or []
     if cands:
         lines.append(f"✅ Идеи для входа: {len(cands)}")

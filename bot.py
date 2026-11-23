@@ -292,7 +292,15 @@ if __name__ == "__main__":
     if cmd == "cycle":
         cycle()
     elif cmd == "notify-latest":
+        # --since-start: отправить, только если отчёт создан в этом запуске (а не старый)
         path = latest_briefing_path()
+        if path and "--since-start" in sys.argv:
+            try:
+                started = datetime.datetime.fromisoformat(sys.argv[sys.argv.index("--since-start") + 1].replace("Z", "+00:00"))
+                if os.path.getmtime(path) < started.timestamp() - 60:
+                    print("нового отчёта нет"); sys.exit(1)
+            except (ValueError, IndexError):
+                pass
         if path:
             with open(path, encoding="utf-8") as f:
                 TG.send(TG.format_briefing(json.load(f)))
