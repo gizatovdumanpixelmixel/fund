@@ -1,0 +1,11 @@
+# Кандидаты в источники новостей — проверяются workflow «Проверка каналов».
+# Боты (*_bot, zoloto_invbot) и закрытая ссылка-приглашение t.me/+... сюда не входят:
+# их нельзя читать без входа в аккаунт.
+Elliotrading
+invcryptonews
+falconinvestors
+finfalconx
+amaninvest
+keeper_cis
+manualanomics
+INVESTORDIARY

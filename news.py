@@ -274,6 +274,66 @@ def validate(out, news_items):
     return out
 
 
+AD_WORDS = ["реклама", "#реклама", "erid", "промокод", "скидк", "вебинар", "курс обучения", "марафон",
+            "бонус", "розыгрыш", "подписывайся", "подпишись", "переходи", "регистрируйся", "партнёр", "партнер"]
+SIGNAL_WORDS = ["вход", "тейк", "take profit", "стоп-лосс", "stop loss", " tp", " sl", "x10", "x20", "плечо",
+                "сигнал", "лонг", "шорт", "long", "short"]
+
+
+def check_channels(names, fetch=_get):
+    """Проверка кандидатов в источники: открывается ли канал, как часто пишет,
+    сколько рекламы и торговых сигналов, о чём последние посты."""
+    now = datetime.datetime.now(datetime.timezone.utc)
+    report = []
+    for name in names:
+        row = {"channel": name, "ok": False}
+        try:
+            posts = parse_telegram(fetch(TG_WEB.format(name=name)), name)
+        except Exception as e:                       # noqa: BLE001
+            row["error"] = str(e)[:150]
+            report.append(row); continue
+        if not posts:
+            row["error"] = "постов не видно — закрытый канал, бот или неверное имя"
+            report.append(row); continue
+        dates = [p["published"] for p in posts if p["published"]]
+        texts = [p["summary"].lower() for p in posts]
+        ads = sum(1 for t in texts if any(w in t for w in AD_WORDS))
+        sig = sum(1 for t in texts if sum(w in f" {t}" for w in SIGNAL_WORDS) >= 2)
+        coins = sum(1 for t in texts if any(_matches(ws, t) for ws in KEYWORDS.values()))
+        fresh = sum(1 for d in dates if (now - d).total_seconds() <= 48 * 3600)
+        row.update({"ok": True, "posts_seen": len(posts), "posts_48h": fresh,
+                    "last_post": max(dates).strftime("%Y-%m-%d %H:%M") if dates else None,
+                    "ads_share": round(ads / len(posts), 2), "signals_share": round(sig / len(posts), 2),
+                    "crypto_share": round(coins / len(posts), 2),
+                    "sample": [p["title"][:140] for p in posts[-6:]]})
+        report.append(row)
+    return report
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "check-channels":
+    path = sys.argv[2] if len(sys.argv) > 2 else "channel_candidates.txt"
+    CHANNELS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), path)
+    rep = check_channels(telegram_channels())
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "channel_check.json")
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(rep, f, ensure_ascii=False, indent=2)
+    lines = ["📡 Проверка Telegram-каналов"]
+    for r in rep:
+        if not r["ok"]:
+            lines.append(f"✗ @{r['channel']}: {r.get('error')}")
+        else:
+            lines.append(f"✓ @{r['channel']}: постов за 48 ч {r['posts_48h']}, последний {r['last_post']}, "
+                         f"про крипту {int(r['crypto_share'] * 100)}%, реклама {int(r['ads_share'] * 100)}%, "
+                         f"сигналы {int(r['signals_share'] * 100)}%")
+    print("\n".join(lines))
+    try:
+        import notify
+        notify.send("\n".join(lines))
+    except Exception as e:                           # noqa: BLE001
+        print(f"telegram: {e}")
+    sys.exit(0)
+
+
 if __name__ == "__main__":
     sym = sys.argv[1] if len(sys.argv) > 1 else "BTC/USDT"
     all_items, errs = fetch_all()
