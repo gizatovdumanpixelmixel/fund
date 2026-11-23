@@ -1,0 +1,727 @@
+{
+  "briefing": {
+    "sprint_id": "20261123_210409",
+    "summary": "Кратко о сделке ADA/USDT: шорт с ожидаемой прибылью 1.64‑раз выше риска, но с учётом возможных стоп‑пробитий и слабого фундаментального драйвера.",
+    "candidates_plain": [
+      {
+        "id": "C-0001",
+        "what": "Продать в шорт (ставка на падение) ADA/USDT",
+        "why": "Снижение цены BTC и отказ держателей Cardano от финансирования создают негативный фон, а технические индикаторы подтверждают нисходящий тренд",
+        "what_could_go_wrong": "Цена может быстро отскочить над стоп‑уровнем 0.16, а отсутствие сильного сигнала может привести к ложному пробою и потере капитала",
+        "numbers_explained": [
+          {
+            "label": "R_net 1.64",
+            "means": "На каждый $1 риска ждём ~$1.64 прибыли после комиссий; риск здесь ~$100, значит цель по прибыли ~$(100*1.64)=164"
+          },
+          {
+            "label": "Риск ~$100",
+            "means": "Если сделка не сработает и цена выбьет по стопу, потеряете ~$100"
+          }
+        ],
+        "expert_said": "Сетап технически приемлем, но риск повторения стопов по шортам и слабый фундаментальный драйвер требуют строгого контроля",
+        "consultant_said": "Победила сторона «short» – решение одобрено",
+        "agreement": "согласны"
+      }
+    ],
+    "terms_used": [
+      {
+        "term": "стоп",
+        "plain": "цена, на которой сделку закрывают с убытком, чтобы не потерять больше"
+      },
+      {
+        "term": "R (R_net)",
+        "plain": "во сколько раз возможная прибыль больше риска, после комиссий"
+      }
+    ]
+  },
+  "package": {
+    "sprint_id": "20261123_210409",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 62515.22,
+      "sma20_1d": 68672.43,
+      "sma50_1d": 76281.73,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261123_210409:ADA/USDT",
+        "instrument": "ADA/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "Шорт (ставка на падение) по ADA/USDT оправдан снижением цены в нисходящем рынке BTC и наличием негативного новостного катализатора.",
+        "counter_thesis": "При коротком стопе над swing‑high 20% цена может быстро отскочить, а отсутствие сильного технического сигнала указывает на риск ложного пробоя; предыдущие шорты по ETH и SOL закрылись стопом в похожих условиях.",
+        "catalyst": "Cardano держатели отказались от $4 млн запроса на проведение главного события",
+        "has_catalyst": true,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Cardano holders are turning down a $4 million request for running its flagship event",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/23/cardano-holders-are-turning-down-a-usd4-million-request-for-running-its-flagship-event",
+            "published": "2026-11-23 06:15 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 0.15,
+        "stop": 0.16,
+        "targets": [
+          0.13,
+          0.13
+        ],
+        "target_far": 0.13,
+        "size": {
+          "value": 8333.333333,
+          "unit_type": "ADA"
+        },
+        "risk_amount": 100.0,
+        "risk_pct": 1.0,
+        "R_gross": 1.67,
+        "expected_R_net": 1.64,
+        "costs_total": 2.25,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 12.5,
+        "leverage_used": 0.12,
+        "size_binding_cap": "none",
+        "size_note": "",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 1
+      }
+    ],
+    "no_trade": false,
+    "no_trade_reason": null,
+    "total_heat_pct": 1.0,
+    "llm_usage": {
+      "calls": 23,
+      "tokens_in": 31581,
+      "tokens_out": 7809,
+      "cost_usd_if_paid": 0.0067,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Резкое повышение цены после восстановления Дженсена Ханга в Nvidia",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin вырос более чем на 4 % за час до $64 427 после того, как Nvidia восстановила Дженсена Ханга в должности CEO",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Кратковременные продажи в размере $424 млн были ликвидированы в течение часа, когда трейдеры, ставшие на падение, оказались в ловушке",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "В течение 14 часов Bitcoin торгуется на Kraken с дисконтом в 37,3 % к US‑долларовому рынку",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Объем Coinbase в одну утреннюю часовую сессию был примерно вдвое ниже, чем в воскресенье",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "American Bitcoin, поддерживаемый Эриком Трампом, получил кредитную линию в 150 млн USD, не продавая свои резервы",
+            "refs": [
+              3,
+              7
+            ]
+          },
+          {
+            "text": "Chainflip потерял 12 млн USD после второго взлома за 10 недель",
+            "refs": [
+              8
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "How market depth shapes the price of a weekend Bitcoin sale",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/how-market-depth-shapes-the-price-of-a-weekend-bitcoin-sale?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 15:57 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Why Bitcoin surged toward $64,000 before pulling back as trading slows 54% into Thanksgiving",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-steadies-above-61000-as-trading-slows-before-thanksgiving/",
+            "published": "2026-11-23 15:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Eric Trump-backed American Bitcoin secures $150 million loan against its bitcoin",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/eric-trump-backed-american-bitcoin-secures-usd150-million-loan-against-its-bitcoin",
+            "published": "2026-11-23 15:02 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Bitcoin rockets above $64,000 as Nvidia reinstates Jensen Huang, wiping out $372 million in shorts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-rockets-above-64000-as-nvidia-reinstates-jensen-huang-wiping-out-372-million-in-shorts/",
+            "published": "2026-11-23 15:00 UTC"
+          },
+          {
+            "n": 7,
+            "title": "Trump-linked American Bitcoin secures $150M credit line from FalconX",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/trumps-american-bitcoin-rises-150m-credit-falconx?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 13:44 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Chainflip founder admits heavy losses after second hack in 10 weeks drains $12 million",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-founder-admits-heavy-losses-after-second-hack-in-10-weeks-drains-12-million/",
+            "published": "2026-11-23 13:40 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 62519.83
+      },
+      "ETH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": true,
+        "event_risk": "Квантовый уязвимый риск, задержка в ETF BlackRock, проблемы с мостом CYBER",
+        "claims": [
+          {
+            "text": "Chainflip founder признал серьёзные убытки после второго взлома, потеряв $12 млн",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Исследователи обнаружили, что почти 55 % эфира находится в кошельках с открытыми публичными ключами, что делает их уязвимыми к будущим квантовым атакам",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "BlackRock может задержать выкуп средств из стейк-ETF, если ETH будет недоступен для снятия",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Кореянские биржи приостановили CYBER-транзакции после подозрения в эксплуатации моста",
+            "refs": [
+              4
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Chainflip founder admits heavy losses after second hack in 10 weeks drains $12 million",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-founder-admits-heavy-losses-after-second-hack-in-10-weeks-drains-12-million/",
+            "published": "2026-11-23 13:40 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ethereum wallets holding $72 billion ETH are under threat of a future quantum attack",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/23/ethereum-wallets-holding-usd72-billion-eth-are-under-threat-of-a-future-quantum-attack",
+            "published": "2026-11-23 12:13 UTC"
+          },
+          {
+            "n": 3,
+            "title": "BlackRock’s staked Ethereum ETF can delay redemptions if unstaked ETH runs short",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/blackrocks-staked-ethereum-etf-redemptions/",
+            "published": "2026-11-23 06:05 UTC"
+          },
+          {
+            "n": 4,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          }
+        ],
+        "news_found": 7,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 1763.0
+      },
+      "SOL/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Мем‑коин «Fiona the Hippo» привлек внимание к Solana",
+        "event_risk_flag": true,
+        "event_risk": "потенциальный взлом bridge‑токенов CYBER может вызвать волатильность",
+        "claims": [
+          {
+            "text": "Мем‑коин «Fiona the Hippo» собрал 100 000 USD для зоопарка",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "На Solana обнаружено неожиданное чеканка токенов CYBER и их перемещение из Ethereum‑bridge",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Solana Meme Coin for Fiona the Hippo Raises $100K for Cincinnati Zoo Charity",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383762/solana-meme-coin-for-fiona-the-hippo-sends-100k-to-cincinnati-zoo-charity",
+            "published": "2026-11-23 12:43 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 75.15
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin поднялся выше $64 000 после восстановления Дженсена Хуана в Nvidia, вызвав ликвидации на сумму $424 млн",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Объем торгов Bitcoin упал почти вдвое по сравнению с воскресным уровнем, что может сигнализировать о замедлении активности",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Why Bitcoin surged toward $64,000 before pulling back as trading slows 54% into Thanksgiving",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-steadies-above-61000-as-trading-slows-before-thanksgiving/",
+            "published": "2026-11-23 15:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin rockets above $64,000 as Nvidia reinstates Jensen Huang, wiping out $372 million in shorts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-rockets-above-64000-as-nvidia-reinstates-jensen-huang-wiping-out-372-million-in-shorts/",
+            "published": "2026-11-23 15:00 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 566.09
+      },
+      "XRP/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Биткоин подскочил более чем на 4 % в течение часа до $64 427 после того, как Nvidia восстановила Дженсена Хуана в качестве CEO",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Объём торгов Coinbase в одну утреннюю смену составил около половины уровня воскресенья, а ожидается, что данные по инфляции и ETF-оттокам будут ключевыми для инвесторов",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Why Bitcoin surged toward $64,000 before pulling back as trading slows 54% into Thanksgiving",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-steadies-above-61000-as-trading-slows-before-thanksgiving/",
+            "published": "2026-11-23 15:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin rockets above $64,000 as Nvidia reinstates Jensen Huang, wiping out $372 million in shorts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-rockets-above-64000-as-nvidia-reinstates-jensen-huang-wiping-out-372-million-in-shorts/",
+            "published": "2026-11-23 15:00 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [
+          "катализатор «Биткоин вырос на 4 % после восстановления Дженсена Хуана, что может подтолкнуть XRP вверх» ссылается на общую новость рынка, а не на новость про эту монету — не засчитан"
+        ],
+        "trend_4h": "range",
+        "last_price": 0.98
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.06
+      },
+      "ADA/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Cardano держатели отказались от $4 млн запроса на проведение главного события",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Пять раз больше голосов против бюджета конференции 2027 года, чем за него",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Запрос на средства для разработчиков почти без возражений",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Cardano holders are turning down a $4 million request for running its flagship event",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/23/cardano-holders-are-turning-down-a-usd4-million-request-for-running-its-flagship-event",
+            "published": "2026-11-23 06:15 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.15
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 7.0
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin вырос более 4% за час после восстановления Дженсена Хуана в Nvidia, что вызвало ликвидации на рынке криптовалют",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Общий рынок криптовалют замедлён, объемы на Coinbase снизились в 54% по сравнению с воскресеньем",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Why Bitcoin surged toward $64,000 before pulling back as trading slows 54% into Thanksgiving",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-steadies-above-61000-as-trading-slows-before-thanksgiving/",
+            "published": "2026-11-23 15:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin rockets above $64,000 as Nvidia reinstates Jensen Huang, wiping out $372 million in shorts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-rockets-above-64000-as-nvidia-reinstates-jensen-huang-wiping-out-372-million-in-shorts/",
+            "published": "2026-11-23 15:00 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [
+          "катализатор «Рост Bitcoin может подтолкнуть LINK вверх» ссылается на общую новость рынка, а не на новость про эту монету — не засчитан"
+        ],
+        "trend_4h": "up",
+        "last_price": 9.21
+      },
+      "TON/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 1.6
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin вырос более 4 % за час до $64 427 после того, как Nvidia восстановила Дженсена Хуана в должности CEO, что привело к ликвидациям криптовалютного рынка на $424 млн",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Торговый объём Coinbase в одну утреннюю часовую смену составил около половины уровня воскресенья, а ожидается, что данные по инфляции и ETF-оттокам в США будут ключевыми факторами для инвесторов",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Why Bitcoin surged toward $64,000 before pulling back as trading slows 54% into Thanksgiving",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-steadies-above-61000-as-trading-slows-before-thanksgiving/",
+            "published": "2026-11-23 15:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin rockets above $64,000 as Nvidia reinstates Jensen Huang, wiping out $372 million in shorts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-rockets-above-64000-as-nvidia-reinstates-jensen-huang-wiping-out-372-million-in-shorts/",
+            "published": "2026-11-23 15:00 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.31
+      },
+      "DOT/USDT": {
+        "sentiment": "neutral",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.7
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 42.44
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 207.3
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 3.13
+      },
+      "SUI/USDT": {
+        "sentiment": "neutral",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.71
+      }
+    },
+    "direction": "any"
+  },
+  "report_1": {
+    "sprint_id": "20261123_210409",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": true,
+        "risks": [
+          "Недавняя серия стопов по коротким позициям (ETH, SOL, BTC) повышает вероятность повторения",
+          "Катализатор – отказ держателей от финансирования события – слабый фундаментальный драйвер",
+          "Короткий стоп (0.01) может быть пробит волатильным откатом, особенно при низкой ликвидности ADA"
+        ],
+        "notes": "Сетап соответствует региму рынка (нисходящий) и имеет требуемый R>1.5, риск 1 % от капитала и экспозицию 12.5 % в пределах лимитов. Однако следует учитывать повышенную чувствительность к коротким стопам после недавних неудач и ограниченный новостной импульс."
+      }
+    ],
+    "expert_opinion": "Сетап ADA/USDT технически приемлем и вписывается в рамки мандата, однако риск повторения стопов по шортам и слабый новостной фундамент требуют строгого контроля стопа и готовности к быстрой корректировке.",
+    "package_ok": true
+  },
+  "report_2": {
+    "sprint_id": "20261123_210409",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "ADA/USDT",
+        "verdict": "pass",
+        "winner": "short",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "short",
+          "confidence": "high"
+        },
+        "reason": "SMA10 (0.14) ниже SMA30 (0.15) и рынок BTC находится в нисходящем режиме, а коэффициент лонгов 2.26 × указывает на возможный отток лонгов и падение цены",
+        "counter_thesis": "Риск быстрого отскока цены выше swing‑high 0.16 и ложного пробоя вверх",
+        "weak_points": [
+          "Long‑аргумент о новостях ссылается на несуществующий элемент news[1] и неверно трактует отказ держателей как позитивный сигнал",
+          "Short‑аргумент о тренде использует строку trend_meaning, где указано «цена ниже SMA30», хотя по цифрам цена равна SMA30"
+        ],
+        "fact_check": "SMA10=0.14, SMA30=0.15, price=0.15, long_short_ratio=2.26, trend_meaning='нисходящий: SMA10 ниже SMA30, цена ниже SMA30', news[0].title='Cardano holders are turning down a $4 million request for running its flagship event'",
+        "long_case": {
+          "strongest": "Толпа в лонгах (2.26 ×) создает сильное давление на рост цены",
+          "arguments": [
+            {
+              "text": "Цена держится на уровне SMA30 (0.15 = 0.15) и выше SMA10 (0.15 > 0.14) — поддержка от средней цены, тренд может переключиться вверх",
+              "evidence": "market.sma_slow_30",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Коэффициент лонгов 2.26 × превышает шорты — толпа в лонгах создает давление на рост цены",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Отказ держателей ADA от финансирования $4 млн мероприятия показывает их уверенность в проекте и готовность удерживать токен, что поддерживает спрос",
+              "evidence": "news[1]",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "доминирование лонгов (ratio 2.26) создаёт давление на падение при их оттоке",
+          "arguments": [
+            {
+              "text": "long_short_ratio 2.26 — лонги доминируют, возможен отток и падение цены",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "trend down — SMA10 ниже SMA30, цена ниже SMA30, подтверждает нисходящий тренд",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "новость: держатели Cardano отклонили запрос на $4 млн для флагманского мероприятия — негативный фундаментальный сигнал",
+              "evidence": "news[0].title",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        }
+      }
+    ],
+    "filtered_out": []
+  }
+}
