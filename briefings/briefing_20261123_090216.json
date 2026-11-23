@@ -1,0 +1,1528 @@
+{
+  "briefing": {
+    "sprint_id": "20261123_090216",
+    "summary": "Все четыре кандидата – шорты, соответствующие нисходящему тренду. Эксперт одобрил их, отмечая риски стоп‑лоссов. Консультант подтвердил преимущество шортов, но указал на слабые аргументы у некоторых. В итоге рекомендации одинаковы: открывать позиции, но с осторожностью.",
+    "candidates_plain": [
+      {
+        "id": "C-0001",
+        "what": "Продать в шорт LTC/USDT",
+        "why": "Тренд нисходящий, стоп выше swing‑high, риск ограничен",
+        "what_could_go_wrong": "Высокая волатильность BTC может вызвать пробой стопа",
+        "numbers_explained": [
+          {
+            "label": "R_net 2.19",
+            "means": "На каждый $1 риска ждём ~$2.19 прибыли после комиссий; риск ~$81.68, значит цель ~$(81.68*2.19)≈$179"
+          },
+          {
+            "label": "Риск ~$81.68",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$81.68"
+          }
+        ],
+        "expert_said": "Шорт LTC/USDT соответствует нисходящему тренду, R≈2.2, риск 0.82 % от капитала",
+        "consultant_said": "Победила сторона шорт, рынок в нисходящем режиме, сильное давление вниз",
+        "agreement": "согласны"
+      },
+      "",
+      {
+        "id": "C-0003",
+        "what": "Продать в шорт SOL/USDT",
+        "why": "Нисходящий тренд, новостной катализатор, R≈2.0",
+        "what_could_go_wrong": "Стоп близок к половине диапазона свечи, риск преждевременного срабатывания",
+        "numbers_explained": [
+          {
+            "label": "R_net 2.03",
+            "means": "На каждый $1 риска ждём ~$2.03 прибыли после комиссий; риск ~$47.55, значит цель ~$(47.55*2.03)≈$96"
+          },
+          {
+            "label": "Риск ~$47.55",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$47.55"
+          }
+        ],
+        "expert_said": "Шорт SOL/USDT поддержан новостным катализатором, R≈2.0, риск 0.48 % от капитала",
+        "consultant_said": "Победила сторона шорт, рынок в нисходящем режиме, сильное давление вниз",
+        "agreement": "согласны"
+      },
+      "",
+      {
+        "id": "C-0004",
+        "what": "Продать в шорт BCH/USDT",
+        "why": "Нисходящий тренд, стоп над swing‑high, R≈1.75",
+        "what_could_go_wrong": "Отсутствие явного катализатора, цена может отскочить от стопа",
+        "numbers_explained": [
+          {
+            "label": "R_net 1.75",
+            "means": "На каждый $1 риска ждём ~$1.75 прибыли после комиссий; риск ~$73.77, значит цель ~$(73.77*1.75)≈$129"
+          },
+          {
+            "label": "Риск ~$73.77",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$73.77"
+          }
+        ],
+        "expert_said": "Шорт BCH/USDT имеет R≈1.75, риск 0.74 % от капитала",
+        "consultant_said": "Победила сторона шорт, рынок в нисходящем режиме, сильное давление вниз",
+        "agreement": "согласны"
+      },
+      "",
+      {
+        "id": "C-0005",
+        "what": "Продать в шорт AVAX/USDT",
+        "why": "Нисходящий рынок, стоп выше swing‑high, R≈1.73",
+        "what_could_go_wrong": "Стоп близок к половине диапазона свечи, риск преждевременного срабатывания",
+        "numbers_explained": [
+          {
+            "label": "R_net 1.73",
+            "means": "На каждый $1 риска ждём ~$1.73 прибыли после комиссий; риск ~$83.08, значит цель ~$(83.08*1.73)≈$144"
+          },
+          {
+            "label": "Риск ~$83.08",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$83.08"
+          }
+        ],
+        "expert_said": "Шорт AVAX/USDT соответствует нисходящему рынку, R≈1.73, риск 0.83 % от капитала",
+        "consultant_said": "Победила сторона шорт, рынок в нисходящем режиме, сильное давление вниз",
+        "agreement": "согласны"
+      }
+    ],
+    "terms_used": [
+      {
+        "term": "стоп",
+        "plain": "цена, на которой сделку закрывают с убытком, чтобы не потерять больше"
+      },
+      {
+        "term": "R (R_net)",
+        "plain": "во сколько раз возможная прибыль больше риска, после комиссий"
+      }
+    ]
+  },
+  "package": {
+    "sprint_id": "20261123_090216",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 61272.01,
+      "sma20_1d": 68610.26,
+      "sma50_1d": 76256.86,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261123_090216:LTC/USDT",
+        "instrument": "LTC/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "Шорт LTC/USDT соответствует нисходящему тренду и имеет R ≈ 2.2, стоп установлен выше swing‑high, что ограничивает риск.",
+        "counter_thesis": "В прошлых шортах ETH и SOL стоп сработал из‑за близости к половине диапазона свечи – аналогичный риск может проявиться и здесь.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 40.4,
+        "stop": 42.6,
+        "targets": [
+          37.0,
+          35.5
+        ],
+        "target_far": 35.5,
+        "size": {
+          "value": 37.128713,
+          "unit_type": "LTC"
+        },
+        "risk_amount": 81.68,
+        "risk_pct": 0.817,
+        "R_gross": 2.23,
+        "expected_R_net": 2.19,
+        "costs_total": 2.96,
+        "funding_cost": 0.26,
+        "funding_hold_frac": 0.0001727087627034,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 45.454545 (100.0$ риска), но потолок ограничил его; итог — риск 0.82% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 1
+      },
+      {
+        "id": "C-0003",
+        "decision_id": "20261123_090216:SOL/USDT",
+        "instrument": "SOL/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "Шорт SOL/USDT имеет R ≈ 2.0 и поддерживается новостным катализатором – проблемы с мостом CYBER могут усилить падение цены.",
+        "counter_thesis": "Несмотря на катализатор, в прошлом шорт SOL завершился стоп‑лоссом из‑за слишком близкого стопа к средней волатильности свечи.",
+        "catalyst": "Новые проверки памяти и подозрение на эксплойт в мосте CYBER могут снизить доверие к Solana",
+        "has_catalyst": true,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Solana’s new memory checks could make some older app transactions fail",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/solanas-new-memory-checks-could-make-some-older-app-transactions-fail/",
+            "published": "2026-11-23 03:05 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 71.3,
+        "stop": 73.56,
+        "targets": [
+          68.5,
+          66.5
+        ],
+        "target_far": 66.5,
+        "size": {
+          "value": 21.037868,
+          "unit_type": "SOL"
+        },
+        "risk_amount": 47.55,
+        "risk_pct": 0.475,
+        "R_gross": 2.12,
+        "expected_R_net": 2.03,
+        "costs_total": 4.31,
+        "funding_cost": 1.61,
+        "funding_hold_frac": 0.0010723159303353,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 44.247788 (100.0$ риска), но потолок ограничил его; итог — риск 0.48% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 3
+      },
+      {
+        "id": "C-0004",
+        "decision_id": "20261123_090216:BCH/USDT",
+        "instrument": "BCH/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "Шорт BCH/USDT находится в нисходящем тренде, R ≈ 1.75, стоп над swing‑high, что обеспечивает достаточный потенциал прибыли.",
+        "counter_thesis": "Отсутствие катализатора и опыт стоп‑срабатываний по ETH и SOL повышают вероятность, что цена отскочит от уровня стопа.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 198.25,
+        "stop": 208.0,
+        "targets": [
+          190.0,
+          180.0
+        ],
+        "target_far": 180.0,
+        "size": {
+          "value": 7.566204,
+          "unit_type": "BCH"
+        },
+        "risk_amount": 73.77,
+        "risk_pct": 0.738,
+        "R_gross": 1.87,
+        "expected_R_net": 1.75,
+        "costs_total": 8.62,
+        "funding_cost": 5.92,
+        "funding_hold_frac": 0.0039473170033227,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 10.25641 (100.0$ риска), но потолок ограничил его; итог — риск 0.74% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 4
+      },
+      {
+        "id": "C-0005",
+        "decision_id": "20261123_090216:AVAX/USDT",
+        "instrument": "AVAX/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "Шорт AVAX/USDT соответствует текущему нисходящему рынку, R ≈ 1.73, стоп выше swing‑high, риск ограничен.",
+        "counter_thesis": "Как и в предыдущих шортах, близость стопа к половине диапазона свечи может привести к преждевременному срабатыванию при рыночных колебаниях.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "notes": [],
+        "entry": 6.68,
+        "stop": 7.05,
+        "targets": [
+          6.01
+        ],
+        "target_far": 6.01,
+        "size": {
+          "value": 224.550898,
+          "unit_type": "AVAX"
+        },
+        "risk_amount": 83.08,
+        "risk_pct": 0.831,
+        "R_gross": 1.81,
+        "expected_R_net": 1.73,
+        "costs_total": 6.61,
+        "funding_cost": 3.91,
+        "funding_hold_frac": 0.0026041133366514002,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 270.27027 (100.0$ риска), но потолок ограничил его; итог — риск 0.83% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 5
+      }
+    ],
+    "no_trade": false,
+    "no_trade_reason": null,
+    "total_heat_pct": 2.861,
+    "rejected_candidates": [
+      {
+        "id": "C-0002",
+        "decision_id": "20261123_090216:BNB/USDT",
+        "instrument": "BNB/USDT",
+        "asset_class": "crypto",
+        "direction": "short",
+        "horizon": "swing",
+        "thesis": "Шорт BNB/USDT также в нисходящем тренде, R ≈ 2.15 и стоп над swing‑high, что делает сетап привлекательным.",
+        "counter_thesis": "Опыт с ETH и SOL показывает, что при боковом режиме BTC такие стопы часто пробиваются шумом, что может привести к стоп‑лоссу.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [],
+        "notes": [],
+        "entry": 558.0,
+        "stop": 582.71,
+        "targets": [
+          525.0,
+          503.75
+        ],
+        "target_far": 503.75,
+        "size": {
+          "value": 2.688172,
+          "unit_type": "BNB"
+        },
+        "risk_amount": 66.42,
+        "risk_pct": 0.664,
+        "R_gross": 2.2,
+        "expected_R_net": 2.15,
+        "costs_total": 2.7,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 1.0% риска был бы 4.046945 (100.0$ риска), но потолок ограничил его; итог — риск 0.66% вместо 1.0%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true
+        },
+        "rank": 2,
+        "rejected_by": "консультант №2",
+        "reason": "судья признал сильнее сторону «лонг», а сделка — «шорт»"
+      }
+    ],
+    "llm_usage": {
+      "calls": 43,
+      "tokens_in": 76388,
+      "tokens_out": 24249,
+      "cost_usd_if_paid": 0.023,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Bitcoin rebounds above $60,000 после ликвидаций",
+        "event_risk_flag": true,
+        "event_risk": "Федеральная резервная система может повысить ставки в декабре, что может усилить давление на рынок",
+        "claims": [
+          {
+            "text": "Bitcoin поднялся выше $60,000 после волны ликвидаций в $1,8 млрд",
+            "refs": [
+              7
+            ]
+          },
+          {
+            "text": "Криптовалютные биржи Южной Кореи приостановили CYBER-транзакции из-за подозрения на эксплойт мостов",
+            "refs": [
+              10
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу $12 млн и предложил 10% вознаграждение за возврат средств",
+            "refs": [
+              11
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 7,
+            "title": "Bitcoin rebounds above $60,000 after $1.8 billion crypto liquidation wave",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/bitcoin-bounces-9-from-two-year-low-to-retake-usd60-000-as-traders-eye-monday-s-stock-open",
+            "published": "2026-11-21 17:50 UTC"
+          },
+          {
+            "n": 9,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 10,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 11,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 61272.01
+      },
+      "ETH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Скорее всего, падение цены ETH усилится из‑за давления со стороны BTCS и возможного дальнейшего снижения стоимости токенов CYBER",
+        "event_risk_flag": true,
+        "event_risk": "Возможный взлом Chainflip и дальнейшие проблемы с безопасностью могут усилить падение",
+        "claims": [
+          {
+            "text": "Китайские биржи приостановили переводы CYBER после подозрения на эксплойт в мосте",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "BTCS сократила долг по Aave, но падение ETH держит залог под давлением",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ether treasury firm BTCS warns SEC its $54 million Aave loan could be liquidated",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/ether-treasury-firm-btcs-warns-sec-its-usd54-million-aave-loan-could-be-liquidated",
+            "published": "2026-11-21 12:30 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 1732.27
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Новые проверки памяти и подозрение на эксплойт в мосте CYBER могут снизить доверие к Solana",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Новые проверки памяти могут привести к сбоям старых транзакций на Solana",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Обнаружен подозрительный выпуск токенов CYBER и их перемещение из моста Ethereum",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Solana’s new memory checks could make some older app transactions fail",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/solanas-new-memory-checks-could-make-some-older-app-transactions-fail/",
+            "published": "2026-11-23 03:05 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 71.3
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 557.94
+      },
+      "XRP/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "XRP Ledger trial settlement and AI‑request payments signal renewed institutional interest",
+        "event_risk_flag": true,
+        "event_risk": "Риски от решения ФРС и возможных рыночных коррекций",
+        "claims": [
+          {
+            "text": "XRP Ledger trial settled 213 000 paid AI requests, indicating active use of the network",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "XRP fell 10 % после распада длинных позиций и падения активов ETF ниже $1 млн",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "XRP Ledger trial settled 213,000 paid AI requests in 6,324 transactions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/xrp-ledger-trial-settled-213000-paid-ai-requests-in-6324-transactions/",
+            "published": "2026-11-22 21:05 UTC"
+          },
+          {
+            "n": 2,
+            "title": "XRP falls 10% as long bets unwind and ETF assets slip below $1 billion",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/21/xrp-falls-10-as-long-bets-unwind-and-etf-assets-slip-below-usd1-billion",
+            "published": "2026-11-21 05:59 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.93
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": true,
+        "event_risk": "Федеральная резервная система планирует повышение ставок в декабре, что может усилить давление на криптовалютный рынок",
+        "claims": [
+          {
+            "text": "Билл А́кман предсказывает, что повышение ставок ФРС в декабре может вызвать рецессию",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Кибер-активы в Южной Корее неожиданно созданы и перемещены, что привело к приостановке транзакций",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainflip потеряла 12 млн долларов в результате взлома, но предлагает вознаграждение за возврат средств",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.06
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Билл А́кман предсказывает, что ФРС сделает ошибку в решении о повышении ставок в декабре",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Кореянские биржи приостановили CYBER-транзакции после подозрения в эксплойте моста",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу 12 млн долларов и предложил хакеру 10% вознаграждения за возврат 90% средств",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.14
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Билл А́кман предсказывает, что ФРС сделает ошибку в решении о повышении ставок в декабре",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Кореянские биржи приостановили транзакции CYBER из‑за подозрительного эксплойта в мосте",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу 12 млн долларов и предложил хакеру 10 % вознаграждения за возврат 90 % средств",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 6.68
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 8.88
+      },
+      "TON/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 1.6
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Федеральная резервная система, вероятно, повысит ставки в декабре, что может усилить давление на рынки криптовалют",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Коррупция на биржах Южной Кореи привела к приостановке CYBER-транзакций из-за подозрения в эксплойте моста",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу 12 млн долларов и предложил вознаграждение 10% за возврат 90% украденных средств",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.31
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Билл А́кман предсказывает, что ФРС сделает ошибку в решении о повышении ставок в декабре",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Корейские биржи приостановили транзакции CYBER из‑за подозрения в эксплойте моста",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу 12 млн долларов и предложил хакеру 10 % вознаграждения за возврат 90 % средств",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.66
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Билл А́кман предсказывает, что ФРС ошибится с повышением ставок в декабре",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Кореянские биржи приостановили CYBER-транзакции из‑за подозрительного эксплойта в мосте",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу 12 млн долларов и предложил хакеру 10% вознаграждения за возврат 90% средств",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 40.38
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Билл А́кман предсказывает, что ФРС в декабре повысит ставки, что может вызвать рецессию",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Кореянские биржи приостановили CYBER-транзакции после подозрения в эксплойте моста",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainflip подтвердил кражу 12 млн долларов и предложил 10 % вознаграждения за возврат 90 % средств",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Billionaire Bill Ackman warns Fed will make a rate ‘mistake’ in December",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/billionaire-bill-ackman-warns-fed-rate-hikes-could-trigger-recession?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 02:47 UTC"
+          },
+          {
+            "n": 2,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 05:28 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 198.0
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 3.03
+      },
+      "SUI/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Задержка вывода BTC после погашения займа на Sui может вызвать падение цены",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Погашение Bitcoin‑поддерживаемого займа на Sui может задержать вывод BTC, даже после возврата hBTC",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Repaying a Bitcoin-backed loan on Sui can leave you waiting to withdraw native BTC",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/repaying-a-bitcoin-backed-loan-on-sui-can-leave-you-waiting-to-withdraw-native-btc/",
+            "published": "2026-11-23 02:05 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.66
+      }
+    },
+    "direction": "any"
+  },
+  "report_1": {
+    "sprint_id": "20261123_090216",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": true,
+        "risks": [
+          "Стоп‑лосс находится выше swing‑high, но при высокой волатильности BTC может вызвать пробой"
+        ],
+        "notes": "Шорт LTC/USDT соответствует нисходящему тренду, R ≈ 2.2, размер в пределах концентрации, риск 0.82 % от капитала."
+      },
+      {
+        "id": "C-0003",
+        "allowed": true,
+        "risks": [
+          "Стоп‑лосс близок к половине среднего диапазона свечи, что повышает вероятность срабатывания шума"
+        ],
+        "notes": "Шорт SOL/USDT поддержан новостным катализатором, R ≈ 2.0, риск 0.48 % от капитала, но требуется внимательное наблюдение за уровнем стопа."
+      },
+      {
+        "id": "C-0004",
+        "allowed": true,
+        "risks": [
+          "Отсутствие явного катализатора может привести к откату цены от уровня стопа"
+        ],
+        "notes": "Шорт BCH/USDT имеет R ≈ 1.75, риск 0.74 % от капитала, стоп над swing‑high, тренд нисходящий."
+      },
+      {
+        "id": "C-0005",
+        "allowed": true,
+        "risks": [
+          "Стоп‑лосс расположен близко к половине диапазона свечи, возможен преждевременный срабатывающий шум"
+        ],
+        "notes": "Шорт AVAX/USDT с R ≈ 1.73, риск 0.83 % от капитала, стоп над swing‑high, тренд нисходящий."
+      }
+    ],
+    "expert_opinion": "Все четыре кандидата удовлетворяют требованиям по риску, R‑коэффициенту и концентрации, а суммарный heat‑pct (3.525 %) находится ниже лимита 4 %. Основные риски связаны с близостью стоп‑лоссов к половине среднего диапазона свечи и отсутствием сильного катализатора у некоторых инструментов. При соблюдении строгого контроля стопов и мониторинге новостей позиции считаются приемлемыми.",
+    "package_ok": true
+  },
+  "report_2": {
+    "sprint_id": "20261123_090216",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "LTC/USDT",
+        "verdict": "pass",
+        "winner": "short",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "short",
+          "confidence": "high"
+        },
+        "reason": "Рынок в нисходящем режиме (SMA10 = 39.9 < SMA30 = 41.31, цена = 40.38 < SMA30) и коэффициент long/short = 2.71 указывает на перенасыщенность лонгов, усиливая давление вниз",
+        "counter_thesis": "Возможный отскок цены от уровня поддержки около 39.9 при неожиданном росте спроса",
+        "weak_points": [],
+        "fact_check": "Все аргументы обеих сторон подтверждены данными из facts: SMA10 = 39.9, SMA30 = 41.31, price = 40.38, long_short_ratio = 2.71, funding_rate≈0, trend down, новость о приостановке CYBER‑переводов подтверждена",
+        "long_case": {
+          "strongest": "Доминирование лонгов (коэффициент 2.71) свидетельствует о сильном спросе и потенциальном росте цены",
+          "arguments": [
+            {
+              "text": "Цена выше быстрой SMA10 (40.38 > 39.9) и близка к SMA30, что указывает на возможный отскок от поддержки",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Длинные позиции доминируют: коэффициент long/short = 2.71, значит рынок переходит в лонговый настрой",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Финансирование почти нейтрально (≈0 %), поэтому нет давления на падение цены",
+              "evidence": "positioning.funding_rate",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "доминирование лонгов (2.71) в явно нисходящем рынке создаёт сильное давление вниз",
+          "arguments": [
+            {
+              "text": "long_short_ratio = 2.71 — лонгов почти в три раза больше, толпа в лонгах создаёт давление вниз",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "trend = down — SMA10 (39.9) ниже SMA30 (41.31), цена (40.38) ниже SMA30, подтверждает нисходящий тренд",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "funding_rate ≈ 0 — отсутствие положительного финансирования лишает лонги поддержки",
+              "evidence": "positioning.funding_rate",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "South Korean exchanges halted CYBER transfers amid suspected bridge exploit (news 2) — рост неопределённости в экосистеме усиливает падение",
+              "evidence": "news[2].title",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        }
+      },
+      {
+        "id": "C-0002",
+        "instrument": "BNB/USDT",
+        "verdict": "veto",
+        "winner": "long",
+        "veto_reason": "судья признал сильнее сторону «лонг», а сделка — «шорт»",
+        "forecast": {
+          "direction": "long",
+          "confidence": "high"
+        },
+        "reason": "У лонга 4 аргумента с подтверждением в facts (цена > SMA10 = 557.94 > 552.25, funding≈0 %, L/S = 1.51, диапазон = 28.7 %), у шорта только 3 подтверждённых аргумента",
+        "counter_thesis": "Цена уже близка к swing‑high (582.71), поэтому дальнейший рост ограничен, а нейтральный funding и L/S‑ratio не подтверждают бычью силу",
+        "weak_points": [
+          "Опора на нейтральный funding и L/S‑ratio как bullish‑фактор слабая",
+          "Позиция цены в 28.7 % диапазона от swing‑high к swing‑low указывает на ограниченный потенциал роста"
+        ],
+        "fact_check": "Все числовые утверждения в аргументах лонга (SMA10 = 552.25, SMA30 = 561.09, price = 557.94, funding ≈ 0.0016 %, L/S = 1.51, range = 28.7 %) совпадают с данными в facts; у шорта один аргумент помечен как rhetoric и не учитывается",
+        "long_case": {
+          "strongest": "Цена выше быстрой SMA10 показывает краткосрочную поддержку",
+          "arguments": [
+            {
+              "text": "Цена выше быстрой SMA10 (557.94 > 552.25), что указывает на краткосрочную поддержку цены",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Отсутствие значимого перекоса в финансировании (funding ≈ 0 % — не указывает на падение)",
+              "evidence": "positioning.funding_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Соотношение лонг/шорт 1.51 — перекоса в сторону шорта нет, рынок нейтрален",
+              "evidence": "positioning.long_short_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Текущий уровень цены находится в 28.7 % диапазона от swing‑high к swing‑low, оставляя значительный резерв для роста к swing‑low 503.75",
+              "evidence": "market.range_position_pct",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "Тренд нисходящий подтверждён SMA10 < SMA30 и ценой ниже SMA30",
+          "arguments": [
+            {
+              "text": "Тренд нисходящий: SMA10 (552.25) ниже SMA30 (561.09), цена (557.94) ниже SMA30 — подтверждает падение",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "За последние 20‑дневных свечей цена упала на -19.04% — сильное снижение",
+              "evidence": "market.change_pct_window",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Текущий уровень цены (557.94) уже близок к swing‑high стопу (582.71), но ниже него, что ограничивает рост и оставляет место для дальнейшего падения к swing‑low (503.75)",
+              "evidence": "market.swing_high_20",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Отсутствие значимого перекоса в long/short ratio (1.51) и почти нулевой funding rate (0.0016%) указывает на отсутствие поддержки быков, что усиливает давление вниз",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": true,
+              "flags": [
+                "нулевой funding — не сигнал"
+              ]
+            }
+          ],
+          "without_evidence": 1
+        }
+      },
+      {
+        "id": "C-0003",
+        "instrument": "SOL/USDT",
+        "verdict": "pass",
+        "winner": "short",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "short",
+          "confidence": "med"
+        },
+        "reason": "Тренд медвежий: SMA10 = 70.43 ниже SMA30 = 71.31, цена 71.3 ниже SMA30, а соотношение long/short = 2.37 указывает на переизбыток лонгов, что обычно предвещает падение цены",
+        "counter_thesis": "Риск: стоп‑лосс 73.56 находится лишь в 2.26 % от цены входа, при росте волатильности может быть пробит",
+        "weak_points": [
+          "Long: аргумент о новых проверках памяти Solana (news 1) не подтверждается фактами и даже может быть негативным",
+          "Short: аргумент о влиянии приостановки переводов CYBER (news 2) на SOL спекулятивен и не имеет прямых данных"
+        ],
+        "fact_check": "Позиция long_short_ratio = 2.37, SMA10 = 70.43, SMA30 = 71.31, price = 71.3, trend_meaning соответствует нисходящему, новости: 1 – проверка памяти Solana, 2 – приостановка CYBER‑переводов",
+        "long_case": {
+          "strongest": "Торговцы в лонге в 2.37 раза превышают шорты, что создает мощный бычий импульс",
+          "arguments": [
+            {
+              "text": "Большинство трейдеров находятся в лонге (соотношение 2.37 к 1), что указывает на сильный бычий интерес",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Цена выше быстрой SMA10 (71.3 > 70.43), что обычно считается бычьим сигналом в нисходящем рынке",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Новость о новых проверках памяти Solana [1] может вызвать рост спроса на SOL, так как разработчики усиливают безопасность сети, привлекая новых пользователей",
+              "evidence": "[1]",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "доминирование лонгов (ratio 2.37) и нисходящий SMA‑тренд создают давление вниз",
+          "arguments": [
+            {
+              "text": "long_short_ratio 2.37 — лонги доминируют, что обычно предвещает коррекцию вниз",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "trend_meaning \"нисходящий: SMA10 ниже SMA30, цена ниже SMA30\" — подтверждает текущий медвежий тренд",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "news 2: приостановка переводов CYBER из‑за подозрения на эксплойт моста усиливает негативный настрой и может вызвать отток средств из SOL",
+              "evidence": "news[2].title",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        }
+      },
+      {
+        "id": "C-0004",
+        "instrument": "BCH/USDT",
+        "verdict": "pass",
+        "winner": "short",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "short",
+          "confidence": "high"
+        },
+        "reason": "У короткой позиции 4 аргумента с подтверждёнными данными (соотношение лонгов 2.42, нисходящий SMA‑тренд, две негативные новости), у длинной – только 2 подтверждённых аргумента; основной факт – рынок находится в нисходящем режиме.",
+        "counter_thesis": "Риск короткой позиции – возможный отскок от 20‑дневного минимума (≈179.9) и рост цены выше уровня входа.",
+        "weak_points": [
+          "Long argument 1 неверно рассчитывает расстояние до swing‑low (198‑179.9=18.1, а не 9.1)",
+          "Long argument 3 помечен как rhetoric и не учитывается"
+        ],
+        "fact_check": "Проверены swing_low_20=179.9, swing_high_20=207.9, long_short_ratio=2.42, funding_rate=-0.0001879674763487 (‑0.0188 %), trend_meaning='нисходящий: SMA10 ниже SMA30, цена ниже SMA30', новости 1‑3 соответствуют заголовкам в facts",
+        "long_case": {
+          "strongest": "Толпа уже в лонге (соотношение 2.42), что создаёт сильный бычий импульс",
+          "arguments": [
+            {
+              "text": "Цена находится близко к 20‑дневному минимуму (198 ≈ 179.9 + 9.1), что часто служит уровнем поддержки и потенциальным отскоком вверх",
+              "evidence": "market.swing_low_20",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Соотношение лонгов 2.42 × превышает шорт, толпа уже в лонге, что может усилить восходящее давление",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Отрицательная ставка финансирования почти нейтральна (-0.0188 %), значит нет давления вниз, а потенциальный рост не ограничен финансингом",
+              "evidence": "positioning.funding_rate",
+              "rhetoric": true,
+              "flags": [
+                "нулевой funding — не сигнал"
+              ]
+            },
+            {
+              "text": "Новость [1] о возможной ошибке ФРС в декабре может привести к смягчению монетарной политики, что обычно поддерживает рост криптовалют",
+              "evidence": "news[1]",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 1
+        },
+        "short_case": {
+          "strongest": "доминирование лонгов (long_short_ratio 2.42) указывает на перегрев быков и повышенный риск падения цены",
+          "arguments": [
+            {
+              "text": "long_short_ratio 2.42 — лонги доминируют, шортов мало, значит рынок перегрет в сторону роста",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "trend_meaning \"нисходящий: SMA10 ниже SMA30, цена ниже SMA30\" — подтверждает продолжающийся спад цены",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "новость 1: предупреждение Bill Ackman о возможной ошибке ФРС и риске рецессии усиливает медвежий настрой на крипторынке",
+              "evidence": "news[1].title",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "новость 2: приостановка переводов на южнокорейских биржах из‑за подозрения на эксплойт создаёт дополнительный негативный фон",
+              "evidence": "news[2].title",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        }
+      },
+      {
+        "id": "C-0005",
+        "instrument": "AVAX/USDT",
+        "verdict": "pass",
+        "winner": "short",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "short",
+          "confidence": "high"
+        },
+        "reason": "У шорта 3 аргумента, подтверждённые фактами (long_short_ratio = 2.08, нисходящий тренд SMA10 < SMA30, новость о $12 млн хаке), у лонга только 2 аргумента, один из них риторический",
+        "counter_thesis": "Стоп‑уровень 7.05 почти совпадает со swing‑high 7.04, при краткосрочном отскоке может сработать преждевременно",
+        "weak_points": [
+          "Long: первый аргумент помечен как риторический и не учитывается",
+          "Long: ссылка на новость о ФРС слишком общая, без прямой связи с AVAX/USDT"
+        ],
+        "fact_check": "Проверены данные: SMA10 = 6.64, SMA30 = 6.75, long_short_ratio = 2.08, trend_meaning соответствует нисходящему тренду, новости №1 и №3 соответствуют заголовкам, стоп 7.05≈swing_high 7.04",
+        "long_case": {
+          "strongest": "Цена выше SMA10 (6.68 > 6.64) показывает короткосрочный бычий импульс",
+          "arguments": [
+            {
+              "text": "Текущая цена 6.68 выше быстрой SMA10 (6.64), что указывает на краткосрочный импульс вверх несмотря на общий нисходящий тренд",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": true,
+              "flags": [
+                "довод против своей стороны"
+              ]
+            },
+            {
+              "text": "Соотношение лонгов 2.08 × превышает шортов, толпа находится в лонгах, что часто предвещает разворот вниз‑тренда",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Новость [1] о возможной ошибке ФРС в декабре может вызвать рост риска и приток капитала в альтернативные активы, включая криптовалюты",
+              "evidence": "[1]",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 1
+        },
+        "short_case": {
+          "strongest": "Перегретая длинная позиция (long_short_ratio 2.08) готова к массовому оттоку, что ускорит падение цены",
+          "arguments": [
+            {
+              "text": "long_short_ratio 2.08 — в лонгах в 2.08 раза больше, толпа перегрета и может быстро выйти, давя цену вниз",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "trend_meaning \"нисходящий: SMA10 ниже SMA30, цена ниже SMA30\" подтверждает продолжающийся медвежий тренд",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Новость 3: Chainflip подтвердил $12 млн хак, усиливает негативный настрой на крипторынке и давление на цены",
+              "evidence": "news[3].title",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        }
+      }
+    ],
+    "filtered_out": [
+      "C-0002"
+    ]
+  }
+}
