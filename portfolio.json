@@ -1,5 +1,31 @@
 {
   "capital": 10000,
-  "open_positions": [],
-  "current_heat_pct": 0
+  "open_positions": [
+    {
+      "id": "P-0004",
+      "opened_at": "2026-11-24T00:40:42",
+      "instrument": "ADA/USDT",
+      "direction": "short",
+      "entry": 0.1483,
+      "entry_planned": 0.15,
+      "stop": 0.16,
+      "targets": [
+        0.13,
+        0.13
+      ],
+      "target_far": 0.13,
+      "size": {
+        "value": 8333.333333,
+        "unit_type": "ADA"
+      },
+      "risk_amount": 97.5,
+      "risk_pct": 0.975,
+      "expected_R_net": 1.54,
+      "expected_R_net_plan": 1.64,
+      "status": "open",
+      "source": "20261123_210409:C-0001",
+      "decision_id": "20261123_210409:ADA/USDT"
+    }
+  ],
+  "current_heat_pct": 0.975
 }
