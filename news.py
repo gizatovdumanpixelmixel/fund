@@ -14,7 +14,7 @@
 Проверка вручную:  python3 news.py BTC/USDT
 """
 
-import re, sys, html, json, datetime, urllib.request
+import os, re, sys, html, json, datetime, urllib.request
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 
@@ -25,6 +25,12 @@ FEEDS = {
     "CryptoSlate": "https://cryptoslate.com/feed/",
 }
 FNG_URL = "https://api.alternative.me/fng/?limit=1"
+
+# Публичные Telegram-каналы с новостями: читаются через веб-версию t.me/s/<канал>
+# (вход в аккаунт не нужен). Список — в файле news_channels.txt, по одному имени
+# канала в строке (без @ и без t.me/). Закрытые каналы и боты так не читаются.
+CHANNELS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "news_channels.txt")
+TG_WEB = "https://t.me/s/{name}"
 HOURS = 48
 MAX_COIN_ITEMS = 8
 MAX_MARKET_ITEMS = 3
@@ -47,11 +53,27 @@ KEYWORDS = {
     "NEAR": ["near protocol"],
     "SUI": ["sui network", "sui blockchain", "sui"],
 }
+# русские названия — для русскоязычных Telegram-каналов
+KEYWORDS_RU = {
+    "BTC": ["биткоин", "биткоина", "биткоину", "биткоином", "биткойн", "биток"],
+    "ETH": ["эфириум", "эфириума", "эфир", "эфира"],
+    "SOL": ["солана", "соланы", "солане"],
+    "XRP": ["рипл", "ripple"],
+    "DOGE": ["догикоин", "доги"],
+    "TON": ["тон", "тона", "toncoin"],
+    "ADA": ["кардано"], "AVAX": ["аваланч"], "LINK": ["чейнлинк"], "TRX": ["трон"],
+    "DOT": ["полкадот"], "LTC": ["лайткоин"], "BCH": ["биткоин кэш"], "SUI": ["суи"],
+}
+for _k, _v in KEYWORDS_RU.items():
+    KEYWORDS.setdefault(_k, []).extend(_v)
+
 # фразы, которые НЕ относятся к монете, хотя содержат её слово (Bitcoin Cash ≠ Bitcoin)
-EXCLUDE = {"BTC": ["bitcoin cash", "wrapped bitcoin"]}
+EXCLUDE = {"BTC": ["bitcoin cash", "wrapped bitcoin", "биткоин кэш"]}
 # общие события рынка, которые бьют по всем монетам сразу
 MARKET_WORDS = ["federal reserve", "fed", "fomc", "interest rate", "cpi", "inflation", "sec",
-                "etf", "stablecoin", "liquidation", "crypto market", "hack", "exploit", "tariff"]
+                "etf", "stablecoin", "liquidation", "crypto market", "hack", "exploit", "tariff",
+                "фрс", "ставка", "ставку", "инфляция", "инфляции", "крипторынок", "криптовалюты",
+                "ликвидации", "взлом", "пошлины", "регулятор"]
 
 
 def _get(url, timeout=12):
@@ -99,14 +121,57 @@ def parse_feed(xml_bytes, source):
     return [x for x in out if x["title"]]
 
 
-def fetch_all(feeds=None, fetch=_get):
-    """Скачивает все ленты один раз за запуск. Возвращает (новости, ошибки)."""
+def telegram_channels():
+    if not os.path.exists(CHANNELS_PATH):
+        return []
+    names = []
+    with open(CHANNELS_PATH, encoding="utf-8") as f:
+        for line in f:
+            line = line.split("#")[0].strip()
+            line = re.sub(r"^(https?://)?(t\.me/)?(s/)?@?", "", line).strip("/ ")
+            if re.fullmatch(r"[A-Za-z0-9_]{4,64}", line):
+                names.append(line)
+    return names
+
+
+_POST = re.compile(r'<div class="tgme_widget_message_wrap.*?(?=<div class="tgme_widget_message_wrap|\Z)', re.S)
+
+
+def parse_telegram(html_bytes, channel):
+    """Посты из веб-версии публичного канала t.me/s/<канал>."""
+    page = html_bytes.decode("utf-8", "replace")
+    out = []
+    for block in _POST.findall(page):
+        post = re.search(r'data-post="([^"]+)"', block)
+        when = re.search(r'<time[^>]*datetime="([^"]+)"', block)
+        body = re.search(r'<div class="tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>', block, re.S)
+        if not (post and when and body):
+            continue
+        text = _clean(re.sub(r"<br\s*/?>", " ", body.group(1)), 600)
+        if not text:
+            continue
+        title = text.split(". ")[0][:200]
+        out.append({"title": title, "link": f"https://t.me/{post.group(1)}", "published": _parse_date(when.group(1)),
+                    "summary": text[:300], "source": f"Telegram @{channel}"})
+    return out
+
+
+def fetch_all(feeds=None, fetch=_get, channels=None):
+    """Скачивает все ленты и Telegram-каналы один раз за запуск. Возвращает (новости, ошибки)."""
     items, errors = [], []
     for source, url in (feeds or FEEDS).items():
         try:
             items.extend(parse_feed(fetch(url), source))
         except Exception as e:                       # noqa: BLE001
             errors.append(f"{source}: {e}")
+    for name in (telegram_channels() if channels is None else channels):
+        try:
+            posts = parse_telegram(fetch(TG_WEB.format(name=name)), name)
+            if not posts:
+                errors.append(f"Telegram @{name}: постов не видно — канал закрыт, это бот или имя неверное")
+            items.extend(posts)
+        except Exception as e:                       # noqa: BLE001
+            errors.append(f"Telegram @{name}: {e}")
     return items, errors
 
 
