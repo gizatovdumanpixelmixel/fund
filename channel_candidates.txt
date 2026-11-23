@@ -1,11 +1,11 @@
-# Кандидаты в источники новостей — проверяются workflow «Проверка каналов».
-# Боты (*_bot, zoloto_invbot) и закрытая ссылка-приглашение t.me/+... сюда не входят:
-# их нельзя читать без входа в аккаунт.
-Elliotrading
-invcryptonews
-falconinvestors
-finfalconx
-amaninvest
-keeper_cis
-manualanomics
-INVESTORDIARY
+# Проверено 23.11.2026 (workflow «Проверка каналов», результат — channel_check.json).
+# Подключён: invcryptonews (новости с фактами, без рекламы и сигналов) — см. news_channels.txt.
+# Не подключены:
+#   Elliotrading    — торговые идеи и продажа платной подписки
+#   falconinvestors — мнения и прогнозы автора, а не новости
+#   finfalconx      — макро и обучение, мало про крипту (кандидат для этапа «акции США»)
+#   amaninvest      — акции США + реклама обучения (кандидат для этапа «акции США», с осторожностью)
+#   keeper_cis      — новости продукта кошелька и розыгрыши
+#   manualanomics   — экономика и банки Казахстана (кандидат для этапа KASE)
+#   INVESTORDIARY   — личный блог про недвижимость, пишет редко
+# Нельзя читать: zoloto_invbot, falconcrypto_bot, falcon_course_bot (боты), t.me/+... (закрытое приглашение)
