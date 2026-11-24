@@ -7,7 +7,7 @@
   2. если режим «работать» и прошло 2 часа с прошлой проверки — монитор позиций,
      в Telegram только то, что требует внимания (закрытия, ПЕРЕСМОТРЕТЬ, ЗАКРЫТЬ).
 
-Команды (ответ придёт в течение часа — при следующем цикле):
+Команды (в мгновенном режиме через Cloudflare Worker — ответ за 1–2 минуты):
   /work            — работать по расписанию
   /rest            — отдыхать (расписание пропускается; команды работают)
   /status          — режим, открытые позиции, расход за месяц
@@ -35,7 +35,7 @@ HELP = ("Команды:\n"
         "/work — работать по расписанию\n/rest — отдыхать\n/status — состояние\n"
         "/run — анализ сейчас (/run long, /run short)\n/check — проверить позиции\n"
         "/open C-0001 — записать вход\n/close P-0001 — закрыть позицию\n/week — сводка за неделю\n\n"
-        "Ответ приходит в течение часа: облако читает команды раз в час.")
+        "Ответ приходит за 1–2 минуты (анализ — 4–6 минут).")
 
 
 # ── режим ────────────────────────────────────────────────────────────────────
@@ -262,14 +262,39 @@ def handle(text):
     return "Не знаю такую команду.\n\n" + HELP
 
 
-def cycle():
-    """Один ежечасный цикл в облаке."""
-    if TG.enabled():
+def worker_queue():
+    """Команды из очереди Cloudflare Worker (мгновенный режим бота).
+    Сначала команда, ради которой запущена задача (BOT_CMD), затем всё накопленное."""
+    import urllib.request
+    items, seen = [], set()
+    first = os.environ.get("BOT_CMD", "").strip()
+    if first:
+        items.append({"text": first}); seen.add(os.environ.get("BOT_CMD_ID", ""))
+    url = os.environ.get("BOT_WORKER_URL", "").rstrip("/")
+    if url:
         try:
-            msgs = TG.get_updates()
+            req = urllib.request.Request(url + "/queue", headers={
+                "X-Bot-Key": os.environ.get("BOT_SECRET", ""), "User-Agent": "fund-bot"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                for it in json.loads(r.read().decode("utf-8")).get("items", []):
+                    if it.get("id") not in seen:
+                        items.append(it); seen.add(it.get("id"))
         except Exception as e:                       # noqa: BLE001
-            print(f"telegram: {e}")
-            msgs = []
+            print(f"очередь worker: {e}")
+    return items
+
+
+def cycle():
+    """Один цикл в облаке: по расписанию раз в час или сразу по команде из бота."""
+    if TG.enabled():
+        if os.environ.get("BOT_WORKER_URL") or os.environ.get("BOT_CMD"):
+            msgs = worker_queue()                    # мгновенный режим: Telegram пишет в Worker
+        else:
+            try:
+                msgs = TG.get_updates()              # старый режим: опрос раз в час
+            except Exception as e:                   # noqa: BLE001
+                print(f"telegram: {e}")
+                msgs = []
         for m in msgs:
             try:
                 reply = handle(m["text"])

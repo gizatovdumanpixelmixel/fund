@@ -1,9 +1,19 @@
 name: Команды и монитор
+run-name: ${{ inputs.cmd && format('Команда {0}', inputs.cmd) || 'Команды и монитор' }}
 
 on:
   schedule:
     - cron: "37 * * * *"          # раз в час: команды из Telegram + монитор раз в 2 часа
   workflow_dispatch:
+    inputs:
+      cmd:
+        description: "Команда бота (заполняет Cloudflare Worker)"
+        required: false
+        default: ""
+      cmd_id:
+        description: "ID команды в очереди"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -24,6 +34,10 @@ jobs:
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       LLM_PAID: ${{ vars.LLM_PAID }}
       LLM_MONTHLY_BUDGET_USD: ${{ vars.LLM_MONTHLY_BUDGET_USD }}
+      BOT_WORKER_URL: ${{ vars.BOT_WORKER_URL }}
+      BOT_SECRET: ${{ secrets.BOT_SECRET }}
+      BOT_CMD: ${{ inputs.cmd }}
+      BOT_CMD_ID: ${{ inputs.cmd_id }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
