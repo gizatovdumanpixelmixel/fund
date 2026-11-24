@@ -1,0 +1,802 @@
+{
+  "briefing": {
+    "sprint_id": "20261124_085800",
+    "summary": "Сделок нет. BTC/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | ETH/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | SOL/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | BNB/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | XRP/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | DOGE/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | ADA/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | AVAX/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | LINK/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | TON/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | TRX/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | DOT/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | LTC/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | BCH/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | NEAR/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | SUI/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен",
+    "candidates_plain": [],
+    "terms_used": []
+  },
+  "package": {
+    "sprint_id": "20261124_085800",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "candidates": [],
+    "no_trade": true,
+    "no_trade_reason": "BTC/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | ETH/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | SOL/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | BNB/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | XRP/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | DOGE/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | ADA/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | AVAX/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | LINK/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | TON/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | TRX/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | DOT/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | LTC/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | BCH/USDT: отсеяно кодом до анализа: тренд монеты восходящий, а режим рынка BTC нисходящий — разрешённых направлений нет | NEAR/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | SUI/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен",
+    "total_heat_pct": 0,
+    "llm_usage": {
+      "calls": 16,
+      "tokens_in": 21048,
+      "tokens_out": 3685,
+      "cost_usd_if_paid": 0.0027,
+      "models": [
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "CFTC staff guidance allows Bitcoin to count toward operating reserves, boosting institutional demand",
+        "event_risk_flag": true,
+        "event_risk": "US prosecutors seek control of stolen USDC from North Korea‑linked Binance hack, potential regulatory scrutiny",
+        "claims": [
+          {
+            "text": "CFTC staff say exchanges can count Bitcoin toward operating reserves",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "US prosecutors are seeking control of stolen USDC from a North Korea‑linked Binance hack",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Elliptic reports $247 million of hack loot moved through Bitcoin mixers",
+            "refs": [
+              4
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "CFTC staff say exchanges can count Bitcoin toward operating reserves",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/cftc-staff-say-exchanges-can-count-bitcoin-toward-operating-reserves?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 23:43 UTC"
+          },
+          {
+            "n": 3,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 4,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 60315.69
+      },
+      "ETH/USDT": {
+        "sentiment": "neutral",
+        "has_catalyst": true,
+        "catalyst": "BTCS продал более половины своих ETH, чтобы снизить дефицит в DeFi",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "BTCS продал более половины своих ETH, чтобы снизить дефицит в DeFi",
+            "refs": [
+              5
+            ]
+          },
+          {
+            "text": "Ethereum Foundation удвоила команду по безопасности перед обновлением протокола",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 3,
+            "title": "Ethereum Foundation doubles protocol security team ahead of overhaul",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/ethereum-foundation-doubles-protocol-security-team-amid-ai-quantum-overhaul?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-24 00:36 UTC"
+          },
+          {
+            "n": 5,
+            "title": "BTCS offloads $44M in ETH to reduce DeFi debt amid market downturn",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/btcs-offloads-44m-eth-reduce-defi-debt-market-downturn?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 19:35 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [
+          "отброшено утверждений без источника: 1"
+        ],
+        "trend_4h": "range",
+        "last_price": 1695.26
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": true,
+        "event_risk": "Скоро могут возникнуть проблемы с безопасностью Solana из‑за обнаруженного эксплойта в мосте CYBER, что может вызвать падение цены",
+        "claims": [
+          {
+            "text": "Tom Lee отметил, что предложение ETH растёт почти так же медленно, как Bitcoin, что может усилить интерес к более ограниченным активам",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Мем‑коин, посвящённый гиппому Фиона, собрал 100 000 долларов для зоопарка в Цинциннати",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Северная Корея переместила 247 млн долларов, украденных в хаке Binance, через Bitcoin‑микшеры",
+            "refs": [
+              4,
+              5
+            ]
+          },
+          {
+            "text": "US пытается вернуть 1,1 млрд долларов, украденных в кибератаке на Binance, и контролировать USDC",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Cathie Wood отменила два планируемых крипто‑ETF, что снижает доступность институциональных инвестиций",
+            "refs": [
+              6
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Solana Meme Coin for Fiona the Hippo Raises $100K for Cincinnati Zoo Charity",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383762/solana-meme-coin-for-fiona-the-hippo-sends-100k-to-cincinnati-zoo-charity",
+            "published": "2026-11-23 12:43 UTC"
+          },
+          {
+            "n": 3,
+            "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-22 07:24 UTC"
+          },
+          {
+            "n": 4,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 5,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 6,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 71.34
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США пытаются вернуть $1,1 млрд украденных криптовалют, связанных с хакерской атакой на Binance",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Почти весь украденный лут из Binance перемещён через биткоин‑миксеры, контролируемые одним лицом",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "ARK Invest отменил два запланированных крипто‑ETF, оставив лишь один с небольшими активами",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 2,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 552.45
+      },
+      "XRP/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "XRP borrowers face a $207,500 tipping point as one vault dominates an $8 million market",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "XRP borrowers approaching a critical tipping point, with one vault dominating the $8 million market, potentially tightening liquidity and affecting borrowing rates",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Ethereum supply growth is comparable to Bitcoin’s, but XRP’s supply growth is higher, indicating a relative scarcity advantage for Ethereum",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "XRP borrowers face a $207,500 tipping point as one vault dominates an $8 million market",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/xrp-borrowers-face-a-207500-tipping-point-as-one-vault-dominates-an-8-million-market/",
+            "published": "2026-11-24 00:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.95
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США пытаются вернуть $1,1 млрд украденных криптовалют, включая USDC, после взлома Binance, связанного с Северной Кореей",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Почти весь украденный лут Binance перемещён через биткоин‑микшеры, контролируемые одним лицом",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 2,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.06
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Tom Lee сравнивает рост предложения Ethereum с Bitcoin, отмечая, что ETH растёт примерно на 0,90% в год, почти как Bitcoin (0,82%)",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Владельцы Cardano отвергли запрос в 4 миллиона долларов на проведение главного мероприятия 2027 года, при этом почти все голосующие поддержали отказ",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "США пытаются вернуть 1,1 млрд долларов, украденных в результате взлома Binance, связанного с Северной Кореей",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Почти весь вывод средств после взлома Binance был перемешан через Bitcoin‑миксеры, контролируемые одним лицом",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Cathie Wood прекратила работу над двумя планируемыми крипто‑ETF, а CoinDesk 20 Crypto ETF удерживает лишь 1,81 млн долларов после 10 месяцев",
+            "refs": [
+              5
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Cardano holders are turning down a $4 million request for running its flagship event",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/23/cardano-holders-are-turning-down-a-usd4-million-request-for-running-its-flagship-event",
+            "published": "2026-11-23 06:15 UTC"
+          },
+          {
+            "n": 3,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 4,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.15
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США пытаются вернуть 1,1 млрд долларов, украденных в результате хакерской атаки, связанной с Северной Кореей, в том числе 247 млн долларов, перемещенных через биткоин‑миксеры",
+            "refs": [
+              1,
+              2
+            ]
+          },
+          {
+            "text": "ARK Invest отменил два запланированных крипто‑ETF, что может снизить интерес к криптовалютам в целом",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 2,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 6.77
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 9.04
+      },
+      "TON/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США пытаются вернуть $1,1 млрд украденных криптовалют, связанных с хакерской атакой на Binance, связанной с Северной Кореей",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Почти весь украденный лут в размере $247 млн перемещался через Bitcoin‑миксеры, что усложняет отслеживание",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "ARK Invest отменил два запланированных крипто‑ETF, что может сигнализировать о снижении институционального интереса к криптовалютам",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 2,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 1.6
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.31
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США пытаются вернуть $1,1 млрд украденных USDC после взлома Binance, связанного с Северной Кореей",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Почти весь украденный лут Binance перемещён через Bitcoin‑миксеры, контролируемые одной личностью",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "ARK Invest отменил два запланированных крипто‑ETF, что может отразиться на спросе на криптовалюты в целом",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 2,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.68
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США пытаются вернуть $1,1 млрд украденных криптовалют, связанных с хакерской атакой на Binance, связанной с Северной Кореей.",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Почти все средства, украденные в результате хакерской атаки на Binance, перемещаются через Bitcoin‑миксеры, управляемые одним лицом.",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "ARK Invest отменил два запланированных криптовалютных ETF, а CoinDesk 20 Crypto ETF (KRYP) имеет лишь $1,81 млн активов спустя почти 10 месяцев после запуска.",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 2,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 41.3
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 201.4
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США пытаются вернуть $1,1 млрд украденных в кибератаке на Binance, связанной с Северной Кореей",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Хакеры переместили почти $247 млн через биткоин‑миксеры, что подтверждает Elliptic",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "ARK Invest отменил два планируемых крипто‑ETF, а ProShares' CoinDesk 20 Crypto ETF имеет лишь $1,81 млн активов спустя почти 10 месяцев",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 2,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 2.97
+      },
+      "SUI/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США пытаются вернуть $1,1 млрд украденных USDC после взлома Binance, связанного с Северной Кореей",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Почти все средства, перемещённые через Bitcoin‑миксеры, принадлежат одной личности, которая отказывается блокировать их",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "ARK Invest отменил два запланированных крипто‑ETF, а CoinDesk 20 Crypto ETF удерживает лишь $1,81 млн активов",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US seeks to recover $1.1B in crypto stolen in North Korea-linked Binance hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 21:04 UTC"
+          },
+          {
+            "n": 2,
+            "title": "North Korea Moves $247 Million of Binance Hack Loot Through Bitcoin Mixers",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383844/north-korea-247-million-binance-hack-bitcoin-mixers",
+            "published": "2026-11-23 20:36 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Cathie Wood's ARK Invest pulls the plug on two planned crypto ETFs",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/23/cathie-wood-s-ark-invest-pulls-the-plug-on-two-planned-crypto-etfs",
+            "published": "2026-11-23 16:39 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.67
+      }
+    },
+    "direction": "any",
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 60310.32,
+      "sma20_1d": 67600.53,
+      "sma50_1d": 75747.71,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    }
+  },
+  "report_1": null,
+  "report_2": null
+}
