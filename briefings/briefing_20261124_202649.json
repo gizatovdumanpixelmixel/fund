@@ -1,0 +1,1086 @@
+{
+  "briefing": {
+    "sprint_id": "20261124_202649",
+    "summary": "Обе позиции считаются допустимыми: лонг LINK/USDT и лонг TRX/USDT. Риски связаны с нисходящим рынком BTC и узкими стопами, но ожидаемый R‑коэффициент выше 3.0, а риск в пределах лимитов.",
+    "candidates_plain": [
+      {
+        "id": "C-0001",
+        "what": "Купить LINK/USDT",
+        "why": "Цена находится в нижней части восходящего диапазона, стоп ниже swing‑low, ожидаемый R≈3.3",
+        "what_could_go_wrong": "BTC может продолжить падение, цена пробьёт swing‑low и активирует стоп",
+        "numbers_explained": [
+          {
+            "label": "R_net 3.31",
+            "means": "На каждый $1 риска ждём ~$3.31 прибыли после комиссий; риск здесь ~$50, значит цель по прибыли ~$(50*3.31)."
+          },
+          {
+            "label": "Риск ~$50",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$50."
+          }
+        ],
+        "expert_said": "Позицию можно открыть, контролируя общий риск",
+        "consultant_said": "Победила сторона long, так как три фактора подтверждают бычий тренд",
+        "agreement": "agree"
+      },
+      {
+        "id": "C-0002",
+        "what": "Купить TRX/USDT",
+        "why": "Цена отскочила от swing‑low, цель выше swing‑high, ожидаемый R≈3.1",
+        "what_could_go_wrong": "BTC может продолжить падение, узкий стоп может сработать при небольшом колебании",
+        "numbers_explained": [
+          {
+            "label": "R_net 3.14",
+            "means": "На каждый $1 риска ждём ~$3.14 прибыли после комиссий; риск здесь ~$22.48, значит цель по прибыли ~$(22.48*3.14)."
+          },
+          {
+            "label": "Риск ~$22.48",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$22.48."
+          }
+        ],
+        "expert_said": "Позицию можно открыть, но с учётом близкого к лимиту концентрационного риска",
+        "consultant_said": "Победила сторона long, так как четыре аргумента подтверждают бычий тренд",
+        "agreement": "agree"
+      }
+    ],
+    "terms_used": [
+      {
+        "term": "стоп",
+        "plain": "цена, на которой сделку закрывают с убытком, чтобы не потерять больше"
+      },
+      {
+        "term": "R (R_net)",
+        "plain": "во сколько раз возможная прибыль больше риска, после комиссий"
+      }
+    ]
+  },
+  "package": {
+    "sprint_id": "20261124_202649",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 59926.01,
+      "sma20_1d": 67581.31,
+      "sma50_1d": 75740.02,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261124_202649:LINK/USDT",
+        "instrument": "LINK/USDT",
+        "asset_class": "crypto",
+        "direction": "long",
+        "horizon": "swing",
+        "thesis": "Лонг LINK/USDT имеет смысл, так как цена находится в нижней части восходящего диапазона и стоп размещён ниже swing‑low 20, что даёт хороший потенциал роста.",
+        "counter_thesis": "В нисходящем режиме BTC шорт по тренду показывал лучшую эффективность; открытие лонга может столкнуться с общим медвежьим давлением и пробой вниз, особенно если цена пробьёт swing‑low.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [],
+        "notes": [
+          "аналитик назвал тренд «down», а по скользящим средним он восходящий — принят расчёт кода",
+          "режим «отскок»: монета идёт по своему тренду против рынка (BTC). Риск — половина обычного, таких позиций не больше 2. Нужен ясный сетап по тренду монеты с близким уровнем для стопа; любая слабость — no_trade."
+        ],
+        "mode": "bounce",
+        "entry": 8.79,
+        "stop": 8.248,
+        "targets": [
+          10.0,
+          10.6
+        ],
+        "target_far": 10.6,
+        "size": {
+          "value": 92.250923,
+          "unit_type": "LINK"
+        },
+        "risk_amount": 50.0,
+        "risk_pct": 0.5,
+        "R_gross": 3.34,
+        "expected_R_net": 3.31,
+        "costs_total": 1.46,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 8.11,
+        "leverage_used": 0.08,
+        "size_binding_cap": "none",
+        "size_note": "",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true,
+          "bounce_cap": true
+        },
+        "rank": 1
+      },
+      {
+        "id": "C-0002",
+        "decision_id": "20261124_202649:TRX/USDT",
+        "instrument": "TRX/USDT",
+        "asset_class": "crypto",
+        "direction": "long",
+        "horizon": "swing",
+        "thesis": "Лонг TRX/USDT оправдан, поскольку тренд вверх, цена отскочила от swing‑low 20 и цель выше swing‑high 20, что обеспечивает высокий R‑коэффициент.",
+        "counter_thesis": "При текущем медвежьем режиме BTC возможен дальнейший спад всех альткоинов, поэтому даже при техническом отскоке TRX может не удержать рост и вернуться к уровню поддержки, активируя стоп.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "notes": [
+          "режим «отскок»: монета идёт по своему тренду против рынка (BTC). Риск — половина обычного, таких позиций не больше 2. Нужен ясный сетап по тренду монеты с близким уровнем для стопа; любая слабость — no_trade."
+        ],
+        "mode": "bounce",
+        "entry": 0.307,
+        "stop": 0.3024,
+        "targets": [
+          0.3179,
+          0.322
+        ],
+        "target_far": 0.322,
+        "size": {
+          "value": 4885.993485,
+          "unit_type": "TRX"
+        },
+        "risk_amount": 22.48,
+        "risk_pct": 0.225,
+        "R_gross": 3.26,
+        "expected_R_net": 3.14,
+        "costs_total": 2.7,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 15.0,
+        "leverage_used": 0.15,
+        "size_binding_cap": "concentration",
+        "size_note": "размер урезан потолком концентрации 15%: полный под 0.5% риска был бы 10869.565217 (50.0$ риска), но потолок ограничил его; итог — риск 0.22% вместо 0.5%",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true,
+          "bounce_cap": true
+        },
+        "rank": 2
+      }
+    ],
+    "no_trade": false,
+    "no_trade_reason": null,
+    "total_heat_pct": 0.725,
+    "llm_usage": {
+      "calls": 28,
+      "tokens_in": 43797,
+      "tokens_out": 11062,
+      "cost_usd_if_paid": 0.0104,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Bitcoin поднялся на 5 % после возвращения Дженсена Хуана",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Пользователи Bisq 2 должны обновить программу, иначе потеряют доступ к торговле",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Grayscale считает Bitcoin перепроданным, но предупреждает о рисках ИИ",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Новые потоки из потерянных BTC составляют около 245 000 BTC",
+            "refs": [
+              5
+            ]
+          },
+          {
+            "text": "Восходящий поток из кражи Binance в США привёл к заморозке 2,9 млрд $",
+            "refs": [
+              9
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bisq 2 desktop users must update to keep trading Bitcoin",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bisq-2-desktop-users-must-update-to-keep-trading-bitcoin/",
+            "published": "2026-11-24 14:10 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Grayscale calls Bitcoin ‘oversold’ at $62K but warns of AI risks",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-oversold-ai-risks-grayscale?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-24 13:11 UTC"
+          },
+          {
+            "n": 5,
+            "title": "$14.7B in ‘Lost’ Bitcoin Has Moved Since 2018: Report",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383854/14-7b-in-lost-bitcoin-has-moved-since-2018-report",
+            "published": "2026-11-24 12:40 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Bitcoin dipped on Huang’s Nvidia exit but jumped 5% on his return",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-huangs-return-18-below-pre-resignation-levels?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-24 11:40 UTC"
+          },
+          {
+            "n": 9,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 59926.0
+      },
+      "ETH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "BTCS продал более половины своих ETH, чтобы погасить долг, что может усилить давление на цену",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "BitMine потерял около 655 млн долларов в ETH, но купил дополнительные 7 819 ETH",
+            "refs": [
+              1,
+              8
+            ]
+          },
+          {
+            "text": "BTCS продал более половины своих ETH, чтобы погасить 43,8 млн долларов долга в Aave",
+            "refs": [
+              2,
+              3,
+              7
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "BitMine’s $655 million Ethereum hit wipes out nearly three years of staking income",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitmines-655-million-ethereum-hit-wipes-out-nearly-three-years-of-staking-income/",
+            "published": "2026-11-24 11:00 UTC"
+          },
+          {
+            "n": 2,
+            "title": "BTCS sells more than half its ether to repay $43.8 million in Aave debt",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/24/btcs-sells-more-than-half-its-ether-to-repay-usd43-8-million-in-aave-debt",
+            "published": "2026-11-24 10:55 UTC"
+          },
+          {
+            "n": 3,
+            "title": "BTCS sold more Ethereum than it has left to repay $43.8 million in debt",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/btcs-sold-more-ethereum-than-it-has-left-to-repay-43-8-million-in-debt/",
+            "published": "2026-11-24 03:40 UTC"
+          },
+          {
+            "n": 7,
+            "title": "BTCS offloads $44M in ETH to reduce DeFi debt amid market downturn",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/btcs-offloads-44m-eth-reduce-defi-debt-market-downturn?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 19:35 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 1679.35
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В новостях нет прямых событий, влияющих на цену SOL.",
+            "refs": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Solana Meme Coin for Fiona the Hippo Raises $100K for Cincinnati Zoo Charity",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383762/solana-meme-coin-for-fiona-the-hippo-sends-100k-to-cincinnati-zoo-charity",
+            "published": "2026-11-23 12:43 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 68.89
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США конфисковали более $2,9 млрд, включая $1,1 млрд USDC, украденных в кибератаке на Binance",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Рынки в целом выросли, но криптовалюты не удержали рост из‑за давления со стороны ETF",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Возможные тарифные меры США против Китая и других стран могут негативно сказаться на криптовалютном рынке",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [
+          "катализатор «США конфисковали $1,1 млрд USDC, связанное с кражей Binance» ссылается на общую новость рынка, а не на новость про эту монету — не засчитан"
+        ],
+        "trend_4h": "range",
+        "last_price": 547.5
+      },
+      "XRP/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "XRP borrowers approaching $207,500 tipping point due to dominant vault",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "XRP borrowers face a $207,500 tipping point as one vault dominates an $8 million market",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Tom Lee notes Ethereum supply growth is comparable to Bitcoin’s, suggesting scarcity may influence XRP indirectly",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "XRP borrowers face a $207,500 tipping point as one vault dominates an $8 million market",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/xrp-borrowers-face-a-207500-tipping-point-as-one-vault-dominates-an-8-million-market/",
+            "published": "2026-11-24 00:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.9146
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США заморозили более 2,9 млрд долларов, украденных в кибератаке на Binance",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Рынки в целом выросли, но криптовалюты не удержали рост",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Возможные тарифы администрации Трампа могут негативно сказаться на рынке",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.05481
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.1436
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 6.538
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 8.786
+      },
+      "TON/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 1.6
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США заморозили более 2,9 млрд долларов, украденных в кибератаке на Binance, что может усилить регуляторное давление на крипторынок.",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Криптовалюты не удержали рост, несмотря на общий рыночный подъем, что указывает на слабость сектора.",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Возможные тарифные меры администрации Трампа могут негативно сказаться на глобальной экономике, включая крипторынок.",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.3074
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США заморозили, изъяли или вернули более 2,9 млрд долларов, украденных в результате взлома Binance в октябре",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Рынки в целом выросли, но криптовалюты не удержали рост из‑за продаж ETF",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Торговля биткоина откатилась до 60 000 USD, а возможные тарифы США против Китая и других стран могут усилить давление на рынки",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.65
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США конфисковали более $2,9 млн USDC, украденного в кибератаке на Binance",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Рынки в целом выросли, но криптовалюты не удержали рост",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Возможные тарифные меры США против Китая и других стран могут снизить спрос на криптовалюты",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [
+          "катализатор «США конфисковали $1,1 млн USDC, связанное с кражей Binance» ссылается на общую новость рынка, а не на новость про эту монету — не засчитан"
+        ],
+        "trend_4h": "range",
+        "last_price": 40.13
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США заморозили более 2,9 млрд долларов, украденных в кибератаке на Binance, что усиливает регуляторный контроль над криптовалютами",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Рынки в целом растут, но криптовалюты не удерживают подъём из‑за давления со стороны ETF‑продавцов",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Возможные тарифные меры администрации Трампа могут негативно сказаться на глобальной экономике и криптовалютном секторе",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 196.1
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "США отобрали более 2,9 млрд долларов, украденных в хаке Binance, что усиливает регуляторный контроль над криптовалютами",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Рынки в целом выросли, но криптовалюты не смогли удержать рост из‑за давления со стороны ETF‑продавцов",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Возможное введение тарифов США против Китая, Японии и Южной Кореи может негативно сказаться на рынке криптовалют",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383874/justice-department-moves-to-forfeit-1-1b-in-usdc-from-north-koreas-binance-hack",
+            "published": "2026-11-24 14:13 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Jensen Returns, Markets Soar (Except Crypto)",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383868/morning-minute-jensen-returns-markets-soar-except-crypto",
+            "published": "2026-11-24 13:07 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Live updates: Bitcoin pulls back to $60,000, stock rally fades, as tariffs re-enter the picture",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/24/live-updates-bitcoin-pulls-back-to-usd60-000-as-stock-rally-fails-to-budge-crypto",
+            "published": "2026-11-24 12:47 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 2.825
+      },
+      "SUI/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.639
+      }
+    },
+    "direction": "any"
+  },
+  "report_1": {
+    "sprint_id": "20261124_202649",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": true,
+        "risks": [
+          "рынок BTC в нисходящем режиме, позиция против общего тренда повышает вероятность пробоя вниз",
+          "ограниченный стоп может сработать при резком откате"
+        ],
+        "notes": "Лонг LINK/USDT в режиме bounce соответствует правилам (рисковый процент, размер, R>1.5). Несмотря на противоречие с общим медвежьим настроением BTC, стоп установлен ниже swing‑low, а ожидаемый R≈3.3 достаточен. Позицию можно открыть, контролируя общий риск."
+      },
+      {
+        "id": "C-0002",
+        "allowed": true,
+        "risks": [
+          "высокая концентрация: экспозиция 15% достигает предельного уровня",
+          "рынок BTC в нисходящем режиме, лонг против тренда повышает системный риск",
+          "очень узкий стоп может сработать при небольшом колебании цены"
+        ],
+        "notes": "TRX/USDT также проходит все DOD‑гейты, R≈3.1 и риск $22.48 вписывается в лимит 1% от капитала. Однако экспозиция достигает максимального допуска 15%, что требует внимательного мониторинга. Позицию можно открыть, но с учётом близкого к лимиту концентрационного риска."
+      }
+    ],
+    "expert_opinion": "Оба кандидата соответствуют требованиям мандата, находятся в пределах допустимого тепла (0.73% < 4%) и не превышают лимиты риска и концентрации. Несмотря на то, что они находятся в режиме bounce против нисходящего рынка BTC, их технические параметры (стоп, R, размер) удовлетворяют критериям. Рекомендуется открыть обе позиции, внимательно следить за движением BTC и при необходимости скорректировать стопы.",
+    "package_ok": true
+  },
+  "report_2": {
+    "sprint_id": "20261124_202649",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "LINK/USDT",
+        "verdict": "pass",
+        "winner": "long",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "long",
+          "confidence": "high"
+        },
+        "reason": "Лонг подкреплён тремя фактами: цена выше SMA30 (8.786 > 8.7658), позиция в нижней части диапазона 31.1 % и отсутствие перекоса в открытом интересе (long_short_ratio = 1.93).",
+        "counter_thesis": "Риск пробоя ниже swing‑low 8.248 при медвежьем фоне BTC/USDT в нисходящем режиме.",
+        "weak_points": [],
+        "fact_check": "Все аргументы лонга (цена > SMA30, range_position_pct = 31.1 %, long_short_ratio = 1.93) соответствуют данным из facts; у шорта только два подтверждённых аргумента.",
+        "long_case": {
+          "strongest": "Цена выше SMA30 подтверждает восходящий тренд",
+          "arguments": [
+            {
+              "text": "Цена выше SMA30 (8.786 > 8.7658) подтверждает восходящий тренд",
+              "evidence": "market.sma_slow_30",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Текущий вход находится в нижней части восходящего диапазона (range_position_pct 31.1 %), что даёт место для роста к swing‑high 9.558",
+              "evidence": "market.range_position_pct",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Отсутствие значимого перекоса в открытом интересе (long_short_ratio 1.93) не создает давления вниз",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "BTC в нисходящем режиме создает системный медвежий фон, подрывающий любой лонг LINK/USDT",
+          "arguments": [
+            {
+              "text": "funding_rate -0.0036% — почти ноль, нет поддержки лонгов",
+              "evidence": "positioning.funding_rate",
+              "rhetoric": true,
+              "flags": [
+                "нулевой funding — не сигнал"
+              ]
+            },
+            {
+              "text": "long_short_ratio 1.93 — отсутствие значимого перекоса в пользу лонгов",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "BTC/USDT в нисходящем режиме (regime down) усиливает медвежье давление на альткойны",
+              "evidence": "market_regime.regime",
+              "rhetoric": true,
+              "flags": [
+                "нет цифр"
+              ]
+            },
+            {
+              "text": "price находится лишь в 31.1% нижней части диапазона, близко к swing‑low 8.248, риск пробоя вниз",
+              "evidence": "market.range_position_pct",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 2
+        }
+      },
+      {
+        "id": "C-0002",
+        "instrument": "TRX/USDT",
+        "verdict": "pass",
+        "winner": "long",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "long",
+          "confidence": "high"
+        },
+        "reason": "У лонга 4 аргумента с цифрами (цена > SMA30, отскок от swing‑low 0.3024 к swing‑high 0.3125, коэффициент 1.65 и новость), у шорта только 2 аргумента с данными",
+        "counter_thesis": "медвежий режим BTC может подавить рост альткоинов и активировать стоп‑уровень",
+        "weak_points": [
+          "Новость [2] не подтверждает рост криптовалют – в заголовке указано, что рынки «взлетают, кроме крипты»"
+        ],
+        "fact_check": "цена 0.3074 > SMA30 0.306357, swing‑low 0.3024, swing‑high 0.3125, long/short ratio 1.65, Bitcoin упал к $60 000 (news 3); новость [2] не содержит подтверждения роста альткоинов",
+        "long_case": {
+          "strongest": "цена выше SMA30 и восходящий SMA‑кросс подтверждают устойчивый бычий тренд",
+          "arguments": [
+            {
+              "text": "цена выше SMA30 (0.3074 > 0.306357), восходящий тренд подтверждён SMA10 > SMA30",
+              "evidence": "market.sma_slow_30",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "цена отскочила от swing‑low 20 (0.3024) и находится в 45.3% диапазона, приближаясь к swing‑high 20 (0.3125) – типичный бычий отскок",
+              "evidence": "market.swing_low_20",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "соотношение лонг/шорт 1.65 — перекоса нет, но лёгкий лонговый дисбаланс поддерживает рост",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "позитивный новостной фон: в новостях [2] отмечено, что после возвращения Дженсена рынки «взлетают», что обычно усиливает аппетит к риску и поддерживает рост альткоинов",
+              "evidence": "[2]",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "Нисходящий режим BTC (down) обычно тянет вниз все альткоины, включая TRX",
+          "arguments": [
+            {
+              "text": "trend_meaning восходящий, но market_regime показывает нисходящий режим BTC, что historically подавляет альткоины",
+              "evidence": "market.trend_meaning",
+              "rhetoric": true,
+              "flags": [
+                "нет цифр"
+              ]
+            },
+            {
+              "text": "long_short_ratio 1.65 — перекоса нет, значит шорт не перегрет, а рынок нейтрален, поддерживая падение при медвежьем BTC",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "news 3: Bitcoin падает к $60 000, сигнализирует о слабости рынка и вероятном дальнейшем давлении на альткоины",
+              "evidence": "news[3]",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 1
+        }
+      }
+    ],
+    "filtered_out": []
+  }
+}
