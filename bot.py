@@ -180,10 +180,16 @@ def weekly_text(days=7):
         for l in lessons[-5:]:
             lines.append(f"• {l['what_happened']}\n  → {l['rule']}")
     rej = _since(MEM.load(MEM.REJECTED_PATH), "reviewed", days)
-    if rej:
-        saved = sum(1 for r in rej if r["outcome"] == "would_stop")
-        missed = sum(1 for r in rej if r["outcome"] == "would_target")
+    gate = [r for r in rej if r.get("kind", "rejected") == "rejected"]
+    if gate:
+        saved = sum(1 for r in gate if r["outcome"] == "would_stop")
+        missed = sum(1 for r in gate if r["outcome"] == "would_target")
         lines.append(f"\n🚧 Отклонённые сетапы: гейты были правы {saved} раз, отсекли прибыльную сделку {missed} раз")
+    shadow = [r for r in rej if r.get("kind") == "approved"]
+    if shadow:
+        win = sum(1 for r in shadow if r["outcome"] == "would_target")
+        lose = sum(1 for r in shadow if r["outcome"] == "would_stop")
+        lines.append(f"👻 Одобренные, но не открытые идеи: дошли бы до цели {win}, ушли бы в стоп {lose}")
 
     rows = [r for r in MEM.scorecard() if r["n"]]
     if rows:

@@ -225,6 +225,15 @@ _spot = MK.spot()
 _perp = "auto"                          # фьючерсная биржа выбирается при подготовке контекста
 
 
+def px(v):
+    """Цена с 6 значащими цифрами: у BTC это 60310.3, у ADA — 0.148312.
+    Округление до 2 знаков превращало дешёвые монеты (ADA, DOGE, TRX) в 0.15/0.16."""
+    try:
+        return float(f"{float(v):.6g}")
+    except (TypeError, ValueError):
+        return v
+
+
 def _digest(ohlcv):
     """Считаем за модель готовую сводку: тренд, уровни, свинги, средний размах.
     Так маленькая модель не тонет в 80 сырых свечах."""
@@ -232,7 +241,7 @@ def _digest(ohlcv):
     last = closes[-1]
 
     def sma(vals, n):
-        n = min(n, len(vals)); return round(sum(vals[-n:]) / n, 2)
+        n = min(n, len(vals)); return px(sum(vals[-n:]) / n)
     sma_fast, sma_slow = sma(closes, 10), sma(closes, 30)
 
     rng_hi, rng_lo = max(highs), min(lows)
@@ -248,7 +257,7 @@ def _digest(ohlcv):
     recent = ohlcv[-20:]
     swing_high = max(c[2] for c in recent); swing_low = min(c[3] for c in recent)
     last14 = ohlcv[-14:]
-    avg_range = round(sum(c[2] - c[3] for c in last14) / len(last14), 2)
+    avg_range = px(sum(c[2] - c[3] for c in last14) / len(last14))
 
     return {
         "timeframe": CANDLE_TF, "last_price": last, "trend": trend,
@@ -266,8 +275,8 @@ def build_market_data(symbol):
     md = {"instrument": symbol, "asset_class": "crypto"}
     try:
         ohlcv = _spot.fetch_ohlcv(symbol, timeframe=CANDLE_TF, limit=CANDLE_LIMIT)
-        ohlcv = [[c[0], round(c[1], 2), round(c[2], 2), round(c[3], 2),
-                  round(c[4], 2), round(c[5], 2)] for c in ohlcv]
+        ohlcv = [[c[0], px(c[1]), px(c[2]), px(c[3]),
+                  px(c[4]), round(c[5], 2)] for c in ohlcv]
         md.update(_digest(ohlcv))
     except Exception as e:                # noqa: BLE001
         md["ohlcv_error"] = str(e)
@@ -347,10 +356,10 @@ def compute_risk(symbol, tech, current_heat_pct, md=None):
         side = "ниже" if direction == "long" else "выше"
         return {"passed": False, "reasons": [
             f"стоп {stop} не с той стороны: у {'лонга' if direction == 'long' else 'шорта'} "
-            f"он должен быть {side} входа {round(entry, 2)}"]}
+            f"он должен быть {side} входа {px(entry)}"]}
     if bad_targets:
         return {"passed": False, "reasons": [
-            f"цели {bad_targets} не с той стороны от входа {round(entry, 2)}"]}
+            f"цели {bad_targets} не с той стороны от входа {px(entry)}"]}
 
     # полный размер под целевой риск (напр. 1%), затем поджимаем потолками
     target_risk_pct = m["risk_per_trade_pct"]
@@ -413,13 +422,13 @@ def compute_risk(symbol, tech, current_heat_pct, md=None):
     if not gates["heat_ok"]:
         reasons.append("превышен совокупный риск (heat)")
     if not gates["stop_not_too_tight"]:
-        reasons.append(f"стоп слишком узкий: {round(risk_per_unit, 4)} от входа при среднем "
+        reasons.append(f"стоп слишком узкий: {px(risk_per_unit)} от входа при среднем "
                        f"размахе свечи {avg_range} — выбьет рыночным шумом")
 
     return {
         "instrument": symbol, "asset_class": "crypto", "direction": direction,
-        "entry": round(entry, 2), "stop": round(stop, 2),
-        "targets": [round(t, 2) for t in targets], "target_far": round(target, 2),
+        "entry": px(entry), "stop": px(stop),
+        "targets": [px(t) for t in targets], "target_far": px(target),
         "size": {"value": round(size, 6), "unit_type": _base_unit(symbol)},
         "risk_amount": round(risk_amount, 2), "risk_pct": round(risk_pct, 3),
         "R_gross": round(R_gross, 2), "costs_total": round(total_costs, 2), "R_net": round(R_net, 2),

@@ -7,7 +7,8 @@
 
   decisions.jsonl         — журнал решений: что предлагал каждый агент по каждой монете
   lessons.jsonl           — уроки по закрытым сделкам: что было, почему, правило на будущее
-  rejected_reviews.jsonl  — разбор ОТКЛОНЁННЫХ сетапов: правильно ли гейт их отсёк
+  rejected_reviews.jsonl  — разбор НЕОТКРЫТЫХ сетапов: отклонённых (прав ли гейт) и
+                            одобренных, но не открытых (сработала бы идея)
                             (так данные копятся быстрее, чем по одним сделкам)
 
   lessons_for(монета)  — 3 урока по этой монете + 2 по другим, свежие весят больше
@@ -162,10 +163,19 @@ def review_rejected(exchange=None, now=None):
     exchange = exchange or P.exchange()
     now = now or datetime.datetime.now()
     done = {r["decision_id"] for r in load(REJECTED_PATH)}
+    # реально открытые сделки разбирает review_closed — здесь их пропускаем
+    opened = {t.get("decision_id") for t in P.load_results()}
+    try:
+        opened |= {x.get("decision_id") for x in P.load_portfolio().get("open_positions", [])}
+    except Exception:                                # noqa: BLE001
+        pass
     new = []
     for d in load(DECISIONS_PATH):
-        if d["id"] in done or not d.get("setup_found") or d.get("passed"):
+        if d["id"] in done or d["id"] in opened or not d.get("setup_found"):
             continue
+        # одобренная, но не открытая идея: проверяем «в тени», чтобы учиться и на ней
+        approved = bool(d.get("passed")) and d.get("expert_allowed") is True \
+            and d.get("consultant_verdict") != "veto"
         if d.get("entry") is None or d.get("stop") is None or d.get("target_far") is None \
                 or d.get("direction") not in ("long", "short"):
             continue
@@ -189,11 +199,16 @@ def review_rejected(exchange=None, now=None):
             if (now - ts).days < REJECTED_MAX_DAYS:
                 continue                              # ещё рано судить
             outcome = "unresolved"
+        verdicts = ({"would_stop": "одобренная идея ушла бы в стоп",
+                     "would_target": "одобренная идея дошла бы до цели",
+                     "unresolved": "ни стоп, ни цель за 2 недели"} if approved else
+                    {"would_stop": "гейт был прав: сделка ушла бы в стоп",
+                     "would_target": "гейт отсёк прибыльную сделку",
+                     "unresolved": "ни стоп, ни цель за 2 недели"})
         rec = {"decision_id": d["id"], "instrument": d["instrument"], "direction": d["direction"],
+               "kind": "approved" if approved else "rejected",
                "reasons": d.get("reasons", []), "outcome": outcome,
-               "verdict": {"would_stop": "гейт был прав: сделка ушла бы в стоп",
-                           "would_target": "гейт отсёк прибыльную сделку",
-                           "unresolved": "ни стоп, ни цель за 2 недели"}[outcome],
+               "verdict": verdicts[outcome],
                "reviewed": now.isoformat(timespec="seconds")}
         append(REJECTED_PATH, rec)
         new.append(rec)
