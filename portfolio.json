@@ -1,5 +1,58 @@
 {
   "capital": 10000,
-  "open_positions": [],
-  "current_heat_pct": 0
+  "open_positions": [
+    {
+      "id": "P-0005",
+      "opened_at": "2026-11-24T20:36:01",
+      "instrument": "LINK/USDT",
+      "direction": "long",
+      "entry": 8.812,
+      "entry_planned": 8.79,
+      "stop": 8.248,
+      "targets": [
+        10.0,
+        10.6
+      ],
+      "target_far": 10.6,
+      "size": {
+        "value": 92.250923,
+        "unit_type": "LINK"
+      },
+      "risk_amount": 52.03,
+      "risk_pct": 0.52,
+      "expected_R_net": 3.14,
+      "expected_R_net_plan": 3.31,
+      "status": "open",
+      "source": "20261124_202649:C-0001",
+      "decision_id": "20261124_202649:LINK/USDT",
+      "mode": "bounce"
+    },
+    {
+      "id": "P-0006",
+      "opened_at": "2026-11-24T20:36:01",
+      "instrument": "TRX/USDT",
+      "direction": "long",
+      "entry": 0.308,
+      "entry_planned": 0.307,
+      "stop": 0.3024,
+      "targets": [
+        0.3179,
+        0.322
+      ],
+      "target_far": 0.322,
+      "size": {
+        "value": 4885.993485,
+        "unit_type": "TRX"
+      },
+      "risk_amount": 27.36,
+      "risk_pct": 0.274,
+      "expected_R_net": 2.4,
+      "expected_R_net_plan": 3.14,
+      "status": "open",
+      "source": "20261124_202649:C-0002",
+      "decision_id": "20261124_202649:TRX/USDT",
+      "mode": "bounce"
+    }
+  ],
+  "current_heat_pct": 0.794
 }
