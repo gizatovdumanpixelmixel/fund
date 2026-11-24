@@ -88,7 +88,8 @@ def facts_for(cand, snapshot, regime, news_sources, positioning, lessons):
             "expected_R_net": cand.get("expected_R_net"),
             "team_thesis": cand.get("thesis"), "team_counter_thesis": cand.get("counter_thesis"),
             "market": snapshot, "market_regime": regime, "news": news_sources,
-            "positioning": pos, "lessons": lessons}
+            "positioning": pos, "lessons": lessons,
+            "trade_mode": cand.get("mode", "trend")}
 
 
 def run(cand, facts, call_agent, parallel=1):

@@ -28,6 +28,7 @@ EXCHANGE_ID = "binance"        # держите таким же, как в pipel
 CAPITAL_DEFAULT = 10000
 MAX_HEAT_PCT = 4.0
 MIN_R = 1.5                    # как min_R в мандате pipeline.py
+BOUNCE_CAP = 2                 # как context.BOUNCE_CAP: позиций в режиме «отскок» одновременно
 COST_PCT_PER_SIDE = 0.09       # комиссия 0.04 + спред 0.02 + проскальзывание 0.03, как в pipeline.py
 MIN_TRADES_FOR_STATS = 20
 
@@ -166,6 +167,11 @@ def preflight(cand, portfolio, price):
     if cand["instrument"] in held:
         reasons.append(f"по {cand['instrument']} уже есть открытая позиция")
 
+    if cand.get("mode") == "bounce":
+        nb = sum(1 for p in portfolio["open_positions"] if p.get("mode") == "bounce")
+        if nb >= BOUNCE_CAP:
+            reasons.append(f"уже {nb} позиции в режиме «отскок» — лимит {BOUNCE_CAP}")
+
     if (d == "long" and price <= stop) or (d == "short" and price >= stop):
         reasons.append(f"цена {price} уже за стопом {stop} — сетап сломан")
     if target is not None and ((d == "long" and price >= target) or (d == "short" and price <= target)):
@@ -205,6 +211,7 @@ def record_position(cand, sprint_id, check):
         "size": cand["size"], "risk_amount": check["risk_amount"], "risk_pct": check["risk_pct"],
         "expected_R_net": check["R_net"], "expected_R_net_plan": cand.get("expected_R_net"),
         "status": "open", "source": f"{sprint_id}:{cand['id']}", "decision_id": cand.get("decision_id"),
+        "mode": cand.get("mode", "trend"),
     })
     save_portfolio(p)
     return pid
@@ -258,7 +265,7 @@ def check_all():
                     "opened_at": pos["opened_at"], "closed_at": res["closed_at"],
                     "forecast_R_net": pos.get("expected_R_net"), "actual_R": r,
                     "pnl": pnl, "outcome": outcome, "source": pos.get("source"),
-                    "decision_id": pos.get("decision_id")})
+                    "decision_id": pos.get("decision_id"), "mode": pos.get("mode", "trend")})
         messages.append(("success" if r > 0 else "warning",
                          f"{name}: {res['label']} по {res['exit']} ({res['closed_at'].replace('T', ' ')}) → "
                          f"{outcome} ${pnl} (прогноз R {pos.get('expected_R_net')}, факт R {r})"))
@@ -283,7 +290,8 @@ def close_manual(pid):
                 "opened_at": pos["opened_at"],
                 "closed_at": datetime.datetime.now().isoformat(timespec="minutes"),
                 "forecast_R_net": pos.get("expected_R_net"), "actual_R": r, "pnl": pnl,
-                "outcome": outcome, "source": pos.get("source"), "decision_id": pos.get("decision_id")})
+                "outcome": outcome, "source": pos.get("source"), "decision_id": pos.get("decision_id"),
+                "mode": pos.get("mode", "trend")})
     p["open_positions"] = [x for x in p["open_positions"] if x["id"] != pos["id"]]
     save_portfolio(p)
     return f"{pos['id']} {pos['instrument']} закрыта вручную по {price}: {outcome} ${pnl} ({r} R)."

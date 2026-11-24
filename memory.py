@@ -88,8 +88,11 @@ def build_lesson(trade, regime, avg_range):
     won = (trade.get("actual_R") or 0) > 0
     stop_dist = abs(trade["entry"] - trade["stop"])
     tags = []
+    bounce = trade.get("mode") == "bounce"
     against = (regime == "up" and d == "short") or (regime == "down" and d == "long")
-    if against:
+    if bounce:
+        tags.append("отскок")
+    elif against:
         tags.append("против режима рынка")
     tight = bool(avg_range) and stop_dist < MIN_STOP_VS_CANDLE * avg_range
     if tight:
@@ -101,7 +104,11 @@ def build_lesson(trade, regime, avg_range):
     forecast = trade.get("forecast_R_net")
     what = (f"{side} {trade['instrument']} при {reg_prep} режиме BTC: {trade.get('hit', '')} "
             f"({trade.get('actual_R')} R" + (f", прогноз был {forecast} R" if forecast is not None else "") + ").")
-    if won:
+    if bounce:
+        rule = (f"Отскок ({C.DIR_RU.get(d, d)} по тренду монеты против рынка) "
+                + ("сработал — режим «отскок» оставляем." if won else
+                   "не сработал — в таком режиме брать только самые ясные сетапы."))
+    elif won:
         rule = (f"Когда режим BTC {reg_ru} — {C.DIR_RU.get(d, d)} по тренду рабочий вариант; "
                 f"такие сетапы держать в приоритете.")
     elif against:

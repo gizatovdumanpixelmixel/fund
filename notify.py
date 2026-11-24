@@ -131,7 +131,8 @@ def format_briefing(data):
         lines.append(f"✅ Идеи для входа: {len(cands)}")
         for c in cands:
             pl = plain.get(c["id"], {})
-            lines.append(f"\n{c['id']} · {c['instrument']} · {SIDE.get(c['direction'], c['direction'])}")
+            mode = " · 🔄 отскок, риск вполовину" if c.get("mode") == "bounce" else ""
+            lines.append(f"\n{c['id']} · {c['instrument']} · {SIDE.get(c['direction'], c['direction'])}{mode}")
             lines.append(f"Вход ~{c['entry']} · стоп {c['stop']} · цель {c.get('target_far')}")
             lines.append(f"Риск ${c.get('risk_amount')} ({c.get('risk_pct')}%) · R после издержек {c.get('expected_R_net')}")
             if pl.get("why"):

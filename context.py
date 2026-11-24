@@ -86,13 +86,18 @@ def context_gates(symbol, direction, md, regime, open_positions):
     reg = (regime or {}).get("regime")
     trend = (md or {}).get("trend")
     same = sum(1 for p in open_positions if p.get("direction") == direction)
+    bounce = is_bounce(direction, md, regime)
     gates = {
-        "regime_ok": not ((reg == "up" and direction == "short") or (reg == "down" and direction == "long")),
+        "regime_ok": bounce or not ((reg == "up" and direction == "short") or (reg == "down" and direction == "long")),
         "with_trend": not ((trend == "up" and direction == "short") or (trend == "down" and direction == "long")),
         "same_direction_cap": same < SAME_DIRECTION_CAP,
         "not_already_open": symbol not in {p.get("instrument") for p in open_positions},
     }
+    if bounce:
+        gates["bounce_cap"] = bounce_open(open_positions) < BOUNCE_CAP
     reasons = []
+    if not gates.get("bounce_cap", True):
+        reasons.append(f"уже {BOUNCE_CAP} позиции в режиме «отскок» — лимит")
     if not gates["regime_ok"]:
         reasons.append(f"{DIR_RU.get(direction, direction)} против режима рынка "
                        f"(BTC {REGIME_RU.get(reg, reg)})")
@@ -128,6 +133,27 @@ def check_trend_claim(tech, md):
     return None
 
 
+# ── режим «отскок» ──────────────────────────────────────────────────────────
+# Монета идёт ПО СВОЕМУ тренду против рынка: альт растёт, когда BTC падает (лонг),
+# или падает, когда BTC растёт (шорт). Сделку разрешаем, но осторожно:
+# половинный риск и не больше BOUNCE_CAP таких позиций сразу.
+BOUNCE_RISK_PCT = 0.5
+BOUNCE_CAP = 2
+BOUNCE_NOTE = ("режим «отскок»: монета идёт по своему тренду против рынка (BTC). "
+               "Риск — половина обычного, таких позиций не больше 2. Нужен ясный сетап "
+               "по тренду монеты с близким уровнем для стопа; любая слабость — no_trade.")
+
+
+def is_bounce(direction, md, regime):
+    reg = (regime or {}).get("regime"); trend = (md or {}).get("trend")
+    return (reg == "down" and trend == "up" and direction == "long") or \
+           (reg == "up" and trend == "down" and direction == "short")
+
+
+def bounce_open(open_positions):
+    return sum(1 for p in open_positions if p.get("mode") == "bounce")
+
+
 def allowed_directions(md, regime):
     """Какие направления сделки вообще пропустят гейты — считаем ДО вызова модели.
     Возвращает (список направлений, причина отсева или None)."""
@@ -137,11 +163,14 @@ def allowed_directions(md, regime):
         return [], f"нет данных свечей ({md['ohlcv_error'][:80]})"
     if trend == "range":
         return [], "тренд монеты на 4ч боковой — сетап по тренду невозможен"
-    allowed = {"up": ["long"], "down": ["short"]}.get(trend, ["long", "short"])
+    by_trend = {"up": ["long"], "down": ["short"]}.get(trend, ["long", "short"])
+    allowed = list(by_trend)
     if reg == "up":
         allowed = [d for d in allowed if d == "long"]
     elif reg == "down":
         allowed = [d for d in allowed if d == "short"]
+    if not allowed and trend in ("up", "down"):
+        return by_trend, None                 # режим «отскок» — проверим гейтами и половинным риском
     if not allowed:
         return [], (f"тренд монеты {REGIME_RU.get(trend, trend)}, а режим рынка BTC "
                     f"{REGIME_RU.get(reg, reg)} — разрешённых направлений нет")

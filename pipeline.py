@@ -362,7 +362,8 @@ def compute_risk(symbol, tech, current_heat_pct, md=None):
             f"цели {bad_targets} не с той стороны от входа {px(entry)}"]}
 
     # полный размер под целевой риск (напр. 1%), затем поджимаем потолками
-    target_risk_pct = m["risk_per_trade_pct"]
+    bounce = C.is_bounce(direction, md, MARKET_CTX.get("regime"))
+    target_risk_pct = C.BOUNCE_RISK_PCT if bounce else m["risk_per_trade_pct"]
     full_risk_amount = cap * target_risk_pct / 100.0
     full_size = full_risk_amount / risk_per_unit
     size = full_size
@@ -436,6 +437,7 @@ def compute_risk(symbol, tech, current_heat_pct, md=None):
         "exposure_pct": round(exposure / cap * 100.0, 2), "leverage_used": round(exposure / cap, 2),
         "heat_after_pct": round(heat_after, 3), "size_binding_cap": binding,
         "risk_target_pct": target_risk_pct, "full_size": round(full_size, 6),
+        "mode": "bounce" if bounce else "trend",
         "size_trimmed": size_trimmed, "size_note": size_note,
         "hold_estimate": HOLD_ESTIMATE.get(tech.get("horizon", m["sprint_horizon"]), ""),
         "gates": gates, "passed": all(gates.values()), "reasons": reasons,
@@ -473,6 +475,8 @@ def analyze_instrument(symbol, ctx):
             news = {"has_catalyst": False, "claims": [], "confidence": "low", "model_failed": True}
     else:
         tech_payload["allowed_directions"] = allowed
+        if any(C.is_bounce(d, md, ctx["regime"]) for d in allowed):
+            tech_payload["bounce_mode"] = C.BOUNCE_NOTE
         with ThreadPoolExecutor(max_workers=MODEL_PARALLEL) as ex:
             f_tech = ex.submit(call_agent, "tech", tech_payload, f"tech::{symbol}")
             f_news = ex.submit(call_agent, "news", news_payload, f"news::{symbol}")
@@ -592,9 +596,9 @@ def _prepare_context():
     # Выбранное направление против режима рынка: сделок почти не будет — предупреждаем сразу.
     conflict = {("long", "down"): "падает", ("short", "up"): "растёт"}.get((CHOSEN_DIRECTION, regime.get("regime")))
     if conflict:
-        note = (f"выбрано направление «{CHOSEN_DIRECTION}», а рынок (BTC) {conflict}: код пропустит сделки "
-                f"только по режиму рынка, а эксперт снимет их как противоречащие выбору. "
-                f"Для такого рынка лучше запускать с направлением any")
+        note = (f"выбрано направление «{CHOSEN_DIRECTION}», а рынок (BTC) {conflict}: такие сделки "
+                f"возможны только в режиме «отскок» — по монетам, идущим против рынка, "
+                f"с половинным риском и не больше {C.BOUNCE_CAP} позиций")
         MARKET_CTX["direction_note"] = note
         print(f"    ⚠ {note}")
     return {"regime": regime, "news_all": news_all, "fear_greed": fng, "portfolio": portfolio}
@@ -684,14 +688,20 @@ def run_sprint():
     passing.sort(key=lambda a: a["risk"]["R_net"], reverse=True)
     heat = PORTFOLIO_STATE["current_heat_pct"]; kept = []
     same = {d: sum(1 for x in PORTFOLIO_STATE["open_positions"] if x.get("direction") == d) for d in ("long", "short")}
+    bounces = C.bounce_open(PORTFOLIO_STATE["open_positions"])
     for a in passing:
         d = a["risk"]["direction"]
-        if same.get(d, 0) >= C.SAME_DIRECTION_CAP:    # лимит позиций в одну сторону — с учётом всего пакета
+        is_b = a["risk"].get("mode") == "bounce"
+        if is_b and bounces >= C.BOUNCE_CAP:          # лимит «отскоков» — с учётом всего пакета
+            a["risk"]["passed"] = False
+            a["risk"]["reasons"].append(f"уже {C.BOUNCE_CAP} идеи в режиме «отскок» — лимит")
+        elif same.get(d, 0) >= C.SAME_DIRECTION_CAP:    # лимит позиций в одну сторону — с учётом всего пакета
             a["risk"]["passed"] = False
             a["risk"]["reasons"].append(f"уже {C.SAME_DIRECTION_CAP} идеи в сторону «{C.DIR_RU[d]}» — "
                                         f"лимит позиций в одну сторону")
         elif heat + a["risk"]["risk_pct"] <= MANDATE["max_heat_pct"] + 1e-9:
             heat += a["risk"]["risk_pct"]; kept.append(a); same[d] = same.get(d, 0) + 1
+            bounces += is_b
         else:
             a["risk"]["passed"] = False
             a["risk"]["reasons"].append("не поместился в лимит риска пакета (heat)")
@@ -738,7 +748,9 @@ def run_sprint():
             "thesis": n.get("thesis") or a["tech"].get("notes", ""),
             "counter_thesis": n.get("counter_thesis") or "риск: движение против позиции; катализатора нет",
             "catalyst": a["news"].get("catalyst", ""), "has_catalyst": a["news"].get("has_catalyst", False),
-            "news_sources": a["news"].get("sources", []), "notes": a.get("notes", []),
+            "news_sources": a["news"].get("sources", []),
+            "notes": a.get("notes", []) + ([C.BOUNCE_NOTE] if r.get("mode") == "bounce" else []),
+            "mode": r.get("mode", "trend"),
             "entry": r["entry"], "stop": r["stop"], "targets": r["targets"], "target_far": r["target_far"],
             "size": r["size"], "risk_amount": r["risk_amount"], "risk_pct": r["risk_pct"],
             "R_gross": r["R_gross"], "expected_R_net": r["R_net"], "costs_total": r["costs_total"],
@@ -865,7 +877,7 @@ def _normalize_briefing(b, package):
 def _translator_payload(package, report_1, report_2):
     """Компактная выжимка для переводчика: только то, что он пересказывает."""
     keep = ("id", "instrument", "direction", "thesis", "counter_thesis", "catalyst", "entry", "stop",
-            "targets", "target_far", "risk_amount", "risk_pct", "expected_R_net", "hold_estimate", "size_note")
+            "targets", "target_far", "risk_amount", "risk_pct", "expected_R_net", "hold_estimate", "size_note", "mode")
     cands = [{k: c.get(k) for k in keep} for c in package.get("candidates", [])]
     expert = [v for v in (report_1 or {}).get("verdict_per_candidate", []) if isinstance(v, dict)]
     judge = [{"id": o.get("id"), "winner": o.get("winner"), "verdict": o.get("verdict"), "reason": o.get("reason"),
