@@ -1,0 +1,619 @@
+{
+  "briefing": {
+    "sprint_id": "20261125_210520",
+    "summary": "Кандидат C-0001 – лонг на TON/USDT в нисходящем режиме BTC",
+    "candidates_plain": [
+      {
+        "id": "C-0001",
+        "what": "Купить (лонг – ставка на рост) TON/USDT",
+        "why": "Цена находится в нижней части диапазона и отскакивает от поддержки, что типично для входа в лонг при восходящем тренде монеты",
+        "what_could_go_wrong": "Нисходящий режим BTC может подавить рост, стоп может сработать при слабом отскоке, объём и ликвидность могут снизиться",
+        "numbers_explained": [
+          {
+            "label": "R_net 2.12",
+            "means": "На каждый $1 риска ждём ~$2.12 прибыли после комиссий; риск здесь ~$50, значит цель по прибыли ~$(50*2.12)=106"
+          },
+          {
+            "label": "Риск ~$50",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$50"
+          }
+        ],
+        "expert_said": "Пакет одобрен – риск 0.5 % капитала, R net 2.12 выше минимального, стоп не слишком узок",
+        "consultant_said": "Победила сторона long – подтверждён восходящий импульс и нижняя часть диапазона",
+        "agreement": "согласны"
+      }
+    ],
+    "terms_used": [
+      {
+        "term": "стоп",
+        "plain": "цена, на которой сделку закрывают с убытком, чтобы не потерять больше"
+      },
+      {
+        "term": "R (R_net)",
+        "plain": "во сколько раз возможная прибыль больше риска, после комиссий"
+      }
+    ]
+  },
+  "package": {
+    "sprint_id": "20261125_210520",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 58282.01,
+      "sma20_1d": 66686.31,
+      "sma50_1d": 75192.78,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 13,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261125_210520:TON/USDT",
+        "instrument": "TON/USDT",
+        "asset_class": "crypto",
+        "direction": "long",
+        "horizon": "swing",
+        "thesis": "Тренд TON/USDT восходящий, цена находится в нижней части диапазона, что типично для входа в лонг при отскоке от поддержки.",
+        "counter_thesis": "В нисходящем режиме BTC отскок может не сработать: аналогичные лонги (LINK/USDT) не принесли прибыли, риск пробоя нижней границы диапазона и активации стопа.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [],
+        "notes": [
+          "аналитик назвал тренд «down», а по скользящим средним он восходящий — принят расчёт кода",
+          "режим «отскок»: монета идёт по своему тренду против рынка (BTC). Риск — половина обычного, таких позиций не больше 2. Нужен ясный сетап по тренду монеты с близким уровнем для стопа; любая слабость — no_trade."
+        ],
+        "mode": "bounce",
+        "entry": 1.6,
+        "stop": 1.53,
+        "targets": [
+          1.641,
+          1.751
+        ],
+        "target_far": 1.751,
+        "size": {
+          "value": 714.285714,
+          "unit_type": "TON"
+        },
+        "risk_amount": 50.0,
+        "risk_pct": 0.5,
+        "R_gross": 2.16,
+        "expected_R_net": 2.12,
+        "costs_total": 2.06,
+        "funding_cost": 0.0,
+        "funding_hold_frac": 0.0,
+        "exposure_pct": 11.43,
+        "leverage_used": 0.11,
+        "size_binding_cap": "none",
+        "size_note": "",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true,
+          "bounce_cap": true
+        },
+        "rank": 1
+      }
+    ],
+    "no_trade": false,
+    "no_trade_reason": null,
+    "total_heat_pct": 0.5,
+    "llm_usage": {
+      "calls": 35,
+      "tokens_in": 63752,
+      "tokens_out": 15437,
+      "cost_usd_if_paid": 0.0161,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Приближение данных по инфляции США может усилить текущий спад цены биткоина",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Данные по инфляции США могут усилить падение биткоина, поскольку рынок ожидает усиления защитных позиций трейдеров",
+            "refs": [
+              5
+            ]
+          },
+          {
+            "text": "Крупные японские carry‑трейды и политика Банка Японии влияют на спрос на биткоин, но в данный момент не создают сильного импульса",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Общее падение биткоина и сопутствующие падения ETH и DeFi подтверждают текущий рыночный страх",
+            "refs": [
+              7
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Crypto Long & Short: Bitcoin investors can’t keep ignoring Japan",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/coindesk-indices/2026/11/25/crypto-long-and-short-bitcoin-investors-can-t-keep-ignoring-japan",
+            "published": "2026-11-25 15:59 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Bitcoin’s crash protection could make its next selloff worse as US inflation data looms",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-crash-protection-could-make-its-next-selloff-worse-as-us-inflation-data-looms/",
+            "published": "2026-11-25 13:10 UTC"
+          },
+          {
+            "n": 7,
+            "title": "Ether, DeFi fall twice as hard as bitcoin as equities selloff resumes",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/25/ether-defi-fall-twice-as-hard-as-bitcoin-as-equities-selloff-resumes",
+            "published": "2026-11-25 11:57 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 58296.0
+      },
+      "ETH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Рост угрозы безопасности от ИИ и ускорение обновлений протокола",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Ethereum Foundation ускоряет обновления протокола из‑за угроз ИИ",
+            "refs": [
+              1,
+              4
+            ]
+          },
+          {
+            "text": "Курс ETH упал почти вдвое, как и DeFi токены, вследствие рыночного спада",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Крупные ETF продолжают держать ETH, но Gemini прекращает обслуживание",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Morning Minute: Ethereum Focuses on Security As AI Threats Rise",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383945/morning-minute-ethereum-focuses-on-security-as-ai-threats-rise",
+            "published": "2026-11-25 13:41 UTC"
+          },
+          {
+            "n": 2,
+            "title": "VanEck is dropping Gemini from nearly $1 billion in Bitcoin, Ethereum and Solana ETFs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/vaneck-is-dropping-gemini-from-nearly-1-billion-in-bitcoin-ethereum-and-solana-etfs/",
+            "published": "2026-11-25 12:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Ether, DeFi fall twice as hard as bitcoin as equities selloff resumes",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/25/ether-defi-fall-twice-as-hard-as-bitcoin-as-equities-selloff-resumes",
+            "published": "2026-11-25 11:57 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Ethereum Foundation Says AI Is a More Urgent Threat Than Quantum Computing",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383927/ethereum-foundation-ai-more-urgent-threat-quantum-computing",
+            "published": "2026-11-24 20:36 UTC"
+          }
+        ],
+        "news_found": 9,
+        "notes": [
+          "отброшено утверждений без источника: 2"
+        ],
+        "trend_4h": "down",
+        "last_price": 1648.21
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Запуск стабильной монеты и инфраструктуры от SBI/SMFG для Solana",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "VanEck удаляет Gemini из почти 1 млрд долл. ETF‑ов по Bitcoin, Ethereum и Solana, что снижает институциональный интерес к Solana",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "SBI и SMFG запускают проект Solana Global для разработки инфраструктуры стабильных монет, AI‑микроплатежей и токенизации финансовых активов",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Разработчики Solana прекращают обработку блоков, которые уже отклонены, чтобы повысить эффективность сети",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "DEX Velocity временно приостановил торговлю из‑за ошибки, только два месяца после релайча",
+            "refs": [
+              4
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "VanEck is dropping Gemini from nearly $1 billion in Bitcoin, Ethereum and Solana ETFs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/vaneck-is-dropping-gemini-from-nearly-1-billion-in-bitcoin-ethereum-and-solana-etfs/",
+            "published": "2026-11-25 12:00 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Japan’s SBI, SMFG launch Solana venture for stablecoins, tokenization",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/sbi-smfg-solana-global-stablecoin-tokenization?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 11:49 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Solana developers move to stop validators finishing work on blocks that already lost",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/25/solana-developers-move-to-stop-validators-finishing-work-on-blocks-that-already-lost",
+            "published": "2026-11-25 06:33 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Solana DEX Velocity halts trading over bug just months after relaunch",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/solana-dex-velocity-halts-transactions-over-bug-coming-2-months-after-relaunch?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 05:32 UTC"
+          }
+        ],
+        "news_found": 8,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 67.78
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin упал до $57 470 из‑за сильной инфляции и новых тарифов, что усилило страхи на риск‑активы.",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Уровень страха в индексе Fear & Greed достиг 13, что указывает на экстремальный страх.",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Финансинг BTC/USDT положительный (≈0,006 %), что может сигнализировать о перегреве лонгов.",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin’s selloff deepens as Trump tariffs and hot inflation revive market fears",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-selloff-deepens-as-trump-tariffs-and-hot-inflation-revive-market-fears/",
+            "published": "2026-11-25 15:49 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 536.97
+      },
+      "XRP/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Только десять аккаунтов обеспечили весь рост торгов XRP Ledger в прошлом квартале",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Десять самых активных аккаунтов обеспечили более 100 % роста торгов XRP Ledger за квартал, в то время как остальные участники торгов сократили объёмы",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "По данным CoinDesk, активность крупнейших аккаунтов резко возросла, что может указывать на концентрацию власти и потенциальную волатильность",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Just 10 accounts drove all of the XRP Ledger's trading growth last quarter",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/25/ten-accounts-drove-all-of-the-xrp-ledger-s-trading-growth-last-quarter",
+            "published": "2026-11-25 06:15 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.9012
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.05344
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.1389
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 6.359
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 8.65
+      },
+      "TON/USDT": {
+        "sentiment": "neutral",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 1.6
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.3032
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.63
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 40.3
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 194.6
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 2.738
+      },
+      "SUI/USDT": {
+        "sentiment": "neutral",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.6253
+      }
+    },
+    "direction": "any"
+  },
+  "report_1": {
+    "sprint_id": "20261125_210520",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": true,
+        "risks": [
+          "риск пробоя нижней границы диапазона и срабатывания стопа при неблагоприятном отскоке в нисходящем режиме BTC",
+          "отсутствие новостного катализатора, что повышает вероятность слабого импульса",
+          "возможное снижение объёма и ликвидности TON/USDT в период коррекции"
+        ],
+        "notes": "Сетап соответствует требованиям bounce: половинный риск, R net 2.12 выше минимального, размер позиции в пределах лимита, стоп не слишком узок, тренд монеты восходящий, вход близок к поддержке. При соблюдении строгого управления стопом позиция оправдана."
+      }
+    ],
+    "expert_opinion": "Пакет вписывается в доступный капитал и ограничения мандата: суммарный heat 0.5 % << max_heat 4 %, количество bounce‑позиций не превышает лимит, риск на сделку 0.5 % от капитала соответствует допустимому 1 %. Поэтому пакет одобряется.",
+    "package_ok": true
+  },
+  "report_2": {
+    "sprint_id": "20261125_210520",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "TON/USDT",
+        "verdict": "pass",
+        "winner": "long",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "long",
+          "confidence": "med"
+        },
+        "reason": "Цена 1.6 > SMA30 1.57617 и SMA10 1.593 > SMA30 подтверждают восходящий импульс; диапазон 37.1 % указывает на нижнюю часть, тогда как падение -3.09 % и swing_low 1.535 близки к стопу 1.53",
+        "counter_thesis": "риск пробоя нижней границы диапазона (swing_low 1.535 почти совпадает со стопом 1.53)",
+        "weak_points": [
+          "аргумент шорта о медвежьем режиме BTC без цифр (rhetoric:true)"
+        ],
+        "fact_check": "Все аргументы лонга (SMA30, SMA10, позиция в диапазоне) и два аргумента шорта (change_pct_window -3.09%, swing_low 1.535) соответствуют данным facts; аргумент шорта о BTC‑режиме игнорирован как риторический",
+        "long_case": {
+          "strongest": "цена выше SMA30 и SMA10 выше SMA30 подтверждают восходящий тренд",
+          "arguments": [
+            {
+              "text": "цена выше SMA30 (1.6 > 1.57617), тренд восходящий",
+              "evidence": "market.sma_slow_30",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "цена находится в нижней части диапазона (37.1 % от нижней границы), типично для отскока от поддержки",
+              "evidence": "market.range_position_pct",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "быстрый SMA10 выше медленного SMA30 (1.593 > 1.57617), подтверждая восходящий импульс",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "Общий медвежий режим BTC подавляет рост TON",
+          "arguments": [
+            {
+              "text": "change_pct_window -3.09% — за последние окна цена TON падает",
+              "evidence": "market.change_pct_window",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "market_regime.regime down — общий рынок BTC в нисходящем режиме, подавляющий любые отскоки",
+              "evidence": "market_regime.regime",
+              "rhetoric": true,
+              "flags": [
+                "нет цифр"
+              ]
+            },
+            {
+              "text": "swing_low_20 1.535 почти совпадает со стопом 1.53 — высокий риск пробоя нижней границы диапазона",
+              "evidence": "market.swing_low_20",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 1
+        }
+      }
+    ],
+    "filtered_out": []
+  }
+}
