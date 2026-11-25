@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Проверка ключей: каждый ключ пробуется одним дешёвым запросом, итог — в Telegram.
 Сами ключи нигде не печатаются.   python keys_check.py"""
-import os, json, urllib.request, urllib.error
+import os, json, urllib.request, urllib.error, urllib.parse
 
 import notify
 
@@ -40,11 +40,46 @@ def alphavantage():
     return f"❌ ALPHAVANTAGE_API_KEY: {msg[:200]}"
 
 
+WORKER_DEFAULT = "https://fund-bot.gizatovduman.workers.dev"
+
+
+def worker():
+    """Доступен ли Cloudflare Worker; если в GitHub задан BOT_SECRET — заодно включает webhook (/setup)."""
+    url = (os.environ.get("BOT_WORKER_URL") or WORKER_DEFAULT).rstrip("/")
+    out = []
+    try:
+        req = urllib.request.Request(url + "/", headers={"User-Agent": "fund-bot"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            out.append(f"✅ Worker {url}: отвечает ({r.read().decode('utf-8')[:40]})")
+    except Exception as e:                       # noqa: BLE001
+        return [f"❌ Worker {url}: не отвечает ({e})"]
+    if not os.environ.get("BOT_WORKER_URL"):
+        out.append("⚪ BOT_WORKER_URL в GitHub не задан (шаг 8)")
+    key = os.environ.get("BOT_SECRET")
+    if not key:
+        out.append("⚪ BOT_SECRET в GitHub не задан (шаг 8) — /setup не выполнен")
+        return out
+    try:
+        req = urllib.request.Request(url + "/setup?key=" + urllib.parse.quote(key), headers={"User-Agent": "fund-bot"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            d = json.loads(r.read().decode("utf-8"))
+        hook = d.get("webhook", {})
+        out.append(("✅ Мгновенный режим включён" if hook.get("ok") else f"❌ webhook: {hook.get('description')}")
+                   + f"; доступ Worker к GitHub: {d.get('github')}")
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", "replace")[:200]
+        out.append("❌ /setup: пароль BOT_SECRET в GitHub и в Cloudflare не совпадает" if e.code == 403
+                   else f"❌ /setup: {e.code} {body}")
+    except Exception as e:                       # noqa: BLE001
+        out.append(f"⚠️ /setup: {e}")
+    return out
+
+
 def main():
     lines = ["🔑 Проверка ключей",
              _bearer("GROQ_API_KEY", "https://api.groq.com/openai/v1/models"),
              _bearer("OLLAMA_API_KEY", "https://ollama.com/v1/models"),
-             alphavantage()]
+             alphavantage()] + worker()
     text = "\n".join(lines)
     print(text)
     notify.send(text)
