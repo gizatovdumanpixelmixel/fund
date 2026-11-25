@@ -1,0 +1,1219 @@
+{
+  "briefing": {
+    "sprint_id": "20261125_090039",
+    "summary": "Оценка позиции LTC/USDT в нисходящем BTC‑режиме",
+    "candidates_plain": [
+      {
+        "id": "C-0001",
+        "what": "Купить LTC/USDT (лонг)",
+        "why": "Технический анализ показывает восходящий тренд и сильный R≈6, а стоп находится ниже поддержки",
+        "what_could_go_wrong": "BTC‑режим может усилить падение LTC, а высокий уровень открытых лонгов может вызвать резкое снижение цены",
+        "numbers_explained": [
+          {
+            "label": "R_net 6.16",
+            "means": "На каждый $1 риска ждём ~$6.16 прибыли после комиссий; риск здесь ~$50, значит цель по прибыли ~$(50*6.16)≈$308"
+          },
+          {
+            "label": "Риск ~$50",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$50"
+          }
+        ],
+        "expert_said": "Позиция соответствует лимитам и рекомендуется открыть LTC/USDT, а не LINK/USDT",
+        "consultant_said": "Long победил, так как у него 4 подтверждённых аргумента, а у шорта только один",
+        "agreement": "согласны"
+      }
+    ],
+    "terms_used": [
+      {
+        "term": "стоп",
+        "plain": "цена, на которой сделку закрывают с убытком, чтобы не потерять больше"
+      },
+      {
+        "term": "R (R_net)",
+        "plain": "во сколько раз возможная прибыль больше риска, после комиссий"
+      }
+    ]
+  },
+  "package": {
+    "sprint_id": "20261125_090039",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 59318.29,
+      "sma20_1d": 66738.12,
+      "sma50_1d": 75213.51,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 13,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261125_090039:LTC/USDT",
+        "instrument": "LTC/USDT",
+        "asset_class": "crypto",
+        "direction": "long",
+        "horizon": "swing",
+        "thesis": "Лонг (ставка на рост) LTC/USDT имеет сильный техничный R≈6, цена находится в восходящем тренде и далеко от верхней границы диапазона.",
+        "counter_thesis": "В нисходящем режиме BTC такие лонги часто оказываются уязвимыми; предыдущий неудачный лонг LINK указывает на риск «отскока» в этом режиме.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "notes": [
+          "аналитик назвал тренд «down», а по скользящим средним он восходящий — принят расчёт кода",
+          "предупреждение: толпа уже в лонгах (высокий funding или перекос лонг/шорт) — риск резкого падения из-за массового закрытия лонгов",
+          "режим «отскок»: монета идёт по своему тренду против рынка (BTC). Риск — половина обычного, таких позиций не больше 2. Нужен ясный сетап по тренду монеты с близким уровнем для стопа; любая слабость — no_trade."
+        ],
+        "mode": "bounce",
+        "entry": 40.5,
+        "stop": 38.9,
+        "targets": [
+          43.69,
+          50.52
+        ],
+        "target_far": 50.52,
+        "size": {
+          "value": 31.25,
+          "unit_type": "LTC"
+        },
+        "risk_amount": 50.0,
+        "risk_pct": 0.5,
+        "R_gross": 6.26,
+        "expected_R_net": 6.16,
+        "costs_total": 4.94,
+        "funding_cost": 2.66,
+        "funding_hold_frac": 0.0021000000000000003,
+        "exposure_pct": 12.66,
+        "leverage_used": 0.13,
+        "size_binding_cap": "none",
+        "size_note": "",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true,
+          "bounce_cap": true
+        },
+        "rank": 1
+      }
+    ],
+    "no_trade": false,
+    "no_trade_reason": null,
+    "total_heat_pct": 0.5,
+    "rejected_candidates": [
+      {
+        "id": "C-0002",
+        "decision_id": "20261125_090039:LINK/USDT",
+        "instrument": "LINK/USDT",
+        "asset_class": "crypto",
+        "direction": "long",
+        "horizon": "swing",
+        "thesis": "Лонг (ставка на рост) LINK/USDT показывает положительный техничный R≈4.8 и соответствует bounce‑mode в восходящем тренде монеты.",
+        "counter_thesis": "В условиях общего нисходящего рынка BTC лонг по тренду монеты часто терпит неудачу, как показал нулевой результат предыдущего лонга LINK.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "notes": [
+          "аналитик назвал тренд «down», а по скользящим средним он восходящий — принят расчёт кода",
+          "режим «отскок»: монета идёт по своему тренду против рынка (BTC). Риск — половина обычного, таких позиций не больше 2. Нужен ясный сетап по тренду монеты с близким уровнем для стопа; любая слабость — no_trade."
+        ],
+        "mode": "bounce",
+        "entry": 8.79,
+        "stop": 8.49,
+        "targets": [
+          9.558,
+          10.258
+        ],
+        "target_far": 10.258,
+        "size": {
+          "value": 166.666667,
+          "unit_type": "LINK"
+        },
+        "risk_amount": 50.0,
+        "risk_pct": 0.5,
+        "R_gross": 4.89,
+        "expected_R_net": 4.81,
+        "costs_total": 4.13,
+        "funding_cost": 1.49,
+        "funding_hold_frac": 0.0010158695073891,
+        "exposure_pct": 14.65,
+        "leverage_used": 0.15,
+        "size_binding_cap": "none",
+        "size_note": "",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true,
+          "bounce_cap": true
+        },
+        "rank": 2,
+        "rejected_by": "эксперт №1",
+        "reason": "Предыдущий лонг LINK в аналогичном режиме завершился без прибыли, что снижает доверие к текущему сетапу; R≈4.8 ниже оптимального уровня для bounce‑режима при повышенной волатильности рынка"
+      }
+    ],
+    "llm_usage": {
+      "calls": 29,
+      "tokens_in": 48457,
+      "tokens_out": 11743,
+      "cost_usd_if_paid": 0.0114,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "CFTC позволяет биржам учитывать биткоин в резерве, что может повысить спрос",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "CFTC разрешает биржам учитывать биткоин в резерве с дисконтом",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "CleanSpark продал больше биткоина, чем добывает, чтобы снизить риск",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Торговый представитель США может объявить тарифы, что угрожает рынку",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Снижение хешрейта до 91% от цикла, что усложняет майнинг",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Coldcard уязвимость с генератором случайных чисел, прошедшая аудит",
+            "refs": [
+              6
+            ]
+          },
+          {
+            "text": "Bitcoin упал ниже 60 000 USD, возможен дальнейший спад",
+            "refs": [
+              8
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "The CFTC opens the door to Bitcoin reserves at US exchanges with a 20% catch",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/the-cftc-opens-the-door-to-bitcoin-reserves-at-us-exchanges-with-a-20-catch/",
+            "published": "2026-11-25 02:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "CleanSpark weighs selling more Bitcoin than it mines to de-risk books",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/cleanspark-weighs-selling-more-bitcoin-than-it-mines-to-de-risk-books?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 01:40 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Bitcoin’s $60,000 bear market is testing miners harder than the 2022 crypto winter",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-60000-bear-market-is-testing-miners-harder-than-the-2022-crypto-winter/",
+            "published": "2026-11-24 22:40 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Bitcoin Losses Are the Worst Since FTX. Is the Bottom Near?",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383909/bitcoin-losses-worst-since-ftx-is-bottom-near",
+            "published": "2026-11-24 19:35 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 59306.0
+      },
+      "ETH/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Ethereum Foundation усиливает безопасность протокола, что может повысить доверие к сети",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Ethereum Foundation удвоила команду безопасности и планирует крупную обновлённую защиту протокола",
+            "refs": [
+              1,
+              4
+            ]
+          },
+          {
+            "text": "CFTC разрешает криптовалюты считать резервами для бирж, что повышает их ликвидность",
+            "refs": [
+              2,
+              5
+            ]
+          },
+          {
+            "text": "BTCS продал более половины своих ETH для погашения долгов в DeFi",
+            "refs": [
+              3,
+              6
+            ]
+          },
+          {
+            "text": "Tom Lee отмечает, что предложение ETH растёт медленнее, чем у большинства альткойнов",
+            "refs": [
+              7
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Ethereum Foundation Says AI Is a More Urgent Threat Than Quantum Computing",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383927/ethereum-foundation-ai-more-urgent-threat-quantum-computing",
+            "published": "2026-11-24 20:36 UTC"
+          },
+          {
+            "n": 2,
+            "title": "What the CFTC’s New Crypto Reserves Guidance Actually Allows—And What It Doesn’t",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383906/cftc-new-crypto-reserves-guidance-actually-allows-what-it-doesnt",
+            "published": "2026-11-24 18:55 UTC"
+          },
+          {
+            "n": 3,
+            "title": "BTCS sells more than half its ether to repay $43.8 million in Aave debt",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/24/btcs-sells-more-than-half-its-ether-to-repay-usd43-8-million-in-aave-debt",
+            "published": "2026-11-24 10:55 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Ethereum Foundation doubles protocol security team ahead of overhaul",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/ethereum-foundation-doubles-protocol-security-team-amid-ai-quantum-overhaul?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-24 00:36 UTC"
+          },
+          {
+            "n": 5,
+            "title": "CFTC staff say exchanges can count Bitcoin toward operating reserves",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/cftc-staff-say-exchanges-can-count-bitcoin-toward-operating-reserves?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 23:43 UTC"
+          },
+          {
+            "n": 6,
+            "title": "BTCS offloads $44M in ETH to reduce DeFi debt amid market downturn",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/btcs-offloads-44m-eth-reduce-defi-debt-market-downturn?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-23 19:35 UTC"
+          },
+          {
+            "n": 7,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          }
+        ],
+        "news_found": 10,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 1660.15
+      },
+      "SOL/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Обнаружен подозрительный взлом кошелька, связанный с крупным обвалом токенов ANSEM, что может вызвать рост интереса к Solana",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Взлом кошелька привёл к обвалу 87 млн токенов ANSEM, но данные цепочки вызывают сомнения",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Том Ли подчёркивает, что предложение ETH растёт почти так же медленно, как BTC, что повышает его привлекательность",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          }
+        ],
+        "news_found": 6,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 69.13
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin может столкнуться с новыми тарифами со стороны США, что негативно скажется на криптовалютном рынке в целом",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Ansem утверждает, что произошёл взлом кошелька, но данные о транзакциях вызывают сомнения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Coldcard обнаружил уязвимость в генераторе случайных чисел, которая осталась незамеченной в течение лет",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 542.16
+      },
+      "XRP/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Сокращение объёма XRP в обращении может подтолкнуть цену вверх",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "XRP в обращении сократился, что может изменить восприятие инвесторов",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Ethereum растёт в объёме, но остаётся редким, как Bitcoin",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "В США рассматривается новый тарифный режим, что может усилить макро‑риски",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "XRP’s shrinking exchange supply may be telling investors the wrong story",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/xrps-shrinking-exchange-supply-may-be-telling-investors-the-wrong-story/",
+            "published": "2026-11-25 01:20 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin—And Bitmine Just Bought More",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383800/tom-lee-ethereum-scarce-bitcoin-bitmine-buys-more",
+            "published": "2026-11-23 16:46 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.9185
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США рассматривается новый тарифный режим, который может усилить макроэкономическое давление на криптовалютный рынок",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Пользователь Ansem заявил о взломе кошелька, но данные транзакций вызывают сомнения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Coldcard обнаружил уязвимость в генераторе случайных чисел, которая оставалась незамеченной более пяти лет",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.05444
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.1429
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США рассматривается новый тарифный режим, который может оказать давление на криптовалютный рынок",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Потенциальный взлом кошелька Ansem привёл к утрате 87 млн токенов, но данные вызывают сомнения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Обнаружена уязвимость в Coldcard, связанная с генератором случайных чисел, которая оставалась незамеченной более пяти лет",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 6.516
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin может столкнуться с новыми тарифами со стороны США, что может негативно сказаться на крипторынке в целом",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Возможно, произошёл взлом кошелька Ansem, но данные вызывают сомнения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Coldcard Bitcoin Exploit выявил скрытую уязвимость, которая осталась незамеченной в течение лет",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 8.785
+      },
+      "TON/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 1.6
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США рассматривается новый тарифный режим, который может негативно отразиться на криптовалютном рынке в целом",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Появилась информация о взломе кошелька Ansem, но данные вызывают сомнения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Обнаружен уязвимый генератор случайных чисел в Coldcard, что поднимает вопросы безопасности оборудования",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.3086
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin может столкнуться с новыми тарифами со стороны США, что может негативно сказаться на криптовалютном рынке в целом",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Ansem утверждает, что его кошелек был взломан, но данные о транзакциях вызывают сомнения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Coldcard Bitcoin Exploit: обнаружена уязвимость в генераторе случайных чисел, которая оставалась незамеченной более пяти лет",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.65
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin может столкнуться с новыми тарифами со стороны США, что может отразиться на общем криптовалютном рынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Ansem утверждает, что произошёл взлом кошелька после утечки 87 млн токенов, но данные о транзакциях вызывают сомнения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Coldcard обнаружил уязвимость в генераторе случайных чисел, которая оставалась незамеченной более пяти лет",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 40.5
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США рассматривается новый тарифный режим, который может негативно отразиться на криптовалютном рынке в целом",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Потенциальный взлом кошелька Ansem привёл к утечке 87 млн токенов, но данные вызывают сомнения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Обнаружена уязвимость в Coldcard, связанная с генератором случайных чисел, которая оставалась незамеченной более пяти лет",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 196.0
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 2.85
+      },
+      "SUI/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin может столкнуться с новыми тарифами со стороны США, что негативно скажется на криптовалютном рынке в целом.",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Возможный взлом кошелька Ansem привёл к утрате 87 млн токенов, но данные вызывают сомнения в достоверности сообщения.",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Coldcard Bitcoin Exploit выявил скрытую уязвимость в генераторе случайных чисел, которая осталась незамеченной более пяти лет.",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin faces a familiar macro threat as the US prepares another round of tariffs",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-threatened-us-tariff-report-names-china-and-the-eu-as-official-rates-remain-unknown/",
+            "published": "2026-11-24 23:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ansem claims wallet hack after an 87 million ANSEM token dump, but on-chain data raises questions",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ansem-claims-wallet-hack-after-a-87-million-ansem-token-dump-but-on-chain-data-raises-questions/",
+            "published": "2026-11-24 21:30 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383930/coldcard-bitcoin-exploit-how-hidden-flaw-survived-years-audits",
+            "published": "2026-11-24 21:16 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.6421
+      }
+    },
+    "direction": "any"
+  },
+  "report_1": {
+    "sprint_id": "20261125_090039",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": true,
+        "risks": [
+          "Высокий уровень открытых лонгов в рынке может вызвать резкое падение цены при массовом закрытии позиций",
+          "Тренд BTC нисходящий, поэтому даже при восходящем тренде LTC риск отскока выше обычного"
+        ],
+        "notes": "Сетап соответствует bounce‑mode: есть чёткий вход, стоп чуть ниже уровня поддержки, ожидаемый R≈6, риск ограничен 0.5 % капитала. Позиция укладывается в лимит по количеству bounce‑позиций (не более 2) и не превышает ограничения по концентрации."
+      },
+      {
+        "id": "C-0002",
+        "allowed": false,
+        "risks": [
+          "Предыдущий лонг LINK в аналогичном режиме завершился без прибыли, что снижает доверие к текущему сетапу",
+          "R≈4.8 ниже оптимального уровня для bounce‑режима при повышенной волатильности рынка"
+        ],
+        "notes": "Несмотря на формальное соответствие всем gate‑параметрам, исторический урок показывает, что отскок LINK в нисходящем BTC не сработал. При ограниченном риске и текущем уровне концентрации лучше отказаться от этой позиции."
+      }
+    ],
+    "expert_opinion": "Пакет вписывается в заданный капитал и лимиты риска (общий heat 1 % < max_heat 4 %). Рекомендуется открыть позицию по LTC/USDT и отказаться от LINK/USDT, чтобы не превышать допустимое количество bounce‑трейдов и снизить вероятность повторения неудачного отскока.",
+    "package_ok": true
+  },
+  "report_2": {
+    "sprint_id": "20261125_090039",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "LTC/USDT",
+        "verdict": "pass",
+        "winner": "long",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "long",
+          "confidence": "med"
+        },
+        "reason": "У лонга 4 аргумента с подтверждающими цифрами (цена > SMA30, ratio 2.7, позиция 23.5 % в диапазоне, funding 0.0001), у шорта только один подтверждённый аргумент",
+        "counter_thesis": "Общий нисходящий режим BTC может вызвать откат LTC, а высокий long/short = 2.7 свидетельствует о перегреве лонгов",
+        "weak_points": [
+          "short_case содержит лишь один аргумент с данными, остальные риторические",
+          "short_case не учитывает сильный бычий импульс LTC (цена > SMA30, восходящий SMA‑кросс)"
+        ],
+        "fact_check": "Все 4 аргумента лонга проверены: price 40.5 > SMA30 40.3777, long_short_ratio 2.7, range_position_pct 23.5, funding_rate 0.0001 – совпадают с facts; единственный аргумент шорта (ratio 2.7) также совпадает, остальные аргументы шорта не учитываются из‑за отсутствия цифр",
+        "long_case": {
+          "strongest": "цена выше SMA30 и восходящий SMA‑кросс подтверждают сильный бычий импульс",
+          "arguments": [
+            {
+              "text": "цена выше SMA30 (40.5 > 40.3777), восходящий тренд подтверждён SMA10>SMA30",
+              "evidence": "market.sma_slow_30",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "длинные позиции доминируют: коэффициент long/short = 2.7, толпа в лонгах",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "низкая волатильность диапазона: текущая цена находится в нижней 23.5 % части диапазона (range_position_pct=23.5), есть место для роста к swing_high_20 = 43.69",
+              "evidence": "market.range_position_pct",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "фундинг почти нулевой (0.0001), значит нет давления на падение",
+              "evidence": "market.funding_rate",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "Перегрев лонгов (ratio 2.7) в сочетании с нисходящим режимом BTC указывает на скорый откат цены",
+          "arguments": [
+            {
+              "text": "long_short_ratio 2.7 — лонги доминируют, перегрев рынка в сторону роста",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "market_regime down по BTC/USDT — общий нисходящий контекст подавляет рост LTC",
+              "evidence": "market_regime.regime",
+              "rhetoric": true,
+              "flags": [
+                "нет цифр"
+              ]
+            },
+            {
+              "text": "news 1: тарифные угрозы в США усиливают макро‑риски для криптовалют, давление на цены",
+              "evidence": "news[1].title",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 1
+        }
+      },
+      {
+        "id": "C-0002",
+        "instrument": "LINK/USDT",
+        "verdict": "pass",
+        "winner": "long",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "long",
+          "confidence": "high"
+        },
+        "reason": "Цена 8.785 > SMA30 8.74673 и SMA10 8.9152, а диапазон в 35.6 % от нижней границы даёт место к swing‑high 9.558; long/short‑ratio 1.81 подтверждает отсутствие сильного перекоса",
+        "counter_thesis": "BTC находится в нисходящем режиме, что может ограничить рост альткоинов и стоп 8.49 почти совпадает с swing‑low 8.494",
+        "weak_points": [
+          "short‑case первый аргумент помечен как риторический и не учитывается",
+          "long‑case не учитывает влияние нисходящего BTC‑режима"
+        ],
+        "fact_check": "Все аргументы с rhetoric:false точно соответствуют данным из facts; ни один из них не содержит неверных цифр",
+        "long_case": {
+          "strongest": "Цена выше SMA30 подтверждает восходящий тренд",
+          "arguments": [
+            {
+              "text": "Цена выше SMA30 (8.785 > 8.74673) подтверждает восходящий тренд",
+              "evidence": "market.sma_slow_30",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Текущий long/short ratio 1.81 указывает на отсутствие сильного перекоса, что не препятствует росту",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Тренд монеты восходящий: SMA10 выше SMA30, цена выше SMA30",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Торговый диапазон находится в 35.6 % от нижней границы, оставляя место для роста к swing‑high 9.558",
+              "evidence": "market.range_position_pct",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "Нисходящий режим BTC создаёт системный медвежий фон, который обычно подавляет отскоки альткоинов",
+          "arguments": [
+            {
+              "text": "Режим рынка BTC/USDT нисходящий (down) — общий медвежий фон подавляет рост альткоинов, в том числе LINK",
+              "evidence": "market_regime.regime",
+              "rhetoric": true,
+              "flags": [
+                "нет цифр"
+              ]
+            },
+            {
+              "text": "Текущий swing low 20‑дневный 8.494 почти совпадает со стоп‑уровнем 8.49 — цена уже находится на пределе поддержки и легко может пробить вниз",
+              "evidence": "market.swing_low_20",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Тренд LINK восходящий, но SMA10 (8.915) значительно выше текущей цены 8.785, что указывает на сильную коррекцию к уровню SMA30 (8.747)",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "В новостях отмечается рост макроопасностей для биткоина (тарифы США) — усиливает нисходящий настрой рынка и давление на все криптовалюты",
+              "evidence": "news[1].title",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 1
+        }
+      }
+    ],
+    "filtered_out": []
+  }
+}
