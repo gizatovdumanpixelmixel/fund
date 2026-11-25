@@ -1,5 +1,32 @@
 {
   "capital": 10000,
-  "open_positions": [],
-  "current_heat_pct": 0
+  "open_positions": [
+    {
+      "id": "P-0008",
+      "opened_at": "2026-11-25T23:23:27",
+      "instrument": "TON/USDT",
+      "direction": "long",
+      "entry": 1.6,
+      "entry_planned": 1.6,
+      "stop": 1.53,
+      "targets": [
+        1.641,
+        1.751
+      ],
+      "target_far": 1.751,
+      "size": {
+        "value": 714.285714,
+        "unit_type": "TON"
+      },
+      "risk_amount": 50.0,
+      "risk_pct": 0.5,
+      "expected_R_net": 2.12,
+      "expected_R_net_plan": 2.12,
+      "status": "open",
+      "source": "20261125_210520:C-0001",
+      "decision_id": "20261125_210520:TON/USDT",
+      "mode": "bounce"
+    }
+  ],
+  "current_heat_pct": 0.5
 }
