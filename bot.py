@@ -187,11 +187,23 @@ def money_text(now=None):
         minus = round(sum(r["pnl"] for r in closed if r.get("pnl", 0) < 0), 2)
         wins = sum(1 for r in closed if r.get("pnl", 0) > 0)
         on_inv = f", {_pct(net / invested * 100)} на вложенное" if invested else ""
+        costs = round(sum(r.get("costs", 0) for r in closed), 2)
         lines.append(
-            f"📅 {label}: сделок {len(closed)} (в плюс {wins}, в минус или в ноль {len(closed) - wins})\n"
+            f"📅 {label}: сделок {len(closed)} (в плюс {wins}, в минус {len(closed) - wins})\n"
             f"   вложено {_usd(invested)} → вернулось {_usd(invested + net)}\n"
             f"   доход {_money(net)} ({_pct(net / cap0 * 100)} к капиталу{on_inv})\n"
-            f"   заработали {_money(plus)}, потеряли {_money(minus) if minus else '$0'}")
+            f"   заработали {_money(plus)}, сгорело {_money(minus) if minus else '$0'}")
+        losers = sorted((r for r in closed if r.get("pnl", 0) < 0), key=lambda r: r["pnl"])
+        for r in losers[:5]:
+            side = "лонг" if r["direction"] == "long" else "шорт"
+            why = {"СТОП": "стоп", "ВРУЧНУЮ": "закрыта вручную"}.get(r.get("hit"), str(r.get("hit", "")).lower())
+            lines.append(f"     🔻 {r['instrument'].split('/')[0]} {side} {_money(r['pnl'])} — {why}, "
+                         f"{str(r.get('closed_at', ''))[8:10]}.{str(r.get('closed_at', ''))[5:7]}")
+        if len(losers) > 5:
+            lines.append(f"     … и ещё {len(losers) - 5} на {_money(round(sum(r['pnl'] for r in losers[5:]), 2))}")
+        if costs:
+            lines.append(f"   на издержки (комиссия, спред, проскальзывание) ушло {_usd(costs)} — "
+                         f"без них доход был бы {_money(round(net + costs, 2))}")
     if any(r.get("size_estimated") for r in rows):
         lines.append("   (по августовским сделкам размер восстановлен по результату — примерно)")
     return "\n".join(lines)

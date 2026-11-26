@@ -133,6 +133,20 @@ def actual_R(pos, exit_price):
     return round(reward / risk_unit, 2) if risk_unit else 0.0
 
 
+def settle(pos, exit_price):
+    """Итог сделки в деньгах С ИЗДЕРЖКАМИ: комиссия + спред + проскальзывание на входе и выходе
+    (COST_PCT_PER_SIDE), как в расчёте риска. Funding в бумажном счёте не начисляется.
+    Возвращает чистые R и $, «грязный» результат и сумму издержек."""
+    size = float((pos.get("size") or {}).get("value") or 0)
+    sign = 1 if pos["direction"] == "long" else -1
+    gross = (exit_price - pos["entry"]) * size * sign
+    costs = (pos["entry"] + exit_price) * size * COST_PCT_PER_SIDE / 100.0
+    net = gross - costs
+    risk = abs(pos["entry"] - pos["stop"]) * size or (pos.get("risk_amount") or 0)
+    return {"actual_R": round(net / risk, 2) if risk else 0.0, "pnl": round(net, 2),
+            "gross_pnl": round(gross, 2), "costs": round(costs, 2)}
+
+
 def range_hit(pos, high, low):
     """Задет ли стоп или дальняя цель в диапазоне цен [low, high].
     Если задеты оба — засчитываем СТОП (правило осторожности).
@@ -257,19 +271,20 @@ def check_all():
                                      f"цель {pos.get('target_far') or pos.get('targets')})"))
             still_open.append(pos)
             continue
-        r = actual_R(pos, res["exit"])
-        pnl = round(r * (pos.get("risk_amount") or 0), 2)
-        outcome = "прибыль" if r > 0 else "убыток"
+        st = settle(pos, res["exit"])
+        r, pnl = st["actual_R"], st["pnl"]
+        outcome = "прибыль" if pnl > 0 else "убыток"
         log_result({"id": pos["id"], "instrument": pos["instrument"], "direction": pos["direction"],
                     "entry": pos["entry"], "stop": pos["stop"], "exit": res["exit"], "hit": res["label"],
                     "opened_at": pos["opened_at"], "closed_at": res["closed_at"],
                     "forecast_R_net": pos.get("expected_R_net"), "actual_R": r,
                     "pnl": pnl, "outcome": outcome, "source": pos.get("source"),
                     "decision_id": pos.get("decision_id"), "mode": pos.get("mode", "trend"),
-                    "size": (pos.get("size") or {}).get("value")})
+                    "size": (pos.get("size") or {}).get("value"),
+                    "gross_pnl": st["gross_pnl"], "costs": st["costs"]})
         messages.append(("success" if r > 0 else "warning",
                          f"{name}: {res['label']} по {res['exit']} ({res['closed_at'].replace('T', ' ')}) → "
-                         f"{outcome} ${pnl} (прогноз R {pos.get('expected_R_net')}, факт R {r})"))
+                         f"{outcome} ${pnl} с издержками ${st['costs']} (прогноз R {pos.get('expected_R_net')}, факт R {r})"))
     p["open_positions"] = still_open
     save_portfolio(p)
     return messages
@@ -283,19 +298,20 @@ def close_manual(pid):
     if not pos:
         return f"Позиции {pid} среди открытых нет."
     price = price_now(pos["instrument"])
-    r = actual_R(pos, price)
-    pnl = round(r * (pos.get("risk_amount") or 0), 2)
-    outcome = "прибыль" if r > 0 else "убыток"
+    st = settle(pos, price)
+    r, pnl = st["actual_R"], st["pnl"]
+    outcome = "прибыль" if pnl > 0 else "убыток"
     log_result({"id": pos["id"], "instrument": pos["instrument"], "direction": pos["direction"],
                 "entry": pos["entry"], "stop": pos["stop"], "exit": price, "hit": "ВРУЧНУЮ",
                 "opened_at": pos["opened_at"],
                 "closed_at": datetime.datetime.now().isoformat(timespec="minutes"),
                 "forecast_R_net": pos.get("expected_R_net"), "actual_R": r, "pnl": pnl,
                 "outcome": outcome, "source": pos.get("source"), "decision_id": pos.get("decision_id"),
-                "mode": pos.get("mode", "trend"), "size": (pos.get("size") or {}).get("value")})
+                "mode": pos.get("mode", "trend"), "size": (pos.get("size") or {}).get("value"),
+                "gross_pnl": st["gross_pnl"], "costs": st["costs"]})
     p["open_positions"] = [x for x in p["open_positions"] if x["id"] != pos["id"]]
     save_portfolio(p)
-    return f"{pos['id']} {pos['instrument']} закрыта вручную по {price}: {outcome} ${pnl} ({r} R)."
+    return f"{pos['id']} {pos['instrument']} закрыта вручную по {price}: {outcome} ${pnl} ({r} R), из них издержки ${st['costs']}."
 
 
 def compute_stats(rows):
