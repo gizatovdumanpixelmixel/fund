@@ -184,7 +184,12 @@ def format_briefing(data):
     return "\n".join(lines)
 
 
+def _money(x):
+    return f"{'+' if x >= 0 else '−'}${abs(x):.2f}"
+
+
 def format_monitor(closed, rows, only_alerts=True):
+    """Сообщение монитора: вердикт, где позиция, риски, сценарии, что делать."""
     lines = []
     for _kind, text in closed:
         lines.append(f"🔔 Закрыта: {text}")
@@ -192,12 +197,41 @@ def format_monitor(closed, rows, only_alerts=True):
         if only_alerts and r["verdict"] == "HOLD":
             continue
         icon = {"CLOSE": "🛑", "REVIEW": "⚠️", "HOLD": "✅"}.get(r["verdict"], "•")
-        head = f"{icon} {r['verdict_ru']}: {r['id']} {r['instrument']}"
-        if r.get("price") is not None:
-            head += f" · цена {r['price']} · {r['progress_R']} R"
-        lines.append(head)
-        for reason in r["reasons"]:
-            lines.append(f"   – {reason}")
-        if r["verdict"] == "CLOSE":
-            lines.append(f"   Закрыть вручную: /close {r['id']}")
+        side = {"long": "лонг", "short": "шорт"}.get(r.get("direction"), r.get("direction"))
+        mode = " · отскок" if r.get("mode") == "bounce" else ""
+        if lines:
+            lines.append("")
+        lines.append(f"{icon} {r['verdict_ru']}: {r['id']} {r['instrument']} {side}{mode}")
+        if r.get("price") is None:
+            lines += [f"   – {x}" for x in r["reasons"]]
+            continue
+        lines.append(f"Сейчас: цена {r['price']} (вход {r['entry']}, {r['move_from_entry_pct']:+}%), "
+                     f"результат {r['progress_R']:+} R = {_money(r['pnl_usd'])}, в сделке {r['days_open']} дн.")
+        trend_ru = {"up": "вверх", "down": "вниз", "range": "боковик"}
+        lines.append(f"Фон: тренд монеты 4ч — {trend_ru.get(r['trend'], r['trend'])}, "
+                     f"режим BTC — {trend_ru.get(r['regime'], r['regime'])}")
+        if r.get("risks"):
+            lines.append("")
+            lines.append("Риски:")
+            for title, detail in r["risks"]:
+                lines.append(f"• {title}: {detail}")
+        sc = r.get("scenarios") or {}
+        if sc:
+            lines.append("")
+            lines.append("Сценарии (расчёт кода от текущей цены):")
+            for t in sc.get("targets", []):
+                lines.append(f"📈 Цель {t['price']} ({t['move_pct']:+}%): итог {t['result_R']:+} R = "
+                             f"{_money(t['result_usd'])}" + (f"; {t['eta']}" if t.get("eta") else ""))
+            s = sc["stop"]
+            lines.append(f"📉 Стоп {s['price']} ({s['move_pct']:+}%): итог −1 R = {_money(s['result_usd'])}, "
+                         f"от текущего {_money(s['giveback_usd'])}" + (f"; {s['eta']}" if s.get("eta") else ""))
+        fc = r.get("forecast")
+        if fc:
+            lines.append("")
+            lines.append("Прогноз (мнение модели, не расчёт):")
+            for key, label in (("base", "Базовый"), ("up", "Вверх"), ("down", "Вниз"), ("key_level", "Ключевой уровень")):
+                if fc.get(key):
+                    lines.append(f"• {label}: {fc[key]}")
+        lines.append("")
+        lines.append(f"👉 Что делать: {r['action']}")
     return "\n".join(lines)

@@ -87,19 +87,44 @@ def positioning(perp, symbol, funding=None):
     return out
 
 
-def warning_for(direction, pos):
+def crowd_details(direction, pos, notional_usd=None):
+    """Что именно перегрето — с цифрами и порогами. Список строк (пустой — толпа не против нас)."""
+    if not pos or pos.get("crowded_side") != direction:
+        return []
+    f, ls, oi = pos.get("funding_rate"), pos.get("long_short_ratio"), pos.get("oi_change_24h_pct")
+    out = []
+    if direction == "long":
+        if f is not None and f >= FUNDING_HOT:
+            line = (f"финансирование +{f * 100:.3f}% за 8 ч (порог перегрева +{FUNDING_HOT * 100:.2f}%): "
+                    f"лонги платят шортам, желающих купить с плечом слишком много")
+            if notional_usd:
+                line += f"; удержание твоей позиции стоит ≈${notional_usd * f * 3:.2f} в сутки"
+            out.append(line)
+        if ls is not None and ls >= LS_HOT:
+            out.append(f"соотношение лонг/шорт {ls} (порог {LS_HOT}): на один счёт в шорте "
+                       f"{ls} счёта в лонге")
+    else:
+        if f is not None and f <= FUNDING_COLD:
+            line = (f"финансирование {f * 100:.3f}% за 8 ч (порог {FUNDING_COLD * 100:.2f}%): "
+                    f"шорты платят лонгам, продавцов с плечом слишком много")
+            if notional_usd:
+                line += f"; удержание твоей позиции стоит ≈${notional_usd * abs(f) * 3:.2f} в сутки"
+            out.append(line)
+        if ls is not None and ls <= LS_COLD:
+            out.append(f"соотношение лонг/шорт {ls} (порог {LS_COLD}): шортистов заметно больше")
+    if out and oi is not None and oi >= OI_JUMP_PCT:
+        out.append(f"открытый интерес вырос на {oi}% за сутки (порог {OI_JUMP_PCT}%) — "
+                   f"плеча в монете становится больше, давление растёт")
+    return out
+
+
+def warning_for(direction, pos, notional_usd=None):
     """Текст предупреждения, если сделка идёт вместе с толпой. Иначе None."""
-    if not pos:
+    det = crowd_details(direction, pos, notional_usd)
+    if not det:
         return None
-    side = pos.get("crowded_side")
-    parts = []
-    if side == direction == "long":
-        parts.append("толпа уже в лонгах (высокий funding или перекос лонг/шорт) — "
-                     "риск резкого падения из-за массового закрытия лонгов")
-    elif side == direction == "short":
-        parts.append("толпа уже в шортах — риск шорт-сквиза: резкого роста из-за "
-                     "принудительного закрытия чужих шортов")
-    oi = pos.get("oi_change_24h_pct")
-    if parts and oi is not None and oi >= OI_JUMP_PCT:
-        parts.append(f"открытый интерес вырос на {oi}% за сутки — давление растёт")
-    return "; ".join(parts) if parts else None
+    what = ("риск резкого падения: при небольшом снижении чужие лонги начнут закрываться "
+            "принудительно и толкать цену ниже" if direction == "long" else
+            "риск шорт-сквиза: при небольшом росте чужие шорты начнут закрываться "
+            "принудительно и толкать цену выше")
+    return "толпа уже в " + ("лонгах" if direction == "long" else "шортах") + ": " + "; ".join(det) + " — " + what

@@ -45,12 +45,12 @@ LIGHT = [("groq", "openai/gpt-oss-20b"), ("groq", "openai/gpt-oss-120b"),
 ROLE_CHAINS = {
     "tech": STRONG, "consultant": STRONG, "advocate_long": STRONG, "advocate_short": STRONG,
     "strategist": STRONG, "capital_manager": STRONG,
-    "news": LIGHT, "translator": LIGHT,
+    "news": LIGHT, "translator": LIGHT, "monitor": LIGHT,
 }
 
 # Насколько долго модель gpt-oss «думает» перед ответом. Размышления тоже стоят токенов.
 REASONING = {"tech": "medium", "consultant": "medium", "advocate_long": "low", "advocate_short": "low",
-             "strategist": "low", "capital_manager": "low", "news": "low", "translator": "low"}
+             "strategist": "low", "capital_manager": "low", "news": "low", "translator": "low", "monitor": "low"}
 
 # Оценка стоимости, $ за 1 млн токенов (вход, выход) — по платным тарифам Groq.
 PRICES = {"openai/gpt-oss-120b": (0.15, 0.60), "openai/gpt-oss-20b": (0.075, 0.30)}
