@@ -4,7 +4,7 @@ set -e
 git config user.name "fund-bot"
 git config user.email "fund-bot@users.noreply.github.com"
 for path in portfolio.json results.jsonl decisions.jsonl lessons.jsonl rejected_reviews.jsonl \
-            usage.jsonl control.json telegram_state.json briefings logs; do
+            usage.jsonl exits.jsonl control.json telegram_state.json briefings logs; do
   [ -e "$path" ] && git add -A -- "$path"
 done
 if git diff --cached --quiet; then

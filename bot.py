@@ -259,6 +259,13 @@ def weekly_text(days=7):
     if sa["n"]:
         warn = f" — пока мало данных (нужно от {P.MIN_TRADES_FOR_STATS})" if sa["n"] < P.MIN_TRADES_FOR_STATS else ""
         lines.append(f"Всего сделок: {sa['n']}, винрейт {sa['win_rate']}%, матожидание {sa['expectancy']} R{warn}")
+    try:                                              # какой способ выхода выгоднее — на реальных сделках
+        import exits as EX
+        txt = EX.summary_text(EX.backfill())
+        if txt:
+            lines.append(txt)
+    except Exception as e:                            # noqa: BLE001
+        lines.append(f"\n🎯 Способы выхода: не удалось посчитать ({e})")
     try:
         lines.append(money_text(now))
     except Exception as e:                            # noqa: BLE001

@@ -281,7 +281,8 @@ def check_all():
                     "pnl": pnl, "outcome": outcome, "source": pos.get("source"),
                     "decision_id": pos.get("decision_id"), "mode": pos.get("mode", "trend"),
                     "size": (pos.get("size") or {}).get("value"),
-                    "gross_pnl": st["gross_pnl"], "costs": st["costs"]})
+                    "gross_pnl": st["gross_pnl"], "costs": st["costs"],
+                    "targets": pos.get("targets"), "target_far": pos.get("target_far")})
         messages.append(("success" if r > 0 else "warning",
                          f"{name}: {res['label']} по {res['exit']} ({res['closed_at'].replace('T', ' ')}) → "
                          f"{outcome} ${pnl} с издержками ${st['costs']} (прогноз R {pos.get('expected_R_net')}, факт R {r})"))
@@ -308,7 +309,8 @@ def close_manual(pid):
                 "forecast_R_net": pos.get("expected_R_net"), "actual_R": r, "pnl": pnl,
                 "outcome": outcome, "source": pos.get("source"), "decision_id": pos.get("decision_id"),
                 "mode": pos.get("mode", "trend"), "size": (pos.get("size") or {}).get("value"),
-                "gross_pnl": st["gross_pnl"], "costs": st["costs"]})
+                "gross_pnl": st["gross_pnl"], "costs": st["costs"],
+                "targets": pos.get("targets"), "target_far": pos.get("target_far")})
     p["open_positions"] = [x for x in p["open_positions"] if x["id"] != pos["id"]]
     save_portfolio(p)
     return f"{pos['id']} {pos['instrument']} закрыта вручную по {price}: {outcome} ${pnl} ({r} R), из них издержки ${st['costs']}."
