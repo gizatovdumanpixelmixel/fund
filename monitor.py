@@ -20,7 +20,7 @@
                                   по текущей цене (ничего не записывает)
 """
 
-import sys, time, datetime, subprocess
+import re, sys, time, datetime, subprocess
 
 import positions as P
 import context as C
@@ -41,11 +41,11 @@ def _trend_4h(symbol):
     fast, slow, last = C._sma(closes, 10), C._sma(closes, 30), closes[-1]
     rng = [c[2] - c[3] for c in o[-14:]]
     avg_range = sum(rng) / len(rng) if rng else None
-    if fast > slow and last >= slow:
-        return "up", avg_range
-    if fast < slow and last <= slow:
-        return "down", avg_range
-    return "range", avg_range
+    recent = o[-20:]                                 # ~3 суток 4ч-свечей
+    levels = {"resistance_3d": max(c[2] for c in recent), "support_3d": min(c[3] for c in recent),
+              "sma_4h_30": round(slow, 6)}
+    trend = "up" if (fast > slow and last >= slow) else ("down" if (fast < slow and last <= slow) else "range")
+    return trend, avg_range, levels
 
 
 def _pct(a, b):
@@ -164,32 +164,83 @@ def assess(pos, price, trend, regime, positioning=None, now=None, avg_range=None
 
 
 FORECAST_SYSTEM = (
-    "Ты — аналитик-монитор портфеля. Вердикт по позиции уже поставлен правилами кода, ты его НЕ меняешь. "
-    "По данным ниже опиши сценарии на ближайшие 1–3 дня. Используй ТОЛЬКО цены и числа из данных, "
-    "не выдумывай новостей и уровней. Не давай вероятностей в процентах. Пиши по-русски, просто, без жаргона. "
-    'Верни JSON: {"base": "базовый сценарий, 1–2 предложения", '
-    '"up": "что будет при движении в сторону цели и на что смотреть", '
-    '"down": "что будет при движении к стопу и на что смотреть", '
-    '"key_level": "одна цена из данных, пробой которой меняет картину, и почему"}'
+    "Ты — рыночный аналитик монитора портфеля. Вердикт по позиции уже поставлен правилами кода, "
+    "ты его НЕ меняешь и НЕ даёшь советов по управлению позицией (перенос стопа, частичное закрытие, "
+    "докупка) — это делают правила. Твоя задача — описать, что может сделать РЫНОК в ближайшие 1–3 дня.\n"
+    "Факты, которые нельзя искажать:\n"
+    "- стоп срабатывает ТОЛЬКО при цене stop; цена ниже входа — это просто убыток, а не стоп;\n"
+    "- entry — цена входа Думана, а не уровень рынка: не называй её поддержкой или сопротивлением;\n"
+    "- поддержка/сопротивление — ТОЛЬКО из levels (support_3d, resistance_3d, sma_4h_30);\n"
+    "- коррекция = откат против тренда; рост к цели лонга — не коррекция.\n"
+    "Используй ТОЛЬКО числа из данных. Не давай вероятностей в процентах. "
+    "Если для вывода данных мало — так и скажи. Пиши по-русски, просто.\n"
+    'Верни JSON: {"base": "что вероятнее всего сделает цена и почему (тренд, режим BTC, уровни), 1–2 предложения", '
+    '"up": "при каком условии (цена и уровень) цена пойдёт к целям, сколько это R", '
+    '"down": "при каком условии цена пойдёт к стопу, какой уровень из levels встретится по пути", '
+    '"key_level": "один уровень из levels, пробой которого меняет картину, и почему"}'
 )
+
+_NUM = re.compile(r"\d+(?:[.,]\d+)?")
+
+
+def _numbers(obj):
+    """Все числа из данных — чтобы проверить, что модель не выдумала уровни."""
+    if isinstance(obj, bool) or obj is None:
+        return []
+    if isinstance(obj, (int, float)):
+        return [float(obj)]
+    if isinstance(obj, dict):
+        return [x for v in obj.values() for x in _numbers(v)]
+    if isinstance(obj, (list, tuple)):
+        return [x for v in obj for x in _numbers(v)]
+    if isinstance(obj, str):
+        return [float(m.replace(",", ".")) for m in _NUM.findall(obj)]
+    return []
+
+
+def invented_levels(text, data, tol=0.003):
+    """Числа в тексте модели, которых нет в данных (с допуском 0.3%). Мелкие целые (1–3 дня и т.п.) не считаем."""
+    allowed = [abs(x) for x in _numbers(data)]
+    bad = []
+    for m in _NUM.findall(text):
+        x = float(m.replace(",", "."))
+        if x == int(x) and x <= 30:
+            continue
+        if not any(abs(x - a) <= max(a, 1e-9) * tol for a in allowed):
+            bad.append(m)
+    return bad
 
 
 def add_forecast(row):
-    """Сценарии словами от модели (лёгкая модель). Ошибка — просто без прогноза."""
+    """Сценарии словами от модели. Фразы с выдуманными уровнями отбрасываются кодом."""
     if row.get("price") is None:
         return row
     import json
     import llm
-    data = {k: row[k] for k in ("instrument", "direction", "mode", "price", "entry", "stop", "progress_R",
-                                "pnl_usd", "days_open", "trend", "regime", "reasons", "scenarios")}
+    keys = ("instrument", "direction", "mode", "price", "entry", "stop", "progress_R", "pnl_usd", "days_open",
+            "trend", "regime", "levels", "avg_range_4h", "positioning", "reasons", "scenarios")
+    data = {k: row.get(k) for k in keys}
     try:
         text, _model = llm.complete("monitor", [{"role": "system", "content": FORECAST_SYSTEM},
                                                 {"role": "user", "content": json.dumps(data, ensure_ascii=False)}],
-                                    max_tokens=1500)
+                                    max_tokens=2500)
         fc = json.loads(text[text.find("{"): text.rfind("}") + 1])
-        row["forecast"] = {k: str(fc.get(k, "")).strip() for k in ("base", "up", "down", "key_level") if fc.get(k)}
     except Exception as e:                           # noqa: BLE001
         print(f"  прогноз модели недоступен: {e}")
+        return row
+    out, dropped = {}, []
+    for k in ("base", "up", "down", "key_level"):
+        v = str(fc.get(k) or "").strip()
+        if not v:
+            continue
+        bad = invented_levels(v, data)
+        if bad:
+            dropped.append(f"{k}: {', '.join(bad)}")
+        else:
+            out[k] = v
+    if dropped:
+        out["dropped"] = "часть прогноза отброшена — уровни не из данных: " + "; ".join(dropped)
+    row["forecast"] = out or None
     return row
 
 
@@ -223,7 +274,7 @@ def run_once():
     for pos in P.load_portfolio()["open_positions"]:
         try:
             price = P.price_now(pos["instrument"])
-            trend, avg_range = _trend_4h(pos["instrument"])
+            trend, avg_range, levels = _trend_4h(pos["instrument"])
         except Exception as e:                       # noqa: BLE001
             out.append({"id": pos["id"], "instrument": pos["instrument"], "verdict": "REVIEW",
                         "verdict_ru": "ПЕРЕСМОТРЕТЬ", "reasons": [f"нет данных рынка: {e}"],
@@ -231,7 +282,12 @@ def run_once():
                         "progress_R": None, "to_stop_R": None, "days_open": None})
             continue
         positioning = D.positioning(perp, pos["instrument"])
-        out.append(assess(pos, price, trend, regime, positioning, avg_range=avg_range))
+        row = assess(pos, price, trend, regime, positioning, avg_range=avg_range)
+        row["levels"] = levels
+        row["avg_range_4h"] = round(avg_range, 6) if avg_range else None
+        row["positioning"] = {k: positioning.get(k) for k in ("funding_rate", "long_short_ratio",
+                                                             "oi_change_24h_pct")} if positioning else None
+        out.append(row)
     return closed, out
 
 

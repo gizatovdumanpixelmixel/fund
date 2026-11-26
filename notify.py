@@ -210,6 +210,10 @@ def format_monitor(closed, rows, only_alerts=True):
         trend_ru = {"up": "вверх", "down": "вниз", "range": "боковик"}
         lines.append(f"Фон: тренд монеты 4ч — {trend_ru.get(r['trend'], r['trend'])}, "
                      f"режим BTC — {trend_ru.get(r['regime'], r['regime'])}")
+        lv = r.get("levels")
+        if lv:
+            lines.append(f"Уровни рынка за 3 дня: поддержка {lv['support_3d']}, сопротивление "
+                         f"{lv['resistance_3d']}, средняя 4ч (30) {lv['sma_4h_30']}")
         if r.get("risks"):
             lines.append("")
             lines.append("Риски:")
@@ -232,6 +236,8 @@ def format_monitor(closed, rows, only_alerts=True):
             for key, label in (("base", "Базовый"), ("up", "Вверх"), ("down", "Вниз"), ("key_level", "Ключевой уровень")):
                 if fc.get(key):
                     lines.append(f"• {label}: {fc[key]}")
+            if fc.get("dropped"):
+                lines.append(f"  ({fc['dropped']})")
         lines.append("")
         lines.append(f"👉 Что делать: {r['action']}")
     return "\n".join(lines)
