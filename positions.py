@@ -265,7 +265,8 @@ def check_all():
                     "opened_at": pos["opened_at"], "closed_at": res["closed_at"],
                     "forecast_R_net": pos.get("expected_R_net"), "actual_R": r,
                     "pnl": pnl, "outcome": outcome, "source": pos.get("source"),
-                    "decision_id": pos.get("decision_id"), "mode": pos.get("mode", "trend")})
+                    "decision_id": pos.get("decision_id"), "mode": pos.get("mode", "trend"),
+                    "size": (pos.get("size") or {}).get("value")})
         messages.append(("success" if r > 0 else "warning",
                          f"{name}: {res['label']} по {res['exit']} ({res['closed_at'].replace('T', ' ')}) → "
                          f"{outcome} ${pnl} (прогноз R {pos.get('expected_R_net')}, факт R {r})"))
@@ -291,7 +292,7 @@ def close_manual(pid):
                 "closed_at": datetime.datetime.now().isoformat(timespec="minutes"),
                 "forecast_R_net": pos.get("expected_R_net"), "actual_R": r, "pnl": pnl,
                 "outcome": outcome, "source": pos.get("source"), "decision_id": pos.get("decision_id"),
-                "mode": pos.get("mode", "trend")})
+                "mode": pos.get("mode", "trend"), "size": (pos.get("size") or {}).get("value")})
     p["open_positions"] = [x for x in p["open_positions"] if x["id"] != pos["id"]]
     save_portfolio(p)
     return f"{pos['id']} {pos['instrument']} закрыта вручную по {price}: {outcome} ${pnl} ({r} R)."

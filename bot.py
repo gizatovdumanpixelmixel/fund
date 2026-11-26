@@ -128,6 +128,75 @@ def _since(rows, field, days):
     return out
 
 
+def _usd(v):
+    return f"${v:,.2f}".replace(",", " ")
+
+
+def _money(v):
+    sign = "+" if v > 0 else ("−" if v < 0 else "")
+    return sign + _usd(abs(v))
+
+
+def _pct(v):
+    return ("+" if v > 0 else ("−" if v < 0 else "")) + f"{abs(v):.2f}%"
+
+
+def money_text(now=None):
+    """Деньги бумажного счёта: капитал, деньги в позициях, итоги за неделю / месяц / 3 месяца.
+    По закрытым сделкам: вложено = вход × размер, вернулось = вложено + доход,
+    доход = чистый результат с издержками и funding (как в журнале сделок)."""
+    now = now or datetime.datetime.now()
+    p = P.load_portfolio()
+    rows = P.load_results()
+    cap0 = float(p.get("capital", 10000))
+    realized = round(sum(r.get("pnl", 0) for r in rows), 2)
+    lines = ["\n💰 Деньги (бумажный счёт)",
+             f"Капитал: старт {_usd(cap0)} → сейчас {_usd(cap0 + realized)} ({_pct(realized / cap0 * 100)})"]
+
+    inv = unreal = 0.0
+    priced = True
+    for x in p["open_positions"]:
+        size = float((x.get("size") or {}).get("value") or 0)
+        inv += x["entry"] * size
+        try:
+            px = P.price_now(x["instrument"])
+            unreal += (px - x["entry"]) * size * (1 if x["direction"] == "long" else -1)
+        except Exception:                            # noqa: BLE001
+            priced = False
+    if p["open_positions"]:
+        u = f", незакрытый результат {_money(round(unreal, 2))}" if priced else ""
+        lines.append(f"Сейчас в позициях: {_usd(inv)} ({len(p['open_positions'])} шт.){u}")
+    else:
+        lines.append("Сейчас в позициях: $0 — всё в деньгах")
+
+    for label, days in (("Неделя", 7), ("Месяц", 30), ("3 месяца", 90)):
+        edge = now - datetime.timedelta(days=days)
+        closed = []
+        for r in rows:
+            try:
+                if datetime.datetime.fromisoformat(str(r.get("closed_at"))[:19]) >= edge:
+                    closed.append(r)
+            except ValueError:
+                continue
+        if not closed:
+            lines.append(f"📅 {label}: закрытых сделок нет")
+            continue
+        invested = sum(r["entry"] * float(r.get("size") or 0) for r in closed)
+        net = round(sum(r.get("pnl", 0) for r in closed), 2)
+        plus = round(sum(r["pnl"] for r in closed if r.get("pnl", 0) > 0), 2)
+        minus = round(sum(r["pnl"] for r in closed if r.get("pnl", 0) < 0), 2)
+        wins = sum(1 for r in closed if r.get("pnl", 0) > 0)
+        on_inv = f", {_pct(net / invested * 100)} на вложенное" if invested else ""
+        lines.append(
+            f"📅 {label}: сделок {len(closed)} (в плюс {wins}, в минус или в ноль {len(closed) - wins})\n"
+            f"   вложено {_usd(invested)} → вернулось {_usd(invested + net)}\n"
+            f"   доход {_money(net)} ({_pct(net / cap0 * 100)} к капиталу{on_inv})\n"
+            f"   заработали {_money(plus)}, потеряли {_money(minus) if minus else '$0'}")
+    if any(r.get("size_estimated") for r in rows):
+        lines.append("   (по августовским сделкам размер восстановлен по результату — примерно)")
+    return "\n".join(lines)
+
+
 def weekly_text(days=7):
     """Сводка за неделю: анализы, идеи, сделки, уроки, табель агентов, расход модели."""
     import memory as MEM
@@ -173,6 +242,10 @@ def weekly_text(days=7):
     if sa["n"]:
         warn = f" — пока мало данных (нужно от {P.MIN_TRADES_FOR_STATS})" if sa["n"] < P.MIN_TRADES_FOR_STATS else ""
         lines.append(f"Всего сделок: {sa['n']}, винрейт {sa['win_rate']}%, матожидание {sa['expectancy']} R{warn}")
+    try:
+        lines.append(money_text(now))
+    except Exception as e:                            # noqa: BLE001
+        lines.append(f"\n💰 Деньги: не удалось посчитать ({e})")
 
     lessons = _since(MEM.load(MEM.LESSONS_PATH), "created", days)
     if lessons:
