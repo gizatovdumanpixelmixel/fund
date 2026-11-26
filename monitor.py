@@ -176,7 +176,7 @@ FORECAST_SYSTEM = (
 
 def add_forecast(row):
     """Сценарии словами от модели (лёгкая модель). Ошибка — просто без прогноза."""
-    if row.get("price") is None or row["verdict"] == "HOLD":
+    if row.get("price") is None:
         return row
     import json
     import llm

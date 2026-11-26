@@ -83,8 +83,8 @@ def run_monitor(only_alerts):
     c = load_control()
     if only_alerts:                                  # одно и то же предупреждение — не чаще раза в сутки
         rows, c["monitor_alerts"] = MON.alert_filter(rows, c.get("monitor_alerts", {}))
-    for r in rows:                                   # сценарии словами — только для того, что увидит Думан
-        if r["verdict"] != "HOLD":
+    for r in rows:                                   # сценарии словами — только для того, что увидит Думан:
+        if r["verdict"] != "HOLD" or not only_alerts:    # по кнопке — для всех позиций, в фоне — для тревог
             MON.add_forecast(r)
     text = TG.format_monitor(closed, rows, only_alerts=only_alerts)
     c["last_monitor"] = datetime.datetime.now().isoformat(timespec="seconds")
