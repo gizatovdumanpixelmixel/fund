@@ -228,7 +228,7 @@ def format_monitor(closed, rows, only_alerts=True):
                              f"{_money(t['result_usd'])}" + (f"; {t['eta']}" if t.get("eta") else ""))
             s = sc["stop"]
             lines.append(f"📉 Стоп {s['price']} ({s['move_pct']:+}%): итог −1 R = {_money(s['result_usd'])}, "
-                         f"от текущего {_money(s['giveback_usd'])}" + (f"; {s['eta']}" if s.get("eta") else ""))
+                         (f"от текущего {_money(s['giveback_usd'])}" if abs(s['giveback_usd'] - s['result_usd']) >= 0.01 else "") + (f"; {s['eta']}" if s.get("eta") else ""))
         fc = r.get("forecast")
         if fc:
             lines.append("")

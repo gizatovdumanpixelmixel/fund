@@ -42,8 +42,9 @@ def _trend_4h(symbol):
     rng = [c[2] - c[3] for c in o[-14:]]
     avg_range = sum(rng) / len(rng) if rng else None
     recent = o[-20:]                                 # ~3 суток 4ч-свечей
+    dec = max(len(repr(float(x)).split(".")[1].rstrip("0")) for c in recent for x in (c[2], c[3]))
     levels = {"resistance_3d": max(c[2] for c in recent), "support_3d": min(c[3] for c in recent),
-              "sma_4h_30": round(slow, 6)}
+              "sma_4h_30": round(slow, dec)}
     trend = "up" if (fast > slow and last >= slow) else ("down" if (fast < slow and last <= slow) else "range")
     return trend, avg_range, levels
 
@@ -171,7 +172,9 @@ FORECAST_SYSTEM = (
     "- стоп срабатывает ТОЛЬКО при цене stop; цена ниже входа — это просто убыток, а не стоп;\n"
     "- entry — цена входа Думана, а не уровень рынка: не называй её поддержкой или сопротивлением;\n"
     "- поддержка/сопротивление — ТОЛЬКО из levels (support_3d, resistance_3d, sma_4h_30);\n"
-    "- коррекция = откат против тренда; рост к цели лонга — не коррекция.\n"
+    "- коррекция = откат против тренда; рост к цели лонга — не коррекция;\n"
+    "- если цель совпадает с уровнем из levels (разница до 0.3%), скажи это один раз: «цель 1 = сопротивление», "
+    "а не описывай как два разных уровня.\n"
     "Используй ТОЛЬКО числа из данных. Не давай вероятностей в процентах. "
     "Если для вывода данных мало — так и скажи. Пиши по-русски, просто.\n"
     'Верни JSON: {"base": "что вероятнее всего сделает цена и почему (тренд, режим BTC, уровни), 1–2 предложения", '
