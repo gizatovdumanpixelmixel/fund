@@ -42,7 +42,7 @@ def _trend_4h(symbol):
     rng = [c[2] - c[3] for c in o[-14:]]
     avg_range = sum(rng) / len(rng) if rng else None
     recent = o[-20:]                                 # ~3 суток 4ч-свечей
-    dec = max(len(repr(float(x)).split(".")[1].rstrip("0")) for c in recent for x in (c[2], c[3]))
+    dec = min(6, max(len(repr(float(x)).split(".")[1].rstrip("0")) for c in recent for x in (c[2], c[3])))
     levels = {"resistance_3d": max(c[2] for c in recent), "support_3d": min(c[3] for c in recent),
               "sma_4h_30": round(slow, dec)}
     trend = "up" if (fast > slow and last >= slow) else ("down" if (fast < slow and last <= slow) else "range")
