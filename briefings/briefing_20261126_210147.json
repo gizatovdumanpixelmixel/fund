@@ -1,0 +1,830 @@
+{
+  "briefing": {
+    "sprint_id": "20261126_210147",
+    "summary": "Кандидат C-0001 – DOGE/USDT, лонг в восходящем тренде, но рынок BTC находится в нисходящем режиме. Оба отчёта одобряют позицию, но отмечают риски.",
+    "candidates_plain": [
+      {
+        "id": "C-0001",
+        "what": "Купить DOGE/USDT в лонг",
+        "why": "Тренд монеты восходящий, цена выше SMA10 и SMA30, стоп ниже swing‑low, цель обещает R≥1.5",
+        "what_could_go_wrong": "Нисходящий BTC‑режим может вызвать падение цены, высокая концентрация лонгов может вызвать резкое падение при закрытии позиций, волатильность DOGE может быстро пробить стоп",
+        "numbers_explained": [
+          {
+            "label": "R_net 2.09",
+            "means": "На каждый $1 риска ждём ~$2.09 прибыли после комиссий; риск здесь ~$50, значит цель по прибыли ~$(50*2.09)≈$104.5."
+          },
+          {
+            "label": "Риск ~$50",
+            "means": "Если сделка не сработает и цену выбьет по стопу, потеряете ~$50."
+          }
+        ],
+        "expert_said": "Пакет вписывается в ограничения капитала и риск‑менеджмента. Единственный кандидат удовлетворяет всем критериям мандата, но следует внимательно мониторить рынок BTC и динамику лонгов‑шортов. При неблагоприятном развитии ситуации рекомендуется быстро выйти по стопу.",
+        "consultant_said": "Победила сторона лонг. Главный довод – цена выше SMA10 и SMA30, а соотношение лонгов 3.1× подтверждает восходящий импульс.",
+        "agreement": "согласны"
+      }
+    ],
+    "terms_used": [
+      {
+        "term": "стоп",
+        "plain": "цена, на которой сделку закрывают с убытком, чтобы не потерять больше"
+      },
+      {
+        "term": "R (R_net)",
+        "plain": "во сколько раз возможная прибыль больше риска, после комиссий"
+      }
+    ]
+  },
+  "package": {
+    "sprint_id": "20261126_210147",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 60823.87,
+      "sma20_1d": 66044.1,
+      "sma50_1d": 74786.35,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261126_210147:DOGE/USDT",
+        "instrument": "DOGE/USDT",
+        "asset_class": "crypto",
+        "direction": "long",
+        "horizon": "swing",
+        "thesis": "Тренд DOGE/USDT восходящий, стоп установлен ниже swing‑low 20, цель обещает R≥1.5 — подходит под лонг в восходящем тренде.",
+        "counter_thesis": "В нисходящем режиме BTC (доминирующий рыночный тренд) такие отскоки часто терпят неудачу; аналогичный лонг LINK/USDT не сработал, а волатильность DOGE может быстро пробить стоп.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [],
+        "notes": [
+          "предупреждение: толпа уже в лонгах: соотношение лонг/шорт 3.1 (порог 2.0): на один счёт в шорте 3.1 счёта в лонге — риск резкого падения: при небольшом снижении чужие лонги начнут закрываться принудительно и толкать цену ниже",
+          "режим «отскок»: монета идёт по своему тренду против рынка (BTC). Риск — половина обычного, таких позиций не больше 2. Нужен ясный сетап по тренду монеты с близким уровнем для стопа; любая слабость — no_trade."
+        ],
+        "mode": "bounce",
+        "entry": 0.0568,
+        "stop": 0.05221,
+        "targets": [
+          0.06662
+        ],
+        "target_far": 0.06662,
+        "size": {
+          "value": 10893.246187,
+          "unit_type": "DOGE"
+        },
+        "risk_amount": 50.0,
+        "risk_pct": 0.5,
+        "R_gross": 2.14,
+        "expected_R_net": 2.09,
+        "costs_total": 2.41,
+        "funding_cost": 1.3,
+        "funding_hold_frac": 0.0021000000000000003,
+        "exposure_pct": 6.19,
+        "leverage_used": 0.06,
+        "size_binding_cap": "none",
+        "size_note": "",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true,
+          "bounce_cap": true
+        },
+        "rank": 1
+      }
+    ],
+    "no_trade": false,
+    "no_trade_reason": null,
+    "total_heat_pct": 1.0,
+    "llm_usage": {
+      "calls": 29,
+      "tokens_in": 48766,
+      "tokens_out": 12406,
+      "cost_usd_if_paid": 0.0122,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "US government may restrict sale of strategic Bitcoin holdings for 20 лет",
+        "event_risk_flag": true,
+        "event_risk": "US government policy change on Bitcoin holdings",
+        "claims": [
+          {
+            "text": "US government could be barred from selling its strategic Bitcoin holdings for 20 лет",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Galaxy Research withdrew claim that Bitcoin’s bear market is over, suggesting a lower low if price falls below $58,525",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Bitcoin’s recovery depends on a US economic slowdown without a recession",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Bitcoin ETFs are bleeding cash, Fed unlikely to help",
+            "refs": [
+              5
+            ]
+          },
+          {
+            "text": "Bitcoin price near $61K, but thin Thanksgiving liquidity may limit demand",
+            "refs": [
+              6
+            ]
+          },
+          {
+            "text": "Bitcoin little changed, DeFi tokens lead bounce as U.S. marks Thanksgiving",
+            "refs": [
+              7
+            ]
+          },
+          {
+            "text": "Bitcoin ETF outflows topped $5B, Morgan Stanley bucks trend",
+            "refs": [
+              8
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 2,
+            "title": "US government could be barred from selling its strategic Bitcoin holdings for 20 years",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/us-government-could-be-barred-from-selling-its-strategic-bitcoin-holdings-for-20-years/",
+            "published": "2026-11-26 13:40 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Galaxy Research Withdraws Call That Bitcoin's Bear Market Is Over",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384030/galaxy-research-withdraws-call-that-bitcoins-bear-market-is-over",
+            "published": "2026-11-26 12:26 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Bitcoin’s recovery hinges on a US economic slowdown without a recession",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-recovery-hinges-on-a-us-economic-slowdown-without-a-recession/",
+            "published": "2026-11-26 12:20 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Bitcoin ETFs are bleeding cash and the Fed is unlikely to help",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/daybook-us/2026/11/26/bitcoin-etfs-are-bleeding-cash-and-the-fed-is-unlikely-to-help",
+            "published": "2026-11-26 12:14 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Bitcoin price eyes $61K as Talos warns of thin Thanksgiving liquidity",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-price-talos-warns-thin-thanksgiving-liquidity?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 11:22 UTC"
+          },
+          {
+            "n": 7,
+            "title": "Bitcoin little changed, DeFi tokens lead the bounce as U.S. marks Thanksgiving",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/26/bitcoin-little-changed-defi-tokens-lead-the-bounce-as-u-s-marks-thanksgiving",
+            "published": "2026-11-26 11:17 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Bitcoin ETF November outflows top $5B, Morgan Stanley bucks trend",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/morgan-stanley-bitcoin-etf-trend-outflows-november?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 09:42 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 60801.6
+      },
+      "ETH/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Ethereum Foundation ускоряет обновление протокола для защиты от угроз AI и квантовых вычислений",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Ethereum Foundation объявила о переносе срока внедрения квантово-устойчивого шифрования на конец 2028 года, чтобы противостоять угрозам AI",
+            "refs": [
+              2,
+              4
+            ]
+          },
+          {
+            "text": "Криптовалютный рынок переживает падение ETH и DeFi токенов в два раза сильнее BTC из‑за рыночного спада акций",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "CFTC позволяет биржам считать BTC и ETH в резервный буфер, что может увеличить ликвидность",
+            "refs": [
+              5
+            ]
+          },
+          {
+            "text": "Bitcoin ETF теряют деньги, а ФРС не планирует вмешательства, что может усилить давление на криптовалюты",
+            "refs": [
+              7
+            ]
+          },
+          {
+            "text": "UK FCA планирует ужесточить правила DeFi, требуя лицензирования, что может ограничить рост DeFi платформ",
+            "refs": [
+              8
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Ethereum Foundation backs Keccak-256 to counter quantum, AI threats",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/ethereum-foundation-keccak-256-counter-quantum-ai-threats?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 18:54 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Ethereum Focuses on Security As AI Threats Rise",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383945/morning-minute-ethereum-focuses-on-security-as-ai-threats-rise",
+            "published": "2026-11-25 13:41 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Ether, DeFi fall twice as hard as bitcoin as equities selloff resumes",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/25/ether-defi-fall-twice-as-hard-as-bitcoin-as-equities-selloff-resumes",
+            "published": "2026-11-25 11:57 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Ethereum Foundation Says AI Is a More Urgent Threat Than Quantum Computing",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383927/ethereum-foundation-ai-more-urgent-threat-quantum-computing",
+            "published": "2026-11-24 20:36 UTC"
+          },
+          {
+            "n": 5,
+            "title": "What the CFTC’s New Crypto Reserves Guidance Actually Allows—And What It Doesn’t",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383906/cftc-new-crypto-reserves-guidance-actually-allows-what-it-doesnt",
+            "published": "2026-11-24 18:55 UTC"
+          },
+          {
+            "n": 7,
+            "title": "Bitcoin ETFs are bleeding cash and the Fed is unlikely to help",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/daybook-us/2026/11/26/bitcoin-etfs-are-bleeding-cash-and-the-fed-is-unlikely-to-help",
+            "published": "2026-11-26 12:14 UTC"
+          },
+          {
+            "n": 8,
+            "title": "UK Regulator Cites Binance Hack as It Plans Tougher DeFi Rules Than US and EU: Report",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384027/uk-regulator-cites-binance-hack-as-it-plans-tougher-defi-rules-than-us-and-eu-report",
+            "published": "2026-11-26 11:50 UTC"
+          }
+        ],
+        "news_found": 8,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 1697.13
+      },
+      "SOL/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Запуск SBI и SMFG на Solana создаёт новые возможности для токенизации и стейблкоинов",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "SBI и SMFG запустили совместный проект на Solana, направленный на развитие инфраструктуры стейблкоинов и токенизации финансовых активов",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "HashKey Earn предоставляет инвесторам доступ к японской акции‑стратегии через JX, но вывод средств возможен только через T+5",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "SBI brings Japanese stocks to Solana but investors face a five-day wait to cash out",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/sbi-brings-japanese-stocks-to-solana-but-investors-face-a-five-day-wait-to-cash-out/",
+            "published": "2026-11-26 04:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Japan’s SBI, SMFG launch Solana venture for stablecoins, tokenization",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/sbi-smfg-solana-global-stablecoin-tokenization?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 11:49 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 71.2
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 552.15
+      },
+      "XRP/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Разрыв в оценке Ripple между двумя фондами может вызвать рост интереса к монете",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Два фонда, зарегистрированных в SEC, оценили акции Ripple на 70 % раз, при этом более низкая оценка чуть выше цены, заплаченной в 2018 году",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Данные о снижении инфляции в США могут поддержать Bitcoin, но глубокий страх роста удерживает инвесторов от участия",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Bitcoin ETF теряют деньги, а ФРС маловероятно окажет поддержку",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Британский регулятор планирует ужесточить правила DeFi, ссылаясь на взлом Binance",
+            "refs": [
+              4
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Ripple is worth $90 a share to one fund and $300 to another, SEC filings show",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/26/ripple-is-worth-usd90-a-share-to-one-fund-and-usd300-to-another-sec-filings-show",
+            "published": "2026-11-26 05:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin’s recovery hinges on a US economic slowdown without a recession",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-recovery-hinges-on-a-us-economic-slowdown-without-a-recession/",
+            "published": "2026-11-26 12:20 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin ETFs are bleeding cash and the Fed is unlikely to help",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/daybook-us/2026/11/26/bitcoin-etfs-are-bleeding-cash-and-the-fed-is-unlikely-to-help",
+            "published": "2026-11-26 12:14 UTC"
+          },
+          {
+            "n": 4,
+            "title": "UK Regulator Cites Binance Hack as It Plans Tougher DeFi Rules Than US and EU: Report",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384027/uk-regulator-cites-binance-hack-as-it-plans-tougher-defi-rules-than-us-and-eu-report",
+            "published": "2026-11-26 11:50 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.9507
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.05678
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.1489
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin recovery зависит от замедления экономического роста в США, но не от рецессии",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bitcoin ETF теряют деньги, а Федеральная резервная система не поможет",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Британский регулятор планирует ужесточить правила DeFi после взлома Binance",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin’s recovery hinges on a US economic slowdown without a recession",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-recovery-hinges-on-a-us-economic-slowdown-without-a-recession/",
+            "published": "2026-11-26 12:20 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin ETFs are bleeding cash and the Fed is unlikely to help",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/daybook-us/2026/11/26/bitcoin-etfs-are-bleeding-cash-and-the-fed-is-unlikely-to-help",
+            "published": "2026-11-26 12:14 UTC"
+          },
+          {
+            "n": 3,
+            "title": "UK Regulator Cites Binance Hack as It Plans Tougher DeFi Rules Than US and EU: Report",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384027/uk-regulator-cites-binance-hack-as-it-plans-tougher-defi-rules-than-us-and-eu-report",
+            "published": "2026-11-26 11:50 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 6.603
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin’s recovery depends on a US economic slowdown without recession, suggesting broader crypto market may benefit from softer inflation.",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bitcoin ETFs are losing money and Fed unlikely to help, indicating potential downward pressure on crypto assets.",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "UK regulator plans tougher DeFi rules citing Binance hack, which could increase regulatory scrutiny for DeFi projects.",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin’s recovery hinges on a US economic slowdown without a recession",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-recovery-hinges-on-a-us-economic-slowdown-without-a-recession/",
+            "published": "2026-11-26 12:20 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin ETFs are bleeding cash and the Fed is unlikely to help",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/daybook-us/2026/11/26/bitcoin-etfs-are-bleeding-cash-and-the-fed-is-unlikely-to-help",
+            "published": "2026-11-26 12:14 UTC"
+          },
+          {
+            "n": 3,
+            "title": "UK Regulator Cites Binance Hack as It Plans Tougher DeFi Rules Than US and EU: Report",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384027/uk-regulator-cites-binance-hack-as-it-plans-tougher-defi-rules-than-us-and-eu-report",
+            "published": "2026-11-26 11:50 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 9.207
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.3022
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.668
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Данные по Bitcoin показывают, что восстановление зависит от замедления экономического роста в США, но без рецессии",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bitcoin ETFs теряют деньги, а ФРС, вероятно, не поможет",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Финансовый регулятор Великобритании планирует ужесточить правила DeFi после взлома Binance",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin’s recovery hinges on a US economic slowdown without a recession",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-recovery-hinges-on-a-us-economic-slowdown-without-a-recession/",
+            "published": "2026-11-26 12:20 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin ETFs are bleeding cash and the Fed is unlikely to help",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/daybook-us/2026/11/26/bitcoin-etfs-are-bleeding-cash-and-the-fed-is-unlikely-to-help",
+            "published": "2026-11-26 12:14 UTC"
+          },
+          {
+            "n": 3,
+            "title": "UK Regulator Cites Binance Hack as It Plans Tougher DeFi Rules Than US and EU: Report",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384027/uk-regulator-cites-binance-hack-as-it-plans-tougher-defi-rules-than-us-and-eu-report",
+            "published": "2026-11-26 11:50 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 43.55
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 208.2
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 3.076
+      },
+      "SUI/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Восстановление Биткоина зависит от замедления экономического роста в США, но без рецессии",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоиновые ETF теряют деньги, и ФРС не поможет",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Финансовый регулятор Великобритании планирует ужесточить правила DeFi после взлома Binance",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bitcoin’s recovery hinges on a US economic slowdown without a recession",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-recovery-hinges-on-a-us-economic-slowdown-without-a-recession/",
+            "published": "2026-11-26 12:20 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin ETFs are bleeding cash and the Fed is unlikely to help",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/daybook-us/2026/11/26/bitcoin-etfs-are-bleeding-cash-and-the-fed-is-unlikely-to-help",
+            "published": "2026-11-26 12:14 UTC"
+          },
+          {
+            "n": 3,
+            "title": "UK Regulator Cites Binance Hack as It Plans Tougher DeFi Rules Than US and EU: Report",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384027/uk-regulator-cites-binance-hack-as-it-plans-tougher-defi-rules-than-us-and-eu-report",
+            "published": "2026-11-26 11:50 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.6651
+      }
+    },
+    "direction": "any"
+  },
+  "report_1": {
+    "sprint_id": "20261126_210147",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": true,
+        "risks": [
+          "противоречие тренда монеты восходящему и общего нисходящего режима BTC (доминирующий рынок)",
+          "высокая концентрация лонгов в рынке (соотношение лонг/шорт 3.1) может вызвать резкое падение цены при закрытии чужих позиций",
+          "высокая волатильность DOGE может быстро пробить стоп"
+        ],
+        "notes": "Сетап соответствует требованиям мандата: риск 0.5 % от капитала, R ≈ 2.09 > 1.5, bounce‑режим в пределах лимита (не более 2 позиций). Принимаем позицию, но фиксируем указанные риски."
+      }
+    ],
+    "expert_opinion": "Пакет вписывается в ограничения капитала и риск‑менеджмента. Единственный кандидат удовлетворяет всем критериям мандата, однако следует внимательно мониторить рынок BTC и динамику лонгов‑шортов. При неблагоприятном развитии ситуации рекомендуется быстро выйти по стопу.",
+    "package_ok": true
+  },
+  "report_2": {
+    "sprint_id": "20261126_210147",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "DOGE/USDT",
+        "verdict": "pass",
+        "winner": "long",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "long",
+          "confidence": "high"
+        },
+        "reason": "Цена DOGE/USDT выше SMA10 (0.05678 > 0.055686) и SMA30 (0.05678 > 0.0556253), а соотношение лонгов 3.1× подтверждает восходящий импульс",
+        "counter_thesis": "Нисходящий режим BTC и небольшая дистанция до стоп‑уровня (0.05221) могут привести к пробою при резком падении",
+        "weak_points": [],
+        "fact_check": "Проверены цены, SMA10, SMA30, long_short_ratio = 3.1, range_position_pct = 37.9 % — все цифры совпадают с facts",
+        "long_case": {
+          "strongest": "цена выше обеих скользящих (SMA10 и SMA30), что подтверждает восходящий тренд",
+          "arguments": [
+            {
+              "text": "цена выше SMA30 (0.05678 > 0.0556253), тренд восходящий",
+              "evidence": "market.sma_slow_30",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "соотношение лонг/шорт 3.1 × в пользу лонгов, толпа в лонгах",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "цена выше SMA10 (0.05678 > 0.055686), подтверждает быстрый восходящий импульс",
+              "evidence": "market.sma_fast_10",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "перегрузка лонгов (ratio 3.1) и нисходящий BTC‑режим создают давление вниз",
+          "arguments": [
+            {
+              "text": "long_short_ratio 3.1 — лонги перегружены, вероятность разворота вниз растёт",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "рынок BTC в нисходящем режиме (regime down) подавляет любые отскоки, включая DOGE",
+              "evidence": "market_regime.regime",
+              "rhetoric": true,
+              "flags": [
+                "нет цифр"
+              ]
+            },
+            {
+              "text": "цена находится лишь в 37.9% диапазона от swing‑low, стоп почти у уровня swing‑low, малый буфер против падения",
+              "evidence": "market.range_position_pct",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 1
+        }
+      }
+    ],
+    "filtered_out": []
+  }
+}
