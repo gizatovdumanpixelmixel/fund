@@ -1,0 +1,1081 @@
+{
+  "briefing": {
+    "sprint_id": "20261126_085835",
+    "summary": "Сделок нет. все кандидаты сняты проверкой: LINK/USDT: эксперт №1 — Отскок по монете против нисходящего рынка BTC уже неудачно проявлялся для LINK (0 R); Риск усиления коррекции BTC может ускорить пробой стопа; Несмотря на приемлемый R‑нет, ожидаемая доходность уже не покрывает потенциальные потери в текущем рыночном режиме",
+    "candidates_plain": [],
+    "terms_used": []
+  },
+  "package": {
+    "sprint_id": "20261126_085835",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "capital": 10000,
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 60778.08,
+      "sma20_1d": 66041.81,
+      "sma50_1d": 74785.43,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 11,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "candidates": [],
+    "no_trade": true,
+    "no_trade_reason": "все кандидаты сняты проверкой: LINK/USDT: эксперт №1 — Отскок по монете против нисходящего рынка BTC уже неудачно проявлялся для LINK (0 R); Риск усиления коррекции BTC может ускорить пробой стопа; Несмотря на приемлемый R‑нет, ожидаемая доходность уже не покрывает потенциальные потери в текущем рыночном режиме",
+    "total_heat_pct": 1.0,
+    "rejected_candidates": [
+      {
+        "id": "C-0001",
+        "decision_id": "20261126_085835:LINK/USDT",
+        "instrument": "LINK/USDT",
+        "asset_class": "crypto",
+        "direction": "long",
+        "horizon": "swing",
+        "thesis": "Лонг LINK/USDT соответствует восходящему тренду монеты и имеет хороший R‑нет (≈1.9) при чётком стоп‑уровне.",
+        "counter_thesis": "В прошлом аналогичный лонг LINK/USDT при нисходящем режиме BTC завершился без прибыли; в текущем нисходящем рынке BTC риск усиления коррекции и возможный пробой стопа выше.",
+        "catalyst": "",
+        "has_catalyst": false,
+        "news_sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "notes": [
+          "режим «отскок»: монета идёт по своему тренду против рынка (BTC). Риск — половина обычного, таких позиций не больше 2. Нужен ясный сетап по тренду монеты с близким уровнем для стопа; любая слабость — no_trade."
+        ],
+        "mode": "bounce",
+        "entry": 9.15,
+        "stop": 8.463,
+        "targets": [
+          10.25,
+          10.45
+        ],
+        "target_far": 10.45,
+        "size": {
+          "value": 72.780204,
+          "unit_type": "LINK"
+        },
+        "risk_amount": 50.0,
+        "risk_pct": 0.5,
+        "R_gross": 1.89,
+        "expected_R_net": 1.87,
+        "costs_total": 1.26,
+        "funding_cost": 0.06,
+        "funding_hold_frac": 9.174516929550002e-05,
+        "exposure_pct": 6.66,
+        "leverage_used": 0.07,
+        "size_binding_cap": "none",
+        "size_note": "",
+        "hold_estimate": "дни–недели (ориентир 3–15 дней)",
+        "dod_gates": {
+          "has_stop": true,
+          "size_within_caps": true,
+          "R_net_ge_min": true,
+          "heat_ok": true,
+          "stop_not_too_tight": true,
+          "regime_ok": true,
+          "with_trend": true,
+          "same_direction_cap": true,
+          "not_already_open": true,
+          "bounce_cap": true
+        },
+        "rank": 1,
+        "rejected_by": "эксперт №1",
+        "reason": "Отскок по монете против нисходящего рынка BTC уже неудачно проявлялся для LINK (0 R); Риск усиления коррекции BTC может ускорить пробой стопа; Несмотря на приемлемый R‑нет, ожидаемая доходность уже не покрывает потенциальные потери в текущем рыночном режиме"
+      }
+    ],
+    "llm_usage": {
+      "calls": 23,
+      "tokens_in": 36322,
+      "tokens_out": 9194,
+      "cost_usd_if_paid": 0.0084,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Майнинг‑атак, затрагивающих более 1000 майнеров, могут усилить давление на цену",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Браининс предупреждает о майнинг‑атаках, которые могут перехватывать вычислительные мощности и награды",
+            "refs": [
+              4,
+              6
+            ]
+          },
+          {
+            "text": "Майнинг‑пул Braiins сообщил об атаках, использующих нешифрованный протокол Stratum V1 и hijacking маршрутов",
+            "refs": [
+              6
+            ]
+          },
+          {
+            "text": "Bitcoin упал почти 8,6% за неделю, что привело к «пустым» цветам в Rainbow Chart",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Снижение инфляции в США и ожидаемое повышение ставок ФРС могут замедлить восстановление рынка криптовалют",
+            "refs": [
+              9
+            ]
+          },
+          {
+            "text": "Украина приняла закон о регулировании и налогообложении криптовалют, который вступит в силу с июля 2027",
+            "refs": [
+              10
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 2,
+            "title": "Bitcoin has fallen so far that its original Rainbow Chart has run out of colors",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-has-fallen-so-far-that-its-original-rainbow-chart-has-run-out-of-colors/",
+            "published": "2026-11-25 22:40 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Braiins warns of Bitcoin mining attacks affecting over 1,000 sites",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/braiins-warns-bitcoin-mining-attacks-affecting-1000-sites?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 21:22 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Another Bitcoin Mining Firm Flags 'Hashrate Hijacking' Attacks That Reroute Rewards",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383999/another-bitcoin-mining-firm-hashrate-hijacking-attacks",
+            "published": "2026-11-25 20:36 UTC"
+          },
+          {
+            "n": 9,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 10,
+            "title": "Ukraine Passes Law to Legalize and Tax Its Crypto Market From July 2027",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383962/ukraine-passes-law-to-legalize-and-tax-its-crypto-market-from-july-2027",
+            "published": "2026-11-25 16:07 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 60791.4
+      },
+      "ETH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Ethereum Foundation усиливает безопасность и Lido ужесточает штрафы, что может подтолкнуть цену вверх",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Lido усиливает штрафы за слайсинг, что повышает доходность стейкинга",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Ethereum Foundation ускоряет внедрение Keccak-256 и расширяет команду безопасности",
+            "refs": [
+              2,
+              3,
+              5
+            ]
+          },
+          {
+            "text": "Падение BTC и общего рынка, а также высокий уровень страха (fear_greed 11) подталкивают ETH к снижению",
+            "refs": [
+              4,
+              7,
+              8,
+              9
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Lido tightens Ethereum staking penalties as operators gain access to larger validators",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/lido-tightens-ethereum-staking-penalties-as-operators-gain-access-to-larger-validators/",
+            "published": "2026-11-26 01:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ethereum Foundation backs Keccak-256 to counter quantum, AI threats",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/ethereum-foundation-keccak-256-counter-quantum-ai-threats?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 18:54 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Morning Minute: Ethereum Focuses on Security As AI Threats Rise",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383945/morning-minute-ethereum-focuses-on-security-as-ai-threats-rise",
+            "published": "2026-11-25 13:41 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Ether, DeFi fall twice as hard as bitcoin as equities selloff resumes",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/25/ether-defi-fall-twice-as-hard-as-bitcoin-as-equities-selloff-resumes",
+            "published": "2026-11-25 11:57 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Ethereum Foundation Says AI Is a More Urgent Threat Than Quantum Computing",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383927/ethereum-foundation-ai-more-urgent-threat-quantum-computing",
+            "published": "2026-11-24 20:36 UTC"
+          },
+          {
+            "n": 7,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 9,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 9,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 1698.6
+      },
+      "SOL/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Запуск SBI и SMFG проекта по стабильным монетам на Solana может усилить спрос на SOL",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "SBI и SMFG объявили о запуске проекта по созданию инфраструктуры для стабильных монет и токенизации финансовых активов на Solana",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Разработчики Solana приняли меры, чтобы не тратить ресурсы на обработку блоков, которые уже отклонены, что повышает эффективность сети",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "DEX Velocity прекратил торговлю из‑за ошибки, хотя недавно был перезапущен",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Japan’s SBI, SMFG launch Solana venture for stablecoins, tokenization",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/sbi-smfg-solana-global-stablecoin-tokenization?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 11:49 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Solana developers move to stop validators finishing work on blocks that already lost",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/25/solana-developers-move-to-stop-validators-finishing-work-on-blocks-that-already-lost",
+            "published": "2026-11-25 06:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Solana DEX Velocity halts trading over bug just months after relaunch",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/solana-dex-velocity-halts-transactions-over-bug-coming-2-months-after-relaunch?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 05:32 UTC"
+          }
+        ],
+        "news_found": 6,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 71.07
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок ФРС в декабре, что негативно скажется на крипторынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 57 000 USD из‑за опасений по поводу новых тарифов и сильных данных по инфляции PCE, что отразилось и на криптовалютном рынке",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Биткоин продолжил падение ниже 58 000 USD из‑за роста инфляции, тарифов и падения акций AI, что усилило давление на крипторынок",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 559.04
+      },
+      "XRP/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Партнёрство Ripple с Yapı Kredi открывает новый путь к использованию XRP в Турции",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Ripple внедряет своё программное обеспечение для хранения средств в Yapı Kredi, но подтверждение возможности конвертации лиры в XRP пока не подтверждено",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Только десять аккаунтов обеспечили весь рост торгов XRP Ledger за последний квартал",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Рост инфляции в США и ожидание повышения процентных ставок ФРС могут замедлить восстановление крипторынка",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже $58 000 из‑за инфляции, тарифов и падения акций ИИ",
+            "refs": [
+              4,
+              5
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Ripple’s latest banking partnership opens another route to XRP adoption in Turkey",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/ripples-latest-banking-partnership-opens-another-route-to-xrp-adoption-in-turkey/",
+            "published": "2026-11-25 20:10 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Just 10 accounts drove all of the XRP Ledger's trading growth last quarter",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/25/ten-accounts-drove-all-of-the-xrp-ledger-s-trading-growth-last-quarter",
+            "published": "2026-11-25 06:15 UTC"
+          },
+          {
+            "n": 3,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.9585
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок в декабре, что негативно отразится на криптовалютном рынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 58 000 $, в том числе из‑за опасений по поводу тарифов и сильной инфляции, что усилило давление на весь рынок криптовалют",
+            "refs": [
+              2,
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.05689
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок в декабре, что негативно скажется на крипторынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 57 000 $, в связи с опасениями по поводу новых тарифов и ростом инфляции, что отразилось на криптовалютах в целом",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 58 000 $, усиленный ростом инфляции, предложенными тарифами и падением акций ИИ, что усилило негативный настрой на рынке",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.1487
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок в декабре, что негативно скажется на криптовалютном рынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал до 57 000 $, а Nasdaq снизился на 4 %, что отражает опасения по поводу повышения тарифов и сильных данных по инфляции",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 58 000 $, усилившись под давлением роста инфляции, тарифов и падения акций ИИ",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 6.681
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок в декабре, что негативно скажется на крипторынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 58 000 $, в связи с ростом инфляции, возможными тарифами и падением акций AI",
+            "refs": [
+              2,
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 9.2
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок ФРС в декабре, что негативно скажется на крипторынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 58 000 $, под влиянием опасений по поводу повышения тарифов и сильной инфляции, что также отразилось на криптовалютах и акциях",
+            "refs": [
+              2,
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.3043
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок в декабре, что негативно скажется на крипторынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал до 57 000 $, в том числе из‑за опасений по поводу новых тарифов и сильных данных по инфляции PCE, что отразилось на рынке криптовалют",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 58 000 $, усилившись под давлением роста инфляции, предложенных тарифов и падения акций ИИ, что усилило страхи инвесторов",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.671
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "US core inflation в октябре превысила ожидания, что может привести к повышению процентных ставок в декабре, что негативно скажется на криптовалютном рынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже $58 000 из‑за сильного роста инфляции, предложенных тарифов и падения акций AI, что отражает общую рыночную неопределённость",
+            "refs": [
+              2,
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 43.8
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок в декабре, что негативно скажется на криптовалютном рынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 58 000 $, в том числе из‑за опасений по поводу тарифов и сильной инфляции, что отразилось и на рынке BCH",
+            "refs": [
+              2,
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 207.9
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок в декабре, что негативно скажется на криптовалютном рынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 58 000 $, в связи с повышением тарифов и ростом инфляции, что отразилось на криптовалютном и фондовом рынках",
+            "refs": [
+              2,
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 3.052
+      },
+      "SUI/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В США инфляция выросла до 3,8 % в октябре, что может привести к повышению процентных ставок ФРС в декабре, что негативно скажется на криптовалютном рынке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Биткоин упал ниже 57 000 $, в связи с опасениями по поводу повышения тарифов и высоких данных PCE, что отразилось на рынке криптовалют и акций",
+            "refs": [
+              2,
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:53 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 17:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383967/bitcoin-sinks-inflation-trump-tariffs-ai-selloff",
+            "published": "2026-11-25 16:52 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.6734
+      }
+    },
+    "direction": "any"
+  },
+  "report_1": {
+    "sprint_id": "20261126_085835",
+    "verdict_per_candidate": [
+      {
+        "id": "C-0001",
+        "allowed": false,
+        "risks": [
+          "Отскок по монете против нисходящего рынка BTC уже неудачно проявлялся для LINK (0 R)",
+          "Риск усиления коррекции BTC может ускорить пробой стопа",
+          "Несмотря на приемлемый R‑нет, ожидаемая доходность уже не покрывает потенциальные потери в текущем рыночном режиме"
+        ],
+        "notes": "Сетап соответствует требованиям по риску и heat, но учитывая уроки по LINK и общий нисходящий тренд BTC, рекомендуется отказаться."
+      }
+    ],
+    "expert_opinion": "Пакет вписывается в ограничения капитала и heat, однако единственный кандидат не проходит по качеству сетапа в условиях текущего режима рынка. Возможен вариант no_trade.",
+    "package_ok": true
+  },
+  "report_2": {
+    "sprint_id": "20261126_085835",
+    "clean_options": [
+      {
+        "id": "C-0001",
+        "instrument": "LINK/USDT",
+        "verdict": "pass",
+        "winner": "long",
+        "veto_reason": "",
+        "forecast": {
+          "direction": "long",
+          "confidence": "high"
+        },
+        "reason": "У лонга 4 аргумента с цифрами (цена > SMA30, SMA10 > SMA30, позиция в диапазоне 53.9 %, L/S = 1.73, инфляция 3.8 %), у шорта только 2 аргумента с данными",
+        "counter_thesis": "Нисходящий режим BTC может усилить коррекцию и привести к пробою стоп‑уровня 8.463",
+        "weak_points": [
+          "Шорт: аргумент о медвежьем фоне BTC помечен как rhetoric и не содержит цифр"
+        ],
+        "fact_check": "Проверены цены (9.2 > 8.82277), SMA10 = 8.8532, SMA30 = 8.82277, swing low = 8.463, range_position_pct = 53.9, L/S‑ratio = 1.73, инфляция 3.8 % (news 1), Bitcoin ≈ 57 000 $ (news 2), режим BTC = down",
+        "long_case": {
+          "strongest": "Цена выше SMA30 и SMA10 выше SMA30 подтверждают устойчивый восходящий тренд",
+          "arguments": [
+            {
+              "text": "Цена выше SMA30 (9.2 > 8.82277) и SMA10 выше SMA30, подтверждая восходящий тренд",
+              "evidence": "market.trend_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Отскок от уровня swing low 8.463 подтверждён: текущая цена 9.2 находится в верхней половине диапазона (range_position_pct 53.9%)",
+              "evidence": "market.range_position_pct",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Соотношение лонг/шорт 1.73 указывает на отсутствие значимого перекоса, но не препятствует росту",
+              "evidence": "positioning.long_short_meaning",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Новость [1]: инфляция в США выросла до 3.8%, что может усилить спрос на альтернативные активы, включая LINK",
+              "evidence": "[1]",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 0
+        },
+        "short_case": {
+          "strongest": "Нисходящий режим BTC подавляет рост LINK/USDT",
+          "arguments": [
+            {
+              "text": "Нисходящий режим BTC (down) создает общий медвежий фон, подрывающий любые лонги LINK/USDT",
+              "evidence": "market_regime.regime",
+              "rhetoric": true,
+              "flags": [
+                "нет цифр"
+              ]
+            },
+            {
+              "text": "Последние новости о росте инфляции до 3.8% и падении Bitcoin до $57K усиливают риск коррекции крипторынка",
+              "evidence": "news.n=2",
+              "rhetoric": false,
+              "flags": []
+            },
+            {
+              "text": "Соотношение long/short 1.73 указывает на небольшую переориентацию в лонги, но без значимого перекоса, что не гарантирует поддержку цены",
+              "evidence": "positioning.long_short_ratio",
+              "rhetoric": false,
+              "flags": []
+            }
+          ],
+          "without_evidence": 1
+        }
+      }
+    ],
+    "filtered_out": []
+  }
+}
