@@ -1,0 +1,40 @@
+name: Бэктест правил
+
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "За сколько дней истории (730 = 2 года)"
+        default: "730"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fund-state
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TZ: Asia/Almaty
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Установка
+        run: pip install -r requirements.txt
+      - name: Бэктест
+        run: python backtest.py --days "${{ inputs.days || '730' }}"
+      - name: Сообщить об ошибке
+        if: failure()
+        run: python -c "import notify; notify.send('❌ Бэктест завершился с ошибкой. Подробности — GitHub → Actions → «Бэктест правил».')"
+      - name: Сохранить отчёт
+        if: always()
+        run: bash .github/scripts/save_state.sh "Бэктест №${{ github.run_number }}"
