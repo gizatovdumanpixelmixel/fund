@@ -1,0 +1,638 @@
+{
+  "briefing": {
+    "sprint_id": "20261127_090014",
+    "summary": "Сделок нет. BTC/USDT: уже 2 позиции в режиме «отскок» — лимит | ETH/USDT: тренд вверх, но стоп под swing_low_20 слишком далёк, отношение R < 1.5, нет подходящей цели при разрешённом только лонге | SOL/USDT: нет чёткого сетапа: цена ниже swing_high_20, стоп от swing_low_20 слишком удалён (≈6.9), R≈0.83<min_R 1.5, а режим «отскок» требует близкого стопа – no_trade | BNB/USDT: нет чёткого бычьего разворота в пределах swing_low_20; цена слишком удалена от стопа, а в режиме «отскок» требуется ясный сигнал – no_trade | XRP/USDT: нет чёткого входа: цена не близка к swing_low_20, нет подтверждения разворота, следовательно no_trade | ADA/USDT: нет чёткого входа: цена не выше swing_high_20, нет подтверждения тренда монеты, bounce_mode требует ясного сетапа, поэтому trade не предлагается | AVAX/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LINK/USDT: нет чётного сетапа: цена находится далеко от swing_low_20, нет подтверждения отскока, а в режиме «отскок» требуется ясный сигнал и близкий стоп; поэтому trade не предлагается | TRX/USDT: чистая R=1.49 ниже порога 1.5 | DOT/USDT: нет чётного сигнала: цена находится ниже swing_high_20, не в зоне breakout, а bounce_mode требует ясного подтверждения тренда монеты; поэтому trade не предлагается | LTC/USDT: нет подходящего long‑сетапа: при стопе под swing_low_20 (39.5) и входе 44.39 риск 4.89, но ближайший уровень сопротивления 49.64 даёт R≈1.09, меньше требуемого 1.5 | BCH/USDT: нет явного сетапа в тренде монеты: цена не достигла swing_high_20, не наблюдается отскок от swing_low_20, bounce_mode требует ясного сетапа, поэтому no_trade | NEAR/USDT: нет подходящего сетапа: при разрешённом лонге (тренд монеты вверх) стоп под swing_low_20 отдалён, а достижение min_R=1.5 невозможен из‑за ограниченного диапазона (range_high 3.478 < 3.669). | SUI/USDT: нет явного входа: цена 0.6795 находится ниже swing_high_20 (0.6868), стоп ниже swing_low_20 (0.6141) слишком далеко, а режим «отскок» требует чёткой точки входа по тренду монеты. Поэтому trade не предлагается",
+    "candidates_plain": [],
+    "terms_used": []
+  },
+  "package": {
+    "sprint_id": "20261127_090014",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "candidates": [],
+    "no_trade": true,
+    "no_trade_reason": "BTC/USDT: уже 2 позиции в режиме «отскок» — лимит | ETH/USDT: тренд вверх, но стоп под swing_low_20 слишком далёк, отношение R < 1.5, нет подходящей цели при разрешённом только лонге | SOL/USDT: нет чёткого сетапа: цена ниже swing_high_20, стоп от swing_low_20 слишком удалён (≈6.9), R≈0.83<min_R 1.5, а режим «отскок» требует близкого стопа – no_trade | BNB/USDT: нет чёткого бычьего разворота в пределах swing_low_20; цена слишком удалена от стопа, а в режиме «отскок» требуется ясный сигнал – no_trade | XRP/USDT: нет чёткого входа: цена не близка к swing_low_20, нет подтверждения разворота, следовательно no_trade | ADA/USDT: нет чёткого входа: цена не выше swing_high_20, нет подтверждения тренда монеты, bounce_mode требует ясного сетапа, поэтому trade не предлагается | AVAX/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LINK/USDT: нет чётного сетапа: цена находится далеко от swing_low_20, нет подтверждения отскока, а в режиме «отскок» требуется ясный сигнал и близкий стоп; поэтому trade не предлагается | TRX/USDT: чистая R=1.49 ниже порога 1.5 | DOT/USDT: нет чётного сигнала: цена находится ниже swing_high_20, не в зоне breakout, а bounce_mode требует ясного подтверждения тренда монеты; поэтому trade не предлагается | LTC/USDT: нет подходящего long‑сетапа: при стопе под swing_low_20 (39.5) и входе 44.39 риск 4.89, но ближайший уровень сопротивления 49.64 даёт R≈1.09, меньше требуемого 1.5 | BCH/USDT: нет явного сетапа в тренде монеты: цена не достигла swing_high_20, не наблюдается отскок от swing_low_20, bounce_mode требует ясного сетапа, поэтому no_trade | NEAR/USDT: нет подходящего сетапа: при разрешённом лонге (тренд монеты вверх) стоп под swing_low_20 отдалён, а достижение min_R=1.5 невозможен из‑за ограниченного диапазона (range_high 3.478 < 3.669). | SUI/USDT: нет явного входа: цена 0.6795 находится ниже swing_high_20 (0.6868), стоп ниже swing_low_20 (0.6141) слишком далеко, а режим «отскок» требует чёткой точки входа по тренду монеты. Поэтому trade не предлагается",
+    "total_heat_pct": 0.995,
+    "llm_usage": {
+      "calls": 27,
+      "tokens_in": 54066,
+      "tokens_out": 12562,
+      "cost_usd_if_paid": 0.0088,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Binance завершил восстановление средств после взлома",
+        "event_risk_flag": true,
+        "event_risk": "потенциальный падение цены из‑за усиления страхового настроения и отрицательного изменения цены за 48 ч",
+        "claims": [
+          {
+            "text": "Binance завершил восстановление средств после взлома 6,3 млрд долларов",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Bitcoin восстановился выше 60 000 USD, но потерял часть прибыли",
+            "refs": [
+              3,
+              4
+            ]
+          },
+          {
+            "text": "Собранный запас биткоинов растёт, что обычно предшествует дно",
+            "refs": [
+              6
+            ]
+          },
+          {
+            "text": "Пессимистический индекс страха 12/100 и падение цены на 7,98 % за 48 ч",
+            "refs": [
+              1,
+              11
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Here’s what happened in crypto today",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 22:12 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin’s $60,000 recovery masks a growing threat that could push its price as low as $29,000",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoins-60000-recovery-masks-a-growing-threat-that-could-push-its-price-as-low-as-29000/",
+            "published": "2026-11-26 19:30 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Bitcoin Holds Above $60K as Death Cross Clouds Thanksgiving Recovery",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384079/bitcoin-holds-above-60k-as-death-cross-clouds-thanksgiving-recovery",
+            "published": "2026-11-26 18:15 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Bitcoin’s dormant supply rises, a behavior seen during previous bear-market bottoming phases",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/26/bitcoin-s-dormant-supply-rises-a-behavior-seen-during-previous-bear-market-bottoming-phases",
+            "published": "2026-11-26 16:50 UTC"
+          },
+          {
+            "n": 11,
+            "title": "Crypto on notice as hawkish Fed risks December ‘meltdown’",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/crypto-hawkish-fed-risks-december-meltdown?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 17:39 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 61426.6
+      },
+      "ETH/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Ethereum Foundation ускоряет внедрение Keccak‑256 в ответ на угрозы AI и квантовых вычислений",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Ethereum Foundation объявила, что ускоряет внедрение Keccak‑256, чтобы защититься от угроз AI и квантовых вычислений",
+            "refs": [
+              1,
+              2
+            ]
+          },
+          {
+            "text": "В результате биткоин упал 1,2 %, а эфир и DeFi токены упали почти вдвое",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Ethereum Foundation backs Keccak-256 to counter quantum, AI threats",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/ethereum-foundation-keccak-256-counter-quantum-ai-threats?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-25 18:54 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Morning Minute: Ethereum Focuses on Security As AI Threats Rise",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/383945/morning-minute-ethereum-focuses-on-security-as-ai-threats-rise",
+            "published": "2026-11-25 13:41 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Ether, DeFi fall twice as hard as bitcoin as equities selloff resumes",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/25/ether-defi-fall-twice-as-hard-as-bitcoin-as-equities-selloff-resumes",
+            "published": "2026-11-25 11:57 UTC"
+          }
+        ],
+        "news_found": 6,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 1729.41
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance завершил восстановление средств после взлома на сумму 6,3 млрд долларов",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Morpho’s крупнейший вексель в евро не покрывает выход крупнейшего вкладчика",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Chainlink вырос на 10% после запуска ETF и интеграции с традиционными финансами",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Morpho’s largest euro stablecoin vault is €13.8 million short of covering its biggest depositor’s exit",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/morphos-largest-euro-stablecoin-vault-is-e13-8-million-short-of-covering-its-biggest-depositors-exit/",
+            "published": "2026-11-27 00:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainlink jumps 10% as its Wall Street ambitions gain momentum on two fronts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainlink-jumps-10-as-its-wall-street-ambitions-gain-momentum-on-two-fronts/",
+            "published": "2026-11-26 20:40 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [
+          "катализатор «Восстановление средств после взлома Binance может стимулировать рост спроса на криптовалюты» ссылается на общую новость рынка, а не на новость про эту монету — не засчитан"
+        ],
+        "trend_4h": "up",
+        "last_price": 72.77
+      },
+      "BNB/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "BNB Chain объявила о новом Layer‑1 для торговли, приватных финансов и ИИ",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "BNB Chain планирует запустить новый Layer‑1, который будет работать параллельно с BNB Smart Chain и использовать BNB в качестве нативного токена",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Binance завершила восстановление средств после взлома на сумму 6,3 млрд долларов, начав восстановление 4 недели назад",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Chainlink вырос на 10 % после объявления о запуске ETF и интеграции с традиционными финансами",
+            "refs": [
+              4
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "BNB Chain details new layer-1 for trading, private finance and AI",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/bnb-chain-details-new-layer-1-trading-private-finance-ai?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:42 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:33 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Chainlink jumps 10% as its Wall Street ambitions gain momentum on two fronts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainlink-jumps-10-as-its-wall-street-ambitions-gain-momentum-on-two-fronts/",
+            "published": "2026-11-26 20:40 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 562.27
+      },
+      "XRP/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "XRP продавцы могут потерять дополнительные средства, если пять крупных аккаунтов откажутся от своих ордеров",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "XRP продавцы могут потерять дополнительные $3,146, если пять крупных аккаунтов откажутся от своих ордеров",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Ripple оценивается по акциям в $90 и $300, что указывает на разницу в оценке среди инвесторов",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "XRP sellers could lose an extra $3,146 on a large trade if five accounts pull their buy orders",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/xrp-sellers-could-lose-an-extra-3146-on-a-large-trade-if-five-accounts-pull-their-buy-orders/",
+            "published": "2026-11-26 23:10 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ripple is worth $90 a share to one fund and $300 to another, SEC filings show",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/26/ripple-is-worth-usd90-a-share-to-one-fund-and-usd300-to-another-sec-filings-show",
+            "published": "2026-11-26 05:30 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.9607
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.1513
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "На рынке наблюдается сильный страх, индекс страха и жадности 12/100, что указывает на паническое настроение",
+            "refs": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "text": "Финансирование отрицательное (-0.0001), что говорит о преобладании шортов и повышенном риске отката",
+            "refs": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Morpho’s largest euro stablecoin vault is €13.8 million short of covering its biggest depositor’s exit",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/morphos-largest-euro-stablecoin-vault-is-e13-8-million-short-of-covering-its-biggest-depositors-exit/",
+            "published": "2026-11-27 00:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainlink jumps 10% as its Wall Street ambitions gain momentum on two fronts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainlink-jumps-10-as-its-wall-street-ambitions-gain-momentum-on-two-fronts/",
+            "published": "2026-11-26 20:40 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 6.725
+      },
+      "LINK/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Запуск ETF от Fidelity и интеграция в традиционные финансы",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "LINK вырос на 10 % после объявления о запуске ETF от Fidelity и расширении интеграции с традиционными рынками",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Chainlink jumps 10% as its Wall Street ambitions gain momentum on two fronts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainlink-jumps-10-as-its-wall-street-ambitions-gain-momentum-on-two-fronts/",
+            "published": "2026-11-26 20:40 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 9.491
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance завершил восстановление средств после взлома на сумму 6,3 млрд долларов, что может укрепить доверие к крупным биржам.",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainlink вырос на 10 % после объявления о запуске ETF и интеграции с традиционными финансовыми институтами, что сигнализирует о росте институционального интереса.",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "В марке Morpho наблюдается дефицит в 13,8 млн евро в крупнейшем вольте, что может вызвать беспокойство среди инвесторов.",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Morpho’s largest euro stablecoin vault is €13.8 million short of covering its biggest depositor’s exit",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/morphos-largest-euro-stablecoin-vault-is-e13-8-million-short-of-covering-its-biggest-depositors-exit/",
+            "published": "2026-11-27 00:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainlink jumps 10% as its Wall Street ambitions gain momentum on two fronts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainlink-jumps-10-as-its-wall-street-ambitions-gain-momentum-on-two-fronts/",
+            "published": "2026-11-26 20:40 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.3051
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.687
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance завершила восстановление средств после взлома на сумму 6,3 млрд долларов, что может усилить доверие к крупным биржам",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainlink вырос на 10 % после заявлений о запуске ETF и интеграции с традиционными финансами",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 2,
+            "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainlink jumps 10% as its Wall Street ambitions gain momentum on two fronts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainlink-jumps-10-as-its-wall-street-ambitions-gain-momentum-on-two-fronts/",
+            "published": "2026-11-26 20:40 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 44.39
+      },
+      "BCH/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance завершила восстановление средств после кражи в размере 6,3 млрд долларов, что повышает доверие к криптовалютному рынку",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainlink вырос на 10 % после запуска ETF и интеграции с традиционными финансовыми институтами",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 2,
+            "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainlink jumps 10% as its Wall Street ambitions gain momentum on two fronts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainlink-jumps-10-as-its-wall-street-ambitions-gain-momentum-on-two-fronts/",
+            "published": "2026-11-26 20:40 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [
+          "катализатор «Биткойн‑связанная активность на Binance может поддержать цену BCH» ссылается на общую новость рынка, а не на новость про эту монету — не засчитан"
+        ],
+        "trend_4h": "up",
+        "last_price": 216.2
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Morpho’s largest euro stablecoin vault is €13.8 million short of covering its biggest depositor’s exit",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Binance completes withdrawal recovery four weeks after $6.3 B hack",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainlink jumps 10 % as its Wall Street ambitions gain momentum on two fronts",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Morpho’s largest euro stablecoin vault is €13.8 million short of covering its biggest depositor’s exit",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/morphos-largest-euro-stablecoin-vault-is-e13-8-million-short-of-covering-its-biggest-depositors-exit/",
+            "published": "2026-11-27 00:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:33 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainlink jumps 10% as its Wall Street ambitions gain momentum on two fronts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainlink-jumps-10-as-its-wall-street-ambitions-gain-momentum-on-two-fronts/",
+            "published": "2026-11-26 20:40 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 3.096
+      },
+      "SUI/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.6795
+      }
+    },
+    "direction": "any",
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 61420.97,
+      "sma20_1d": 65309.44,
+      "sma50_1d": 74374.74,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 12,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    }
+  },
+  "report_1": null,
+  "report_2": null
+}
