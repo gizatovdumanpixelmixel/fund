@@ -413,6 +413,12 @@ def cycle():
         text = run_monitor(only_alerts=True)
         if text:
             TG.send(text)
+    if due:                                          # способы выхода по закрытым сделкам — без кнопки
+        try:
+            import exits as EX
+            EX.backfill()
+        except Exception as e:                       # noqa: BLE001
+            print(f"способы выхода: {e}")
 
 
 if __name__ == "__main__":
