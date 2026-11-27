@@ -116,7 +116,7 @@ def backfill(fetch=None, now=None):
     changed = False
     for rec in P.load_results():
         old = done.get(rec["id"])
-        if old and all(old["resolved"].values()):
+        if old and (all(old["resolved"].values()) or old.get("final")):
             continue
         targets = _targets_for(rec)
         if not targets:
