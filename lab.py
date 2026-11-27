@@ -271,7 +271,10 @@ def main():
     start = now - a.days * DAY
     mid = start + (now - start) // 2
     y1_end = mid                                                   # сделки года 1 открываются до середины
-    lines = [f"🔬 Лаборатория стратегий: {a.days} дней, 16 монет. Подбор — на 1-м году, проверка — на 2-м.",
+    def _d(ms):
+        return datetime.datetime.fromtimestamp(ms / 1000, datetime.timezone.utc).strftime("%m.%Y")
+    lines = [f"🔬 Лаборатория стратегий: {a.days} дней, 16 монет. Подбор — на 1-й половине "
+             f"({_d(start)}–{_d(mid)}), проверка — на 2-й ({_d(mid)}–{_d(now)}).",
              "В среднем R на сделку после издержек; t — надёжность (|t| ≥ 2 — вряд ли случайность).", ""]
     summary = {}
     for fam, (_sig, grid, title) in FAMILIES.items():
@@ -286,21 +289,21 @@ def main():
         passed = s1.get("avg_R", -1) > 0 and s2.get("avg_R", -1) > 0 and len(t2) >= MIN_TRADES_YEAR
         summary[fam] = {"params": prm, "y1": s1, "y2": s2, "t2": tstat(t2), "passed": passed}
         lines.append(f"{'✅' if passed else '❌'} {title} — выбран: {prm_txt(prm)}")
-        lines.append(f"   год 1 (подбор): {B.fmt(s1)}")
-        lines.append(f"   год 2 (проверка): {B.fmt(s2)}, t={tstat(t2)}")
+        lines.append(f"   половина 1 (подбор): {B.fmt(s1)}")
+        lines.append(f"   половина 2 (проверка): {B.fmt(s2)}, t={tstat(t2)}")
         if t2:
             lo = [t for t in t2 if t["direction"] == "long"]; sh = [t for t in t2 if t["direction"] == "short"]
-            lines.append(f"   год 2 по сторонам: лонги {B.stats(lo).get('avg_R', '—')} R ({len(lo)}), "
+            lines.append(f"   половина 2 по сторонам: лонги {B.stats(lo).get('avg_R', '—')} R ({len(lo)}), "
                          f"шорты {B.stats(sh).get('avg_R', '—')} R ({len(sh)}); средний срок "
                          f"{round(sum(t['held_days'] for t in t2) / len(t2), 1)} дн.")
         others = [f"{prm_txt(p)}: {B.stats(x).get('avg_R', '—')}/{B.stats(y).get('avg_R', '—')}" for p, x, y in rows if p is not prm]
         if others:
-            lines.append("   другие параметры (год 1 / год 2, R на сделку): " + "; ".join(others))
+            lines.append("   другие параметры (половина 1 / половина 2, R на сделку): " + "; ".join(others))
         lines.append("")
     bh = [d for d in btc_daily if d[0] >= start]
     if bh:
         lines.append(f"Для сравнения: BTC за период {round((bh[-1][4] / bh[0][4] - 1) * 100, 1)}% "
-                     f"(год 1: {round((min(bh, key=lambda d: abs(d[0] - mid))[4] / bh[0][4] - 1) * 100, 1)}%).")
+                     f"(к середине: {round((min(bh, key=lambda d: abs(d[0] - mid))[4] / bh[0][4] - 1) * 100, 1)}%).")
     if errors:
         lines.append("Не загрузились: " + "; ".join(errors))
     lines.append("Ограничения: без моделей и новостей, финансирование — средняя ставка, вход по закрытию свечи. "
