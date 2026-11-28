@@ -26,32 +26,7 @@
       "source": "20261125_210520:C-0001",
       "decision_id": "20261125_210520:TON/USDT",
       "mode": "bounce"
-    },
-    {
-      "id": "P-0009",
-      "opened_at": "2026-11-26T22:48:22",
-      "instrument": "DOGE/USDT",
-      "direction": "long",
-      "entry": 0.05675,
-      "entry_planned": 0.0568,
-      "stop": 0.05221,
-      "targets": [
-        0.06662
-      ],
-      "target_far": 0.06662,
-      "size": {
-        "value": 10893.246187,
-        "unit_type": "DOGE"
-      },
-      "risk_amount": 49.46,
-      "risk_pct": 0.495,
-      "expected_R_net": 2.13,
-      "expected_R_net_plan": 2.09,
-      "status": "open",
-      "source": "20261126_210147:C-0001",
-      "decision_id": "20261126_210147:DOGE/USDT",
-      "mode": "bounce"
     }
   ],
-  "current_heat_pct": 0.995
+  "current_heat_pct": 0.5
 }
