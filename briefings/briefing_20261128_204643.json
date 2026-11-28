@@ -1,0 +1,659 @@
+{
+  "briefing": {
+    "sprint_id": "20261128_204643",
+    "summary": "Сделок нет. BTC/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | ETH/USDT: Тренд вниз и разрешён только шорт, но стоп над swing_high_20 (≈1755) даёт риск ≈107, а ближайшее сопротивление‑поддержка (range_low≈1538) обеспечивает R≈1.0 < min_R 1.5, поэтому нет подходящего сетапа | SOL/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | BNB/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | XRP/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | DOGE/USDT: Тренд вверх, но рынок BTC в нисходящем режиме; bounce‑mode требует чёткий сетап с R≥1.5, а ближайшее сопротивление (0.06045) не обеспечивает нужного соотношения к стопу (0.05221) | ADA/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | AVAX/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LINK/USDT: тренд вверх, но при нисходящем рынке BTC (bounce_mode) нужен чёткий сетап; стоп у swing_low_20 (8.463), а цель выше swing_high_20 (9.718) недостижима, R<1.5 | TRX/USDT: тренд вниз, разрешён только шорт, но стоп выше swing_high_20 (≈0.3089) создаёт слишком большой риск и невозможен R≥1.5, поэтому сетап не найден | DOT/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LTC/USDT: Тренд инструмента вверх, но при bounce‑режиме нужен чёткий сетап с близким стопом и R≥1.5. Стоп под swing_low_20 (≈39.5) слишком далёк, а цель в пределах диапазона не обеспечивает требуемое соотношение риск‑прибыль. | BCH/USDT: тренд вверх, но при нисходящем рынке BTC/USDT разрешён только лонг; требуемый R≥1.5 невозможен, так как цель выше диапазона, стоп слишком далёк | NEAR/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | SUI/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен",
+    "candidates_plain": [],
+    "terms_used": []
+  },
+  "package": {
+    "sprint_id": "20261128_204643",
+    "goal": "Ищем сетапы A-класса в ЛЮБУЮ сторону — и лонг, и шорт, что даёт рынок. Направление подбирай по тренду инструмента. Нет подходящих сетапов — допустимый итог (no_trade).",
+    "candidates": [],
+    "no_trade": true,
+    "no_trade_reason": "BTC/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | ETH/USDT: Тренд вниз и разрешён только шорт, но стоп над swing_high_20 (≈1755) даёт риск ≈107, а ближайшее сопротивление‑поддержка (range_low≈1538) обеспечивает R≈1.0 < min_R 1.5, поэтому нет подходящего сетапа | SOL/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | BNB/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | XRP/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | DOGE/USDT: Тренд вверх, но рынок BTC в нисходящем режиме; bounce‑mode требует чёткий сетап с R≥1.5, а ближайшее сопротивление (0.06045) не обеспечивает нужного соотношения к стопу (0.05221) | ADA/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | AVAX/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LINK/USDT: тренд вверх, но при нисходящем рынке BTC (bounce_mode) нужен чёткий сетап; стоп у swing_low_20 (8.463), а цель выше swing_high_20 (9.718) недостижима, R<1.5 | TRX/USDT: тренд вниз, разрешён только шорт, но стоп выше swing_high_20 (≈0.3089) создаёт слишком большой риск и невозможен R≥1.5, поэтому сетап не найден | DOT/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LTC/USDT: Тренд инструмента вверх, но при bounce‑режиме нужен чёткий сетап с близким стопом и R≥1.5. Стоп под swing_low_20 (≈39.5) слишком далёк, а цель в пределах диапазона не обеспечивает требуемое соотношение риск‑прибыль. | BCH/USDT: тренд вверх, но при нисходящем рынке BTC/USDT разрешён только лонг; требуемый R≥1.5 невозможен, так как цель выше диапазона, стоп слишком далёк | NEAR/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | SUI/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен",
+    "total_heat_pct": 0.5,
+    "llm_usage": {
+      "calls": 21,
+      "tokens_in": 36468,
+      "tokens_out": 6623,
+      "cost_usd_if_paid": 0.007,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Биткойн-ETF опция с 12‑центным покрытием и активные покупки китов",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Опция ETF с 12‑центным покрытием указывает на возможную защиту от сильных падений",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Киты продолжают покупать BTC, несмотря на снижение прибыли",
+            "refs": [
+              8
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "What a 12-cent Bitcoin ETF option reveals about crash protection",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/what-a-12-cent-bitcoin-etf-option-reveals-about-crash-protection/",
+            "published": "2026-11-28 14:40 UTC"
+          },
+          {
+            "n": 8,
+            "title": "Bitcoin whales pile into BTC despite shrinking profit cushion",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-whales-pile-btc-despite-shrinking-profit-cushion?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 19:23 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 59370.9
+      },
+      "ETH/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Запуск тестовой сети Glamsterdam 15 декабря может ускорить дальнейшее развитие сети",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Виталик Бутерин предупредил о рисках ускоренного внедрения новых правил газа в обновлении Glamsterdam",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Разработчики назначили 15 декабря тестовую сеть Glamsterdam после задержек из-за опасений по контрактам",
+            "refs": [
+              4,
+              6
+            ]
+          },
+          {
+            "text": "Обновление Glamsterdam включает новые правила газа и хранение, что может повлиять на смарт‑контракты",
+            "refs": [
+              1,
+              5
+            ]
+          },
+          {
+            "text": "WLFI токен упал почти 60% из-за потери поддержки USD1",
+            "refs": [
+              2,
+              9
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Vitalik Buterin warns against rushing Ethereum gas change that could break some contracts",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/vitalik-buterin-warns-against-rushing-ethereum-gas-change-that-could-break-some-contracts/",
+            "published": "2026-11-28 11:00 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Trump-linked crypto token WLFI plunges 50% to record lows",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/28/trump-linked-crypto-token-wlfi-plunges-over-50",
+            "published": "2026-11-28 09:32 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Ethereum Sets December 15 Date for Delayed Glamsterdam Testnet Upgrade",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384104/ethereum-sets-december-15-date-for-delayed-glamsterdam-testnet-upgrade",
+            "published": "2026-11-27 10:15 UTC"
+          },
+          {
+            "n": 5,
+            "title": "Ethereum devs set Glamsterdam’s Hoodi rollout for mid-December after delays",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/ethereum-devs-set-glamsterdams-hoodi-rollout-for-mid-december-after-delays?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 04:47 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Ethereum's much-awaited Glamsterdam upgrade cleared for December test. Here's what to know",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/27/ethereum-s-much-awaited-glamsterdam-upgrade-cleared-for-december-test-here-s-what-to-know",
+            "published": "2026-11-27 04:29 UTC"
+          },
+          {
+            "n": 9,
+            "title": "Donald Trump-backed WLFI loses nearly half a billion dollars in market value as USD1 breaks peg",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/donald-trump-backed-wlfi-loses-nearly-half-a-billion-dollars-in-market-value-as-usd1-breaks-peg/",
+            "published": "2026-11-28 12:12 UTC"
+          }
+        ],
+        "news_found": 9,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 1648.22
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 70.53
+      },
+      "BNB/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Запуск новой сети Layer‑1 BNB Chain, совместной с BNB Smart Chain",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "BNB Chain объявила о новой сети Layer‑1, которая будет работать параллельно BNB Smart Chain и использовать BNB как нативный токен",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Тестовая сеть новой сети запланирована на первый квартал 2027 года",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Торговля на PancakeSwap будет стоить примерно на 27 % дороже из‑за правил devnet",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "BNB Chain’s new blockchain could make the same PancakeSwap trade 27% more expensive",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bnb-chains-new-blockchain-could-make-the-same-pancakeswap-trade-27-more-expensive/",
+            "published": "2026-11-28 04:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "BNB Chain details new layer-1 for trading, private finance and AI",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/bnb-chain-details-new-layer-1-trading-private-finance-ai?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:42 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 551.98
+      },
+      "XRP/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Ripple готовит запуск системы кредитования на XRP Ledger",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Валюта Ripple готовится к запуску системы кредитования, которая будет использовать $800 млн стабильных монет на XRP Ledger",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bybit раскрывает детали кражи 1,4 млрд долларов, но информация пока неполная",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "WLFI потеряла почти 60% стоимости и USD1 вышла из привязки к доллару",
+            "refs": [
+              4
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Ripple's lending plan moves closer to tapping XRP Ledger's $800 million in stablecoins",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/27/ripple-s-lending-plan-moves-closer-to-tapping-xrp-ledger-s-usd950-million-in-stablecoins",
+            "published": "2026-11-27 05:06 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bybit’s $1.4 billion hack postmortem is ready. You won’t get to see it.",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/28/bybit-s-usd1-4-billion-hack-postmortem-is-ready-you-won-t-get-to-see-it",
+            "published": "2026-11-28 14:00 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Donald Trump-backed WLFI loses nearly half a billion dollars in market value as USD1 breaks peg",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/donald-trump-backed-wlfi-loses-nearly-half-a-billion-dollars-in-market-value-as-usd1-breaks-peg/",
+            "published": "2026-11-28 12:12 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.9408
+      },
+      "DOGE/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В марте был предложен опцион IBIT, обеспечивающий $12 защиты от сильного падения цены биткоина",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bybit продолжает расследовать кражу $1,4 млрд, но детали пока не раскрыты",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "WLFI, поддерживаемый семьей Трампа, потерял почти 60% стоимости и его стейблкойн USD1 разорвал привязку к доллару",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "What a 12-cent Bitcoin ETF option reveals about crash protection",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/what-a-12-cent-bitcoin-etf-option-reveals-about-crash-protection/",
+            "published": "2026-11-28 14:40 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bybit’s $1.4 billion hack postmortem is ready. You won’t get to see it.",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/28/bybit-s-usd1-4-billion-hack-postmortem-is-ready-you-won-t-get-to-see-it",
+            "published": "2026-11-28 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Donald Trump-backed WLFI loses nearly half a billion dollars in market value as USD1 breaks peg",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/donald-trump-backed-wlfi-loses-nearly-half-a-billion-dollars-in-market-value-as-usd1-breaks-peg/",
+            "published": "2026-11-28 12:12 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.05644
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.1455
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 6.464
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В марте был выпущен опцион IBIT, предлагающий $12 защиты от сильного падения цены биткоина",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bybit столкнулся с кибератакой, в результате которой потеряно $1,4 млрд",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Проект WLFI, поддерживаемый семьей Дональда Трампа, потерял почти 60% стоимости и его стейблкоин USD1 разорвал привязку к доллару",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "What a 12-cent Bitcoin ETF option reveals about crash protection",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/what-a-12-cent-bitcoin-etf-option-reveals-about-crash-protection/",
+            "published": "2026-11-28 14:40 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bybit’s $1.4 billion hack postmortem is ready. You won’t get to see it.",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/28/bybit-s-usd1-4-billion-hack-postmortem-is-ready-you-won-t-get-to-see-it",
+            "published": "2026-11-28 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Donald Trump-backed WLFI loses nearly half a billion dollars in market value as USD1 breaks peg",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/donald-trump-backed-wlfi-loses-nearly-half-a-billion-dollars-in-market-value-as-usd1-breaks-peg/",
+            "published": "2026-11-28 12:12 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 9.136
+      },
+      "TRX/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Потенциальный рост после делистинга WLFI токена",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Justin Sun призвал к удалению WLFI токена, связанного с семьей Трампа, что может снизить давление на рынок",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "WLFI потерял почти 60 % стоимости, а USD1 потерял привязку к доллару, что усиливает неопределённость",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Bybit раскрывает детали взлома на 1,4 млрд USD, но это не напрямую влияет на TRX",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Bitcoin ETF опция в 12 центовой цене предоставляет защиту от падения, но не влияет на TRX",
+            "refs": [
+              2
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Justin Sun calls for Trump family-linked WLFI token to be delisted",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/justin-sun-calls-for-trump-family-linked-wlfi-token-to-be-delisted?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-28 13:28 UTC"
+          },
+          {
+            "n": 2,
+            "title": "What a 12-cent Bitcoin ETF option reveals about crash protection",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/what-a-12-cent-bitcoin-etf-option-reveals-about-crash-protection/",
+            "published": "2026-11-28 14:40 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bybit’s $1.4 billion hack postmortem is ready. You won’t get to see it.",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/28/bybit-s-usd1-4-billion-hack-postmortem-is-ready-you-won-t-get-to-see-it",
+            "published": "2026-11-28 14:00 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Donald Trump-backed WLFI loses nearly half a billion dollars in market value as USD1 breaks peg",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/donald-trump-backed-wlfi-loses-nearly-half-a-billion-dollars-in-market-value-as-usd1-breaks-peg/",
+            "published": "2026-11-28 12:12 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.3003
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.643
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bitcoin ETF option показывает, что рынок готов к защите от сильных падений",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bybit столкнулся с хакерской атакой на 1,4 млрд долларов",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "WLFI потерял почти половину стоимости и USD1 потерял привязку к доллару",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "What a 12-cent Bitcoin ETF option reveals about crash protection",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/what-a-12-cent-bitcoin-etf-option-reveals-about-crash-protection/",
+            "published": "2026-11-28 14:40 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bybit’s $1.4 billion hack postmortem is ready. You won’t get to see it.",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/28/bybit-s-usd1-4-billion-hack-postmortem-is-ready-you-won-t-get-to-see-it",
+            "published": "2026-11-28 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Donald Trump-backed WLFI loses nearly half a billion dollars in market value as USD1 breaks peg",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/donald-trump-backed-wlfi-loses-nearly-half-a-billion-dollars-in-market-value-as-usd1-breaks-peg/",
+            "published": "2026-11-28 12:12 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 44.12
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 206.1
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "В марте появился 12‑центный опцион ETF Bitcoin, предлагающий защиту от сильного падения цены",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bybit сообщила о расследовании взлома на сумму 1,4 млрд долларов, но детали пока не раскрыты",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Проект WLFI, поддерживаемый семьей Дональда Трампа, потерял почти 60 % стоимости токена и стабильный монет USD1 разорвал привязку к доллару",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "What a 12-cent Bitcoin ETF option reveals about crash protection",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/what-a-12-cent-bitcoin-etf-option-reveals-about-crash-protection/",
+            "published": "2026-11-28 14:40 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Bybit’s $1.4 billion hack postmortem is ready. You won’t get to see it.",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/28/bybit-s-usd1-4-billion-hack-postmortem-is-ready-you-won-t-get-to-see-it",
+            "published": "2026-11-28 14:00 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Donald Trump-backed WLFI loses nearly half a billion dollars in market value as USD1 breaks peg",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/donald-trump-backed-wlfi-loses-nearly-half-a-billion-dollars-in-market-value-as-usd1-breaks-peg/",
+            "published": "2026-11-28 12:12 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 2.964
+      },
+      "SUI/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Bluefin закрывает платформу перпетуальных контрактов, что может снизить ликвидность и давление на цену SUI",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bluefin объявил о закрытии перпетуальных контрактов на Sui, что сократит объёмы торгов на площадке",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Bybit готовит подробный постмортем кибератаки, но это не напрямую связано с SUI",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bluefin to shut down perps, refocus on spot trading and tokenized RWAs",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/bluefin-shut-down-perps-refocus-spot-trading-tokenized-rwas?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 10:26 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bybit’s $1.4 billion hack postmortem is ready. You won’t get to see it.",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/business/2026/11/28/bybit-s-usd1-4-billion-hack-postmortem-is-ready-you-won-t-get-to-see-it",
+            "published": "2026-11-28 14:00 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.6622
+      }
+    },
+    "direction": "any",
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 59370.94,
+      "sma20_1d": 64460.52,
+      "sma50_1d": 73879.49,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 10,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    }
+  },
+  "report_1": null,
+  "report_2": null
+}
