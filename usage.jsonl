@@ -429,3 +429,5 @@
 {"ts": "2026-11-28T13:01:05", "run_id": "20261128_125846", "role": "news", "provider": "groq", "model": "openai/gpt-oss-20b", "tokens_in": 1149, "tokens_out": 147, "cost_usd_if_paid": 0.00013, "seconds": 0.4}
 {"ts": "2026-11-28T13:01:31", "run_id": "20261128_125846", "role": "tech", "provider": "groq", "model": "openai/gpt-oss-120b", "tokens_in": 2767, "tokens_out": 1012, "cost_usd_if_paid": 0.001022, "seconds": 2.4}
 {"ts": "2026-11-28T13:01:32", "run_id": "20261128_125846", "role": "news", "provider": "groq", "model": "openai/gpt-oss-20b", "tokens_in": 1297, "tokens_out": 349, "cost_usd_if_paid": 0.000202, "seconds": 1.1}
+{"ts": "2026-11-28T13:07:45", "run_id": "", "role": "monitor", "provider": "groq", "model": "openai/gpt-oss-120b", "tokens_in": 886, "tokens_out": 645, "cost_usd_if_paid": 0.00052, "seconds": 2.4}
+{"ts": "2026-11-28T13:07:46", "run_id": "", "role": "monitor", "provider": "groq", "model": "openai/gpt-oss-120b", "tokens_in": 923, "tokens_out": 548, "cost_usd_if_paid": 0.000467, "seconds": 1.4}
