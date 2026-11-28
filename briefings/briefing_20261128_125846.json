@@ -1,0 +1,648 @@
+{
+  "briefing": {
+    "sprint_id": "20261128_125846",
+    "summary": "Сделок нет. BTC/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | ETH/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | SOL/USDT: уже 2 позиции в режиме «отскок» — лимит | BNB/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | XRP/USDT: чистая R=1.5 ниже порога 1.5; уже 2 позиции в режиме «отскок» — лимит | ADA/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | AVAX/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LINK/USDT: short запрещён (allowed_directions только long), а для long нет уровня цели с R≥1.5 (цена слишком близка к верхней границе диапазона) | TRX/USDT: цена близка к нижней границе диапазона, нет явного сигнала на откат к сопротивлению для входа в шорт; стоп над swing_high_20 слишком далёк, риск‑рентабельность не достигает min_R | DOT/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LTC/USDT: Тренд вверх, но разрешено только лонг; при текущих уровнях риск слишком велик, цель не достигает min_R=1.5, поэтому нет подходящего сетапа. | BCH/USDT: в bounce‑mode разрешён только лонг, но нет чёткого сигнала на покупку (цена далеко от swing_low, R‑соотношение < min_R); шорт запрещён ограничением allowed_directions | NEAR/USDT: длинный сетап возможен, но цель не обеспечивает R≥1.5; шорт запрещён (allowed_directions) | SUI/USDT: Тренд вверх, но при стопе под swing_low_20 (0.6141) цель до диапазона (0.7446) дает R≈1.34 < min_R 1.5; нет уровня с достаточным соотношением риск‑прибыль, поэтому нет A‑класса",
+    "candidates_plain": [],
+    "terms_used": []
+  },
+  "package": {
+    "sprint_id": "20261128_125846",
+    "goal": "Рынок смотрим на СНИЖЕНИЕ. Приоритет — искать сетапы на ПРОДАЖУ (шорт): нисходящий тренд или отскок к сопротивлению с подтверждением объёмом. Лонг брать только при очень сильном и явном сигнале. Выносить только сетапы A-класса. Нет подходящих — допустимый итог (no_trade).",
+    "candidates": [],
+    "no_trade": true,
+    "no_trade_reason": "BTC/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | ETH/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | SOL/USDT: уже 2 позиции в режиме «отскок» — лимит | BNB/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | XRP/USDT: чистая R=1.5 ниже порога 1.5; уже 2 позиции в режиме «отскок» — лимит | ADA/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | AVAX/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LINK/USDT: short запрещён (allowed_directions только long), а для long нет уровня цели с R≥1.5 (цена слишком близка к верхней границе диапазона) | TRX/USDT: цена близка к нижней границе диапазона, нет явного сигнала на откат к сопротивлению для входа в шорт; стоп над swing_high_20 слишком далёк, риск‑рентабельность не достигает min_R | DOT/USDT: отсеяно кодом до анализа: тренд монеты на 4ч боковой — сетап по тренду невозможен | LTC/USDT: Тренд вверх, но разрешено только лонг; при текущих уровнях риск слишком велик, цель не достигает min_R=1.5, поэтому нет подходящего сетапа. | BCH/USDT: в bounce‑mode разрешён только лонг, но нет чёткого сигнала на покупку (цена далеко от swing_low, R‑соотношение < min_R); шорт запрещён ограничением allowed_directions | NEAR/USDT: длинный сетап возможен, но цель не обеспечивает R≥1.5; шорт запрещён (allowed_directions) | SUI/USDT: Тренд вверх, но при стопе под swing_low_20 (0.6141) цель до диапазона (0.7446) дает R≈1.34 < min_R 1.5; нет уровня с достаточным соотношением риск‑прибыль, поэтому нет A‑класса",
+    "total_heat_pct": 0.995,
+    "llm_usage": {
+      "calls": 22,
+      "tokens_in": 40436,
+      "tokens_out": 9970,
+      "cost_usd_if_paid": 0.0097,
+      "models": [
+        "groq:openai/gpt-oss-120b",
+        "groq:openai/gpt-oss-20b"
+      ]
+    },
+    "market_news": {
+      "BTC/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Банковский сервис в Израиле вводит 2% комиссии за покупку и продажу биткоина, что может стимулировать спрос",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Израильский банк разрешил клиентам покупать биткоин, но взимает 2% за вход и 2% за выход",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Банковская комиссия может увеличить спрос на биткоин, так как пользователи будут стремиться воспользоваться сервисом",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Проблемы с приватностью биткоина выявлены в тестах, связывающих адреса с узлами сети",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Волны продаж со стороны китов продолжаются, несмотря на сокращение прибыли",
+            "refs": [
+              6
+            ]
+          },
+          {
+            "text": "Опционы на биткоин истекли, что может усилить защиту от падения до $40,000",
+            "refs": [
+              8
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Israeli bank lets customers buy Bitcoin but charges them 2% to get in and 2% to get out",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/israeli-bank-lets-customers-buy-bitcoin-but-charges-them-2-to-get-in-and-2-to-get-out/",
+            "published": "2026-11-28 00:50 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Bitcoin privacy weakness links wallet addresses to network nodes in 30 out of 30 tests",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bitcoin-privacy-weakness-links-wallet-addresses-to-network-nodes-in-30-out-of-30-tests/",
+            "published": "2026-11-27 21:50 UTC"
+          },
+          {
+            "n": 6,
+            "title": "Bitcoin whales pile into BTC despite shrinking profit cushion",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/markets/bitcoin-whales-pile-btc-despite-shrinking-profit-cushion?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 19:23 UTC"
+          },
+          {
+            "n": 8,
+            "title": "$7 Billion in Bitcoin Options Just Expired: Here’s What It Means",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384154/7-billion-bitcoin-options-just-expired-what-it-means",
+            "published": "2026-11-27 18:16 UTC"
+          }
+        ],
+        "news_found": 11,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 59852.5
+      },
+      "ETH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Запланирован запуск тестовой сети Glamsterdam 15 декабря",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Ethereum планирует запустить тестовую сеть Glamsterdam 15 декабря",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Разработчики согласовали хранение газа, несмотря на опасения по контрактам",
+            "refs": [
+              4
+            ]
+          },
+          {
+            "text": "Glamsterdam Hoodi откладывался из‑за опасений о совместимости с контрактами",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 2,
+            "title": "Ethereum Sets December 15 Date for Delayed Glamsterdam Testnet Upgrade",
+            "source": "Decrypt",
+            "link": "https://decrypt.co/384104/ethereum-sets-december-15-date-for-delayed-glamsterdam-testnet-upgrade",
+            "published": "2026-11-27 10:15 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Ethereum devs set Glamsterdam’s Hoodi rollout for mid-December after delays",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/ethereum-devs-set-glamsterdams-hoodi-rollout-for-mid-december-after-delays?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 04:47 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Ethereum's much-awaited Glamsterdam upgrade cleared for December test. Here's what to know",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/tech/2026/11/27/ethereum-s-much-awaited-glamsterdam-upgrade-cleared-for-december-test-here-s-what-to-know",
+            "published": "2026-11-27 04:29 UTC"
+          }
+        ],
+        "news_found": 7,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 1659.52
+      },
+      "SOL/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance восстановил выводы после взлома в октябре, но пользователи могут столкнуться с ограничениями сети",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Chainflip выявил потерянных пользователей в результате взлома на сумму 12,6 млн долларов, но дата выплаты не определена",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Franklin Templeton включил HYPE в крипто-ETF, что может увеличить интерес к токену Hyperliquid",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Binance withdrawals are back after October’s hack and here’s why yours might still be blocked",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/binance-withdrawals-are-back-after-octobers-hack-and-heres-why-yours-might-still-be-blocked/",
+            "published": "2026-11-28 02:10 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Chainflip identifies who lost money in $12.6 million hack as recovery plan takes shape",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-identifies-who-lost-money-in-12-6-million-hack-as-recovery-plan-takes-shape/",
+            "published": "2026-11-27 23:10 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Franklin Templeton makes room for HYPE in crypto index ETF",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/franklin-templeton-hype-crypto-index-etf?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 21:15 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 71.29
+      },
+      "BNB/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "BNB Chain объявил о запуске нового Layer‑1, который будет работать параллельно с BNB Smart Chain и поддерживать BNB как нативный токен",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "BNB Chain представил новый Layer‑1, который будет работать параллельно с BNB Smart Chain и поддерживать BNB как нативный токен",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Платформа BNB Chain заявила, что новая сеть будет запускаться в первом квартале 2027 года",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "BNB Chain объявила, что новая сеть может сделать транзакцию PancakeSwap на 27 % дороже из‑за правил devnet",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "BNB Chain’s new blockchain could make the same PancakeSwap trade 27% more expensive",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/bnb-chains-new-blockchain-could-make-the-same-pancakeswap-trade-27-more-expensive/",
+            "published": "2026-11-28 04:50 UTC"
+          },
+          {
+            "n": 2,
+            "title": "BNB Chain details new layer-1 for trading, private finance and AI",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/bnb-chain-details-new-layer-1-trading-private-finance-ai?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-26 21:42 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 552.39
+      },
+      "XRP/USDT": {
+        "sentiment": "positive",
+        "has_catalyst": true,
+        "catalyst": "Запуск кредитной платформы Ripple с использованием $800 млн стейблкоинов",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Ripple готовит кредитную систему, которая будет использовать $800 млн стейблкоинов на XRP Ledger",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Пользователи XRP могут получить более высокий доход, но при этом им придется вернуть токены через отдельный процесс",
+            "refs": [
+              1
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "XRP holders face a choice between earning more yield and getting their tokens back",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/xrp-holders-face-a-choice-between-earning-more-yield-and-getting-their-tokens-back/",
+            "published": "2026-11-27 20:30 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Ripple's lending plan moves closer to tapping XRP Ledger's $800 million in stablecoins",
+            "source": "CoinDesk",
+            "link": "https://www.coindesk.com/markets/2026/11/27/ripple-s-lending-plan-moves-closer-to-tapping-xrp-ledger-s-usd950-million-in-stablecoins",
+            "published": "2026-11-27 05:06 UTC"
+          }
+        ],
+        "news_found": 5,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.9454
+      },
+      "ADA/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance восстановил выводы после взлома в октябре, но пользователи могут столкнуться с ограничениями сети или аккаунта",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Chainflip выявил пользователей, потерявших 12,6 млн долларов в результате взлома, и разрабатывает план восстановления",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Franklin Templeton включил HYPE в крипто-индексный ETF, что может увеличить интерес к токену Hyperliquid",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Binance withdrawals are back after October’s hack and here’s why yours might still be blocked",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/binance-withdrawals-are-back-after-octobers-hack-and-heres-why-yours-might-still-be-blocked/",
+            "published": "2026-11-28 02:10 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Chainflip identifies who lost money in $12.6 million hack as recovery plan takes shape",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-identifies-who-lost-money-in-12-6-million-hack-as-recovery-plan-takes-shape/",
+            "published": "2026-11-27 23:10 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Franklin Templeton makes room for HYPE in crypto index ETF",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/franklin-templeton-hype-crypto-index-etf?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 21:15 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.1465
+      },
+      "AVAX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 6.543
+      },
+      "LINK/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 9.187
+      },
+      "TRX/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance восстановил выводы после взлома в октябре, но пользователи могут столкнуться с ограничениями сети или аккаунта",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Chainflip выявил потерянных пользователей после хакерской атаки на 12,6 млн долларов, но дата выплаты неизвестна",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Franklin Templeton включил HYPE в крипто-индексный ETF, что может усилить интерес к токену Hyperliquid",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Binance withdrawals are back after October’s hack and here’s why yours might still be blocked",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/binance-withdrawals-are-back-after-octobers-hack-and-heres-why-yours-might-still-be-blocked/",
+            "published": "2026-11-28 02:10 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Chainflip identifies who lost money in $12.6 million hack as recovery plan takes shape",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-identifies-who-lost-money-in-12-6-million-hack-as-recovery-plan-takes-shape/",
+            "published": "2026-11-27 23:10 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Franklin Templeton makes room for HYPE in crypto index ETF",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/franklin-templeton-hype-crypto-index-etf?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 21:15 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "down",
+        "last_price": 0.3008
+      },
+      "DOT/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance восстановил выводы после взлома, но пользователи могут столкнуться с ограничениями сети или аккаунта",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Chainflip выявил потерявших деньги пользователей после взлома на 12,6 млн долларов, но дата выплаты пока неизвестна",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Franklin Templeton добавил HYPE в крипто-ETF, а активы Hyperliquid достигли 266,5 млн долларов",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Binance withdrawals are back after October’s hack and here’s why yours might still be blocked",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/binance-withdrawals-are-back-after-octobers-hack-and-heres-why-yours-might-still-be-blocked/",
+            "published": "2026-11-28 02:10 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Chainflip identifies who lost money in $12.6 million hack as recovery plan takes shape",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-identifies-who-lost-money-in-12-6-million-hack-as-recovery-plan-takes-shape/",
+            "published": "2026-11-27 23:10 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Franklin Templeton makes room for HYPE in crypto index ETF",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/franklin-templeton-hype-crypto-index-etf?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 21:15 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "range",
+        "last_price": 0.655
+      },
+      "LTC/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Binance восстановил выводы после взлома в октябре, но пользователи могут столкнуться с техническими ограничениями",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Chainflip выявил потерявших деньги пользователей после хакерской атаки на сумму 12,6 млн долларов, но пока нет даты выплат",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Franklin Templeton включил HYPE в крипто-индексный ETF, что может увеличить интерес к токену Hyperliquid",
+            "refs": [
+              3
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Binance withdrawals are back after October’s hack and here’s why yours might still be blocked",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/binance-withdrawals-are-back-after-octobers-hack-and-heres-why-yours-might-still-be-blocked/",
+            "published": "2026-11-28 02:10 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Chainflip identifies who lost money in $12.6 million hack as recovery plan takes shape",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-identifies-who-lost-money-in-12-6-million-hack-as-recovery-plan-takes-shape/",
+            "published": "2026-11-27 23:10 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Franklin Templeton makes room for HYPE in crypto index ETF",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/franklin-templeton-hype-crypto-index-etf?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 21:15 UTC"
+          }
+        ],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 44.16
+      },
+      "BCH/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 206.9
+      },
+      "NEAR/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": false,
+        "catalyst": "",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [],
+        "sources": [],
+        "news_found": 3,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 3.034
+      },
+      "SUI/USDT": {
+        "sentiment": "negative",
+        "has_catalyst": true,
+        "catalyst": "Bluefin закрывает платформу перпс, переориентируется на спот",
+        "event_risk_flag": false,
+        "event_risk": "",
+        "claims": [
+          {
+            "text": "Bluefin прекращает работу с перпс на Sui, планирует фокусироваться на спотовой торговле",
+            "refs": [
+              1
+            ]
+          },
+          {
+            "text": "Binance вновь открывает выводы после взлома, но возможны ограничения",
+            "refs": [
+              2
+            ]
+          },
+          {
+            "text": "Chainflip выявил потерявших деньги пользователей после хакерской атаки, но дата выплат неизвестна",
+            "refs": [
+              3
+            ]
+          },
+          {
+            "text": "Franklin Templeton добавил HYPE в крипто-ETF, активы HYPE достигли $266.5 млн",
+            "refs": [
+              4
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "n": 1,
+            "title": "Bluefin to shut down perps, refocus on spot trading and tokenized RWAs",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/bluefin-shut-down-perps-refocus-spot-trading-tokenized-rwas?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 10:26 UTC"
+          },
+          {
+            "n": 2,
+            "title": "Binance withdrawals are back after October’s hack and here’s why yours might still be blocked",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/binance-withdrawals-are-back-after-octobers-hack-and-heres-why-yours-might-still-be-blocked/",
+            "published": "2026-11-28 02:10 UTC"
+          },
+          {
+            "n": 3,
+            "title": "Chainflip identifies who lost money in $12.6 million hack as recovery plan takes shape",
+            "source": "CryptoSlate",
+            "link": "https://cryptoslate.com/chainflip-identifies-who-lost-money-in-12-6-million-hack-as-recovery-plan-takes-shape/",
+            "published": "2026-11-27 23:10 UTC"
+          },
+          {
+            "n": 4,
+            "title": "Franklin Templeton makes room for HYPE in crypto index ETF",
+            "source": "Cointelegraph",
+            "link": "https://cointelegraph.com/news/franklin-templeton-hype-crypto-index-etf?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+            "published": "2026-11-27 21:15 UTC"
+          }
+        ],
+        "news_found": 4,
+        "notes": [],
+        "trend_4h": "up",
+        "last_price": 0.6701
+      }
+    },
+    "direction": "short",
+    "market_regime": {
+      "regime": "down",
+      "symbol": "BTC/USDT",
+      "last": 59852.53,
+      "sma20_1d": 64484.6,
+      "sma50_1d": 73889.12,
+      "note": "режим рынка по BTC/USDT на дневных свечах: нисходящий"
+    },
+    "fear_greed": {
+      "value": 10,
+      "label": "Extreme Fear",
+      "source": "alternative.me"
+    }
+  },
+  "report_1": null,
+  "report_2": null
+}
