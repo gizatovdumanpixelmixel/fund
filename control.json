@@ -1,12 +1,7 @@
 {
   "mode": "work",
-  "updated": "2026-11-28T15:29:58",
+  "updated": "2026-11-28T17:29:38",
   "note": "work — система работает по расписанию; rest — расписание отдыхает (ручной запуск работает всегда)",
-  "last_monitor": "2026-11-28T15:29:58",
-  "monitor_alerts": {
-    "P-0009": {
-      "sig": "CLOSE:crowd,regime_against",
-      "ts": "2026-11-28T15:29:56"
-    }
-  }
+  "last_monitor": "2026-11-28T17:29:38",
+  "monitor_alerts": {}
 }
